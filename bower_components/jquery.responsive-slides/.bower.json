@@ -1,0 +1,32 @@
+{
+  "name": "jquery.responsive-slides",
+  "version": "1.54.1",
+  "homepage": "https://github.com/gaboesquivel/jquery.responsive-slides.js",
+  "authors": [
+    "gaboesquivel <contact@gaboesquivel.com>"
+  ],
+  "description": "Simple & lightweight responsive slider plugin (fork of http://responsiveslides.com )",
+  "main": [
+    "jquery.responsive-slides.css",
+    "jquery.responsive-slides.js"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "jquery",
+    "jquery.responsive-slides"
+  ],
+  "ignore": "",
+  "license": "MIT",
+  "_release": "1.54.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.54.1",
+    "commit": "e0bed53e33c6ddc62a1a0e816c2eadaa00f88f7d"
+  },
+  "_source": "git://github.com/gaboesquivel/jquery.responsive-slides.js.git",
+  "_target": "~1.54.1",
+  "_originalSource": "jquery.responsive-slides",
+  "_direct": true
+}

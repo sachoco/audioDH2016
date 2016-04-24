@@ -1,0 +1,40 @@
+.hide-on-mobile {
+	display: block;
+}
+
+section.home {
+	width: calc(100% - 75px);
+	// min-width: 680px;
+
+}
+
+
+section.page {
+	width: calc(100% - 75px);
+	// min-width: 680px;
+
+}
+.event-content, .press-content {
+	width: calc(100% - 400px);
+}
+
+.event-list, .press-list {
+	// max-height: 100vh;
+	// overflow: scroll;
+	width: 200px;
+	float: left;
+	&.right {
+		float: right;
+	}
+	li {
+		padding: 0.5em 0;
+		font-size: 0.8em;
+		a {
+			color: black;
+		}
+		time {
+			display: block;
+			font-size: 0.8em;
+		}
+	}
+}

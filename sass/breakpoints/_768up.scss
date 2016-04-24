@@ -1,0 +1,47 @@
+
+section.header {
+
+	nav {
+		.mobile-menu {
+			display: none;
+		}
+		&.mobile-nav {
+			display: none !important;
+		}
+		ul {
+			display: block;
+
+			// list-style: none;
+		}
+
+	}
+}
+
+section.home {
+	width: calc(100% - 150px);
+	min-width: 680px;
+
+}
+
+
+section.page {
+	width: calc(100% - 150px);
+	min-width: 680px;
+
+}
+
+section.main {
+
+	.wpb_wrapper {
+		h2 {
+			margin-top: 0;
+		}
+
+	}
+}
+
+footer {
+	h2 {
+		margin-top: 0;
+	}
+}

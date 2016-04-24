@@ -1,0 +1,1 @@
+(function(){jQuery(function(a){return a("#example").DataTable({paging:!1})})}).call(this);

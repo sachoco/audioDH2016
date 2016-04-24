@@ -1,0 +1,247 @@
+$bg-color: #ffffff;
+// $bg-color: #26292C;
+$bg-color-grey: #EDEDED;
+$base-font-size: 16px;
+$font-size-s: 0.8em;
+// $font-family: 'Open Sans', sans-serif;
+$font-weight: normal;
+// $font-family: 'Hind', sans-serif;
+$font-family: 'Maven Pro', sans-serif;
+// $font-family: 'Khula', sans-serif;
+// $font-family: 'Mandali', sans-serif;
+
+$header-font-family: 'Gafata', sans-serif;
+
+
+// $header-font-family: 'Nova Round', cursive;
+// $header-font-family: 'Karla', sans-serif;
+// $header-font-family: 'Exo 2', sans-serif;
+// $header-font-family: 'Ruda', sans-serif;
+// $header-font-family: 'Merriweather Sans', sans-serif;
+$header-font-weight: normal;
+
+$header-height: 60px;
+
+
+$font-color: #555;
+* {
+	box-sizing: border-box;
+	transition: filter 2s;
+}
+html {
+	background-color: $bg-color;
+}
+html, body {
+	// height: 100%;
+	position: relative;
+	font-size: $base-font-size;
+	font-family: $font-family;
+	color: $font-color;
+	line-height: 1.2;
+	font-weight: $font-weight;
+}
+body {
+	background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+	&.home {
+		background: none;
+	}
+}
+h1, h2, h3, h4, h5 {
+	font-family: $header-font-family;
+	font-weight: $header-font-weight;
+	a {
+		background: none;
+		&:hover {
+			background: url(images/overlay-pattern.png) rgba(0, 0, 0, 1);
+			color: white !important;
+		}
+	}
+}
+
+.h3 {
+	font-size: 1.3em;
+}
+p {
+	margin-bottom: 1em;
+}
+a {
+	color: $font-color;
+	// color: black;
+	text-decoration: none;
+	// transition: all 0.1s;
+	// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
+	&:hover {
+		// background-color: black;
+		// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
+		text-decoration: underline;
+		// color: white;
+		// time {
+		// 	color: $font-color;
+		// }
+	}
+	time {
+		// transition: none;
+	}
+}
+.hide-on-mobile {
+	display: none;
+}
+.page__body  {
+	.text, .wpb_wrapper p, .press-content{
+		a {
+			// color: $font-color;
+			color: black;
+			text-decoration: none;
+			transition: all 0.1s;
+			background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
+			&:hover {
+				background-color: black;
+				// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
+				// text-decoration: underline;
+				color: white;
+				time {
+					color: $font-color;
+				}
+			}
+			time {
+				transition: none;
+			}
+		}		
+	}
+	
+}
+strong {
+	font-weight: bold;
+}
+em {
+	font-style: italic;
+}
+button {
+	font-family: $font-family;	
+}
+.margin-top {
+	margin-top: 2em;
+}
+.align-left {
+	text-align: left;
+}
+.blur {
+	// filter: blur(3px);
+}
+.wrap {
+	max-width: 1600px;
+	margin: auto;
+	padding: 2em;
+}
+
+section.header{
+	h1 {
+		background: #F6F6F6;
+		padding: 10px;
+		// text-align: center;
+		// font-size: 10rem;
+	}
+	nav {
+		text-align: center;
+		li {
+			display: inline-block;
+			padding: 15px;
+		}
+	}
+}
+section.footer{
+	h1 {
+		background: #F6F6F6;
+		padding: 10px;
+		// text-align: center;
+		// font-size: 10rem;
+	}
+	nav {
+		text-align: center;
+		li {
+			display: inline-block;
+			padding: 15px;
+		}
+	}
+}
+.wrapper {
+	width: 1200px;
+}
+section {
+	tr {
+		cursor: pointer;
+		&:hover, &.nowplaying {
+			background-color: #5094F7 !important;
+		}
+
+		.duration {
+			float: right;
+		}
+	}
+	img {
+		width: 100%;
+		height: auto;
+	}
+	&.track {
+		height: 80vh;
+		overflow: scroll;
+	}
+	ul.track {
+		li {
+			// float: left;
+			padding: 5px;
+			margin: 2px;
+			background-color: #5094F7;
+			// width: 100px;
+			// height: 50px;
+		}
+	}
+	.trackinfo {
+		margin-top: 30px;
+	}
+	.controller {
+		position: relative;
+		progress {
+			width: 100%;
+		}
+		button {
+			border: none;
+			background: none;
+			vertical-align: middle;
+			outline: none;
+			&.playpause {
+				width: 50px;
+			}
+		}
+		.cur {
+			float: left;
+		}
+		.dur {
+			float: right;
+		}
+		#volume-bar {
+			position: absolute;
+			top: 16px;
+			right: 0px;
+			* {
+				cursor: pointer;
+			}
+			#volume-scrubber {
+				float: left;
+				position: relative;
+				top: 3px;
+				right: 10px;
+			}
+			#volume-indicator {
+				width: 100%;
+			    height: 100%;
+			    position: absolute;
+			    left: 0;
+			}
+			#volume-sign {
+				float: right;
+			}
+		}
+	}
+}
+

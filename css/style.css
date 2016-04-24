@@ -1,0 +1,491 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/**
+ * Str replace
+ *
+ * @param {string}  $string    String that you want to replace
+ * @param {string}  $substr    String that is to be replaced by `$newsubstr`
+ * @param {string}  $newsubstr String that replaces `$substr`
+ * @param {number*} $all       Flag for replaceing all (1+) or not (0)
+ * @return {string}
+ */
+/**
+ * Map set
+ *
+ * @param 	Map 	$map 		The map to use
+ * @param 	String 	$key 		The key to update
+ * @param 	Mixed 	$value 		The new value
+ * @return 	Map 			The new map
+ */
+/**
+ * Get the column width in percent for the global or a specific context
+ *
+ * @param 	int 		$columns 					The number of columns to calculate
+ * @param 	int 		$context : $gridle-columns-count 	 	The context to use
+ * @return 	percentage 							The width in percent
+ */
+/**
+ *  Get a state map
+ *
+ * @param 	string 		$name 		The name of the state to get
+ * @return 	map 				A state map object
+ */
+/**
+ * Check if a state exist :
+ *
+ * @param 	string 		$name 		The name of the state to check
+ * @return 	Boolean 			true is exist
+ */
+/**
+ * Get the media queries variables :
+ *
+ * @param 	int 		$index 	 	The media query indes
+ * @param 	String 		$var 		The media query variable name
+ * @return 	String|int 			The variable value
+ */
+/**
+ * Get a variable
+ *
+ * @param 	String 		$varName 				The variable name
+ * @param  	String 		$stateMap-or-stateName 	 	The state name or a map state value
+ * @return 	Mixed 							The finded value
+ */
+/**
+ * Set a variable in a state
+ * @param 	Mixed $stateName-or-stateIndex 	The state name of state index
+ * @param  	String $var                    		Variable name to assign
+ * @param  	Mixed $newValue          		The new value to assign
+ * @return 	List                         			The states list (full)
+ */
+/**
+ * Generate a column
+ *
+ * @param 	String 		$name 			The column name (often count)
+ * @param 	int 		$columns 		The column count that the column will take
+ * @param 	int 		$context 		The context on witch the with will be calculed
+ * @param 	Boolean 	$generateClasses 	Set if the column has to be generated in css
+ */
+/**
+ * Generate classname
+ *
+ * @param 	List 		$parrern 	The pattern to use to generate classname
+ * @param 	String 		$state 		The state
+ * @param 	int 		$count 		The column count
+ */
+/**
+ * Get the media query for a particular state, or with, etc...
+ *
+ * @param 	Mixed 		$state-or-min-width 		The state name of the min with
+ * @param 	Mixed 		$max-width 			The max width if first param is a min width
+ * @return 	String 						The media query string without the @media
+ */
+/**
+ * Get states count
+ * 
+ * @return 	int 	The number of states defined
+ */
+/**
+ * Setup
+ */
+/**
+ *  Register a clear each class
+ */
+/**
+ * Register a special class
+ */
+/**
+ * Register default states
+ */
+/**
+ * Register default mobile first states :
+ */
+/**
+ * Set the debug device (not used for now)
+ * 
+ * @param 	String 		$state 		The state to update
+ * @para m 	String 		$device 	The device to use (iphone, etc...)
+ */
+/**
+ * Parent clear each
+ */
+/**
+ * Vertical align :
+ */
+/**
+ * Show inline
+ *
+ * @param 	String 		$state 		The state name
+ */
+/**
+ * Generate a custom class for all the states
+ *
+ * @param 	list 	$pattern 		The name pattern of the class
+ * @param 	list 	$statesNames 		The states names to generate
+ */
+/*********************
+BASE (MOBILE) SIZE
+This are the mobile styles. It's what people see on their phones. If
+you set a great foundation, you won't need to add too many styles in
+the other stylesheets. Remember, keep it light: Speed is Important.
+*********************/
+* {
+  box-sizing: border-box;
+  transition: -webkit-filter 2s, filter 2s;
+}
+
+html {
+  background-color: #ffffff;
+}
+
+html, body {
+  position: relative;
+  font-size: 16px;
+  font-family: "Maven Pro", sans-serif;
+  color: #555;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+body {
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+}
+body.home {
+  background: none;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Gafata", sans-serif;
+  font-weight: normal;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a {
+  background: none;
+}
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
+  background: url(images/overlay-pattern.png) black;
+  color: white !important;
+}
+
+.h3 {
+  font-size: 1.3em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+a {
+  color: #555;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.hide-on-mobile {
+  display: none;
+}
+
+.page__body .text a, .page__body .wpb_wrapper p a, .page__body .press-content a {
+  color: black;
+  text-decoration: none;
+  transition: all 0.1s;
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+}
+.page__body .text a:hover, .page__body .wpb_wrapper p a:hover, .page__body .press-content a:hover {
+  background-color: black;
+  color: white;
+}
+.page__body .text a:hover time, .page__body .wpb_wrapper p a:hover time, .page__body .press-content a:hover time {
+  color: #555;
+}
+.page__body .text a time, .page__body .wpb_wrapper p a time, .page__body .press-content a time {
+  transition: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+button {
+  font-family: "Maven Pro", sans-serif;
+}
+
+.margin-top {
+  margin-top: 2em;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.wrap {
+  max-width: 1600px;
+  margin: auto;
+  padding: 2em;
+}
+
+section.header h1 {
+  background: #F6F6F6;
+  padding: 10px;
+}
+section.header nav {
+  text-align: center;
+}
+section.header nav li {
+  display: inline-block;
+  padding: 15px;
+}
+
+section.footer h1 {
+  background: #F6F6F6;
+  padding: 10px;
+}
+section.footer nav {
+  text-align: center;
+}
+section.footer nav li {
+  display: inline-block;
+  padding: 15px;
+}
+
+.wrapper {
+  width: 1200px;
+}
+
+section tr {
+  cursor: pointer;
+}
+section tr:hover, section tr.nowplaying {
+  background-color: #5094F7 !important;
+}
+section tr .duration {
+  float: right;
+}
+section img {
+  width: 100%;
+  height: auto;
+}
+section.track {
+  height: 80vh;
+  overflow: scroll;
+}
+section ul.track li {
+  padding: 5px;
+  margin: 2px;
+  background-color: #5094F7;
+}
+section .trackinfo {
+  margin-top: 30px;
+}
+section .controller {
+  position: relative;
+}
+section .controller progress {
+  width: 100%;
+}
+section .controller button {
+  border: none;
+  background: none;
+  vertical-align: middle;
+  outline: none;
+}
+section .controller button.playpause {
+  width: 50px;
+}
+section .controller .cur {
+  float: left;
+}
+section .controller .dur {
+  float: right;
+}
+section .controller #volume-bar {
+  position: absolute;
+  top: 16px;
+  right: 0px;
+}
+section .controller #volume-bar * {
+  cursor: pointer;
+}
+section .controller #volume-bar #volume-scrubber {
+  float: left;
+  position: relative;
+  top: 3px;
+  right: 10px;
+}
+section .controller #volume-bar #volume-indicator {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+section .controller #volume-bar #volume-sign {
+  float: right;
+}
+
+/*********************
+LARGER MOBILE DEVICES
+This is for devices like the Galaxy Note or something that's
+larger than an iPhone but smaller than a tablet. Let's call them
+tweeners.
+*********************/
+@media only screen and (min-width: 481px) {
+  .hide-on-mobile {
+    display: block;
+  }
+
+  section.home {
+    width: calc(100% - 75px);
+  }
+
+  section.page {
+    width: calc(100% - 75px);
+  }
+
+  .event-content, .press-content {
+    width: calc(100% - 400px);
+  }
+
+  .event-list, .press-list {
+    width: 200px;
+    float: left;
+  }
+  .event-list.right, .press-list.right {
+    float: right;
+  }
+  .event-list li, .press-list li {
+    padding: 0.5em 0;
+    font-size: 0.8em;
+  }
+  .event-list li a, .press-list li a {
+    color: black;
+  }
+  .event-list li time, .press-list li time {
+    display: block;
+    font-size: 0.8em;
+  }
+}
+/*********************
+TABLET & SMALLER LAPTOPS
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 768px) {
+  section.header nav .mobile-menu {
+    display: none;
+  }
+  section.header nav.mobile-nav {
+    display: none !important;
+  }
+  section.header nav ul {
+    display: block;
+  }
+
+  section.home {
+    width: calc(100% - 150px);
+    min-width: 680px;
+  }
+
+  section.page {
+    width: calc(100% - 150px);
+    min-width: 680px;
+  }
+
+  section.main .wpb_wrapper h2 {
+    margin-top: 0;
+  }
+
+  footer h2 {
+    margin-top: 0;
+  }
+}
+/*********************
+DESKTOP
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 1030px) {
+  section.home {
+    width: calc(100% - 300px);
+    min-width: 900px;
+  }
+
+  section.page--single {
+    width: calc(100% - 300px);
+    min-width: 1030px;
+  }
+
+  section.page {
+    width: calc(100% - 300px);
+    min-width: 900px;
+  }
+}
+/*********************
+LARGE VIEWING SIZE
+This is for the larger monitors and possibly full screen viewers.
+*********************/
+/*********************
+RETINA (2x RESOLUTION DEVICES)
+This applies to the retina iPhone (4s) and iPad (2,3) along with
+other displays with a 2x resolution. You can also create a media
+query for retina AND a certain size if you want. Go Nuts.
+*********************/

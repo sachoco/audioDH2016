@@ -1,0 +1,1 @@
+(function(){jQuery(function(n){return this})}).call(this);

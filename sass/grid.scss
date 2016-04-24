@@ -1,0 +1,12 @@
+// import settings :
+@import 'settings';
+
+// generate classes :
+@include gridle_generate_classes ( );
+
+// manage container width :
+.container {
+	// max-width : 960px;
+	margin : 0 auto;
+	padding: 0 15px;
+}
