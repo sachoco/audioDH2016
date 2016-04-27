@@ -8,28 +8,48 @@
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <div class="wrapper">
 <section class="grid-12">
-    <h1>AudioDH2016</h1>
-</section>
-<section class="grid-3">
-    <!-- <h1>AudioDH2016</h1> -->
-    <img src="http://placehold.it/800x800">
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, molestias, voluptatum. Dolore nesciunt excepturi eligendi eum mollitia dignissimos sapiente placeat earum. Obcaecati non iste error iure aliquam, aperiam perspiciatis repellendus.
-    </p>
-</section>
-<section class="grid-5 track">
-    <ul class="track">
+    <ul class="track grid-3">
     <?php
 
-        // for($i=0; $i<250; $i++){
-        //     echo "<li class='grid-6'>Track Title ".$i." by Artist ".$i."</li>";
+        for($i=0; $i<50; $i++){
+            echo "<li>Artist ".$i."</li>";
 
-        // }
+        }
 
     ?>
     </ul>
-<h2>Tracks</h2>
-<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <ul class="track grid-3">
+    <?php
+
+        for($i=50; $i<100; $i++){
+            echo "<li>Artist ".$i."</li>";
+
+        }
+
+    ?>
+    </ul>
+    <ul class="track grid-3">
+    <?php
+
+        for($i=100; $i<150; $i++){
+            echo "<li>Artist ".$i."</li>";
+
+        }
+
+    ?>
+    </ul>
+    <ul class="track grid-3">
+    <?php
+
+        for($i=150; $i<200; $i++){
+            echo "<li>Artist ".$i."</li>";
+
+        }
+
+    ?>
+    </ul>
+<!-- <h2>Tracks</h2>
+ --><table class="table table-striped table-bordered" cellspacing="0" width="100%">
 <!--         <thead>
             <tr>
                 <th>Artist Name</th>
@@ -84,7 +104,7 @@ jQuery(document).ready(function($){
 
         for (index = 0; index < tracks.length; ++index) {
             // console.log(tracks[index]);
-            $("#tracks").append("<tr data-index='" + index + "' data-id='"+tracks[index].id+"'><td>"+tracks[index].title+"<span class='duration'>"+timecode(tracks[index].duration)+"</span></td></tr>");
+            // $("#tracks").append("<tr data-index='" + index + "' data-id='"+tracks[index].id+"'><td>"+tracks[index].title+"<span class='duration'>"+timecode(tracks[index].duration)+"</span></td></tr>");
 
                 // "<tr data-id='" + tracks[index].id + "'>" + tracks[index].title + "</tr>");
         }
@@ -211,40 +231,7 @@ function stopSlide(ev){
 });
 
 </script>
-<section class="controller">
-<!-- <a href="#" id="prev" class="fa fa-backward fa-lg" style="color: #3c3c3c;"></a>
-<a href="#" id="play-pause" class="fa fa-play fa-3x" style="color: #3c3c3c;"></a>
-<a href="#" id="next" class="fa fa-forward fa-lg" style="color: #3c3c3c;"></a></div> -->
 
-<button class="prev"><i class="fa fa-backward fa-lg" aria-hidden="true"></i></button>
-<button class="playpause"><i class="fa fa-play fa-3x" aria-hidden="true"></i></button>
-<button class="next"><i class="fa fa-forward fa-lg" aria-hidden="true"></i></button>
-
-<div id="volume-bar">
-    <div id="volume-scrubber" style="background: #e3e3e3; width: 80px; height: 6px; border: 1px solid #e3e3e3;">
-        <div id="volume-indicator" style="background: #3c3c3c;"></div>
-    </div>
-    <div id="volume-sign" class="fa fa-volume-up fa-lg"></div>
-</div>
-
-<br>
-
-<progress value="0" max="100"
-  ng-click="seek($event)"
-  ng-value="currentTime / duration">
-    
-</progress>
-<br>
-<small><span class="cur">00.00</span><span class="dur">00.00</span></small>
-
-</section>
-
-    <article class="trackinfo clear">
-        <header></header>   
-        <section></section>
-    </article>
-</section>
-</div>
 
 
 

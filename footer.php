@@ -1,21 +1,38 @@
         <section class="footer clear">
-            <nav class="nav" role="navigation">
-                <?php wp_nav_menu(array(
-                    'container' => false,                           // remove nav container
-                    'container_class' => 'menu cf',                 // class of container (should you choose to use it)
-                    'menu' => __( 'Main Menu', 'iii' ),  // nav name
-                    'menu_class' => 'nav',               // adding custom nav class
-                    'theme_location' => 'main-menu',                 // where it's located in the theme
-                    'before' => '',                                 // before the menu
-                    'after' => '',                                  // after the menu
-                    'link_before' => '',                            // before each link
-                    'link_after' => '',                             // after each link
-                    'depth' => 2,                                   // limit the depth of the nav
-                    'fallback_cb' => ''                             // fallback function (if there is one)
-                )); ?>
+<section class="controller grid-6">
+	<!-- <a href="#" id="prev" class="fa fa-backward fa-lg" style="color: #3c3c3c;"></a>
+	<a href="#" id="play-pause" class="fa fa-play fa-3x" style="color: #3c3c3c;"></a>
+	<a href="#" id="next" class="fa fa-forward fa-lg" style="color: #3c3c3c;"></a></div> -->
 
-<!--                 <div class="mobile-menu"><i class="fa fa-bars fa-2x fa-border"></i></div>
- -->            </nav>
+	<button class="prev"><i class="fa fa-backward fa-lg" aria-hidden="true"></i></button>
+	<button class="playpause"><i class="fa fa-play fa-3x" aria-hidden="true"></i></button>
+	<button class="next"><i class="fa fa-forward fa-lg" aria-hidden="true"></i></button>
+
+	<div id="volume-bar">
+	    <div id="volume-scrubber" style="background: #e3e3e3; width: 80px; height: 6px; border: 1px solid #e3e3e3;">
+	        <div id="volume-indicator" style="background: #3c3c3c;"></div>
+	    </div>
+	    <div id="volume-sign" class="fa fa-volume-up fa-lg"></div>
+	</div>
+
+	<br>
+
+	<progress value="0" max="100"
+	  ng-click="seek($event)"
+	  ng-value="currentTime / duration">
+	    
+	</progress>
+	<br>
+	<small><span class="cur">00.00</span><span class="dur">00.00</span></small>
+
+	</section>
+	<section class="grid-6">
+	    <article class="trackinfo clear">
+	        <header>test</header>   
+	        <section>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione, veritatis sapiente minus reprehenderit? Dignissimos architecto earum perspiciatis placeat assumenda ratione consectetur accusamus adipisci facilis minima. Laudantium eius voluptatum quod.</section>
+	    </article>
+	</section>
+</div>
         </section>
     <?php wp_footer(); ?>
 

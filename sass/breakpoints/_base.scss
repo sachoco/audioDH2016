@@ -150,6 +150,11 @@ section.header{
 	}
 }
 section.footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: white;
+	padding: 50px;
 	h1 {
 		background: #F6F6F6;
 		padding: 10px;
@@ -194,10 +199,23 @@ section {
 			background-color: #5094F7;
 			// width: 100px;
 			// height: 50px;
+			.duration {
+				float: right;
+			}
 		}
 	}
+	ul.track li
+	{
+		list-style-type: none;
+	}  
+	ul.track li:before
+	{
+		content: counter(item) ". ";
+		counter-increment: item;
+	}
+
 	.trackinfo {
-		margin-top: 30px;
+		// margin-top: 30px;
 	}
 	.controller {
 		position: relative;

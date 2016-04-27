@@ -294,6 +294,13 @@ section.header nav li {
   padding: 15px;
 }
 
+section.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  padding: 50px;
+}
 section.footer h1 {
   background: #F6F6F6;
   padding: 10px;
@@ -332,8 +339,15 @@ section ul.track li {
   margin: 2px;
   background-color: #5094F7;
 }
-section .trackinfo {
-  margin-top: 30px;
+section ul.track li .duration {
+  float: right;
+}
+section ul.track li {
+  list-style-type: none;
+}
+section ul.track li:before {
+  content: counter(item) ". ";
+  counter-increment: item;
 }
 section .controller {
   position: relative;
