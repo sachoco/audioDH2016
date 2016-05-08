@@ -1,1 +1,1 @@
-(function(){jQuery(function(a){return a("#example").DataTable({paging:!1})})}).call(this);
+(function(){jQuery(function(t){var e;return e=t(".isotope").imagesLoaded(function(){return e.isotope({itemSelector:"li",layoutMode:"masonry",getSortData:{name:".name",date:".date"}})}),this})}).call(this);

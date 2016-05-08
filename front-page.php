@@ -7,19 +7,19 @@
 <?php include('header.php') ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <div class="wrapper">
-<section class="grid-12">
+<section class="gr-12">
 
-    <ul class="track grid-12">
+    <ul class="track">
     <?php
 
         for($i=0; $i<200; $i++){
-            echo "<li>Firstname Lastname ".$i."</li>";
+            echo "<li data-title='Track Title ".$i."'>Firstname Lastname ".$i."</li>";
 
         }
 
     ?>
     </ul>
-<!--     <ul class="track grid-3">
+<!--     <ul class="track gr-3">
     <?php
 
         for($i=0; $i<50; $i++){
@@ -29,7 +29,7 @@
 
     ?>
     </ul>
-    <ul class="track grid-3">
+    <ul class="track gr-3">
     <?php
 
         for($i=50; $i<100; $i++){
@@ -39,7 +39,7 @@
 
     ?>
     </ul>
-    <ul class="track grid-3">
+    <ul class="track gr-3">
     <?php
 
         for($i=100; $i<150; $i++){
@@ -49,7 +49,7 @@
 
     ?>
     </ul>
-    <ul class="track grid-3">
+    <ul class="track gr-3">
     <?php
 
         for($i=150; $i<200; $i++){
@@ -72,8 +72,7 @@
         </tbody>
     </table>
 </section>
-<section class="grid-4">
-<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+s<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
 <script>
 SC.initialize({
   client_id: '098249c9bda43969033f485dc628827d'
@@ -241,8 +240,8 @@ function stopSlide(ev){
 
 $("ul.track li").hover(
     function(){
-        $(".trackinfo header").html($(this).html()+" - Track Title <a href='#'>website</a>");
-        $(".trackinfo section").html($(this).html()+" description ");
+        $(".trackinfo header").html($(this).html()+" <br>Track Title<br><a href='#'>website</a>");
+        $(".trackinfo section").html("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione, veritatis sapiente minus reprehenderit? Dignissimos architecto earum perspiciatis placeat assumenda ratione consectetur accusamus adipisci facilis minima. Laudantium eius voluptatum quod.");
     },
     function(){
         // $(".trackinfo header").html("");
@@ -250,7 +249,36 @@ $("ul.track li").hover(
     }
     );
 
+$("ul.track li").click(
+    function(){
+        $(".trackinfo-cur header").html($(this).data('title')+"<br>"+$(this).html()+" <a href='#'>website</a>");
+        $(".trackinfo-cur section").html("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione, veritatis sapiente minus reprehenderit? Dignissimos architecto earum perspiciatis placeat assumenda ratione consectetur accusamus adipisci facilis minima. Laudantium eius voluptatum quod.");
+    });
+
+$("button.shuffle").click(function(){
+    $(this).toggleClass("active");
 });
+
+
+$(window).resize(function(){
+    var h = $(window).height();
+    var top = $("section.footer").offset().top;
+    // height();
+    // if(top <= 350){
+    //     $("section.footer").addClass("mini");
+    // }
+    if(h < 550){
+        $("section.footer").addClass("mini");
+    }else{
+        $("section.footer").removeClass("mini");
+    }
+    // console.log(h);
+
+});
+
+
+});
+
 
 
 

@@ -1,10 +1,7 @@
 jQuery ($) -> 
-    $('#example').DataTable paging: false
-
-	# $(".rslides").responsiveSlides speed: 2000, random: true, timeout: 20000
-
-	# $grid = $('.isotope').imagesLoaded ->
-	# 	$grid.isotope itemSelector: "li", layoutMode: "fitRows", getSortData: { name: '.name', date: '.date'}
+    # $('#example').DataTable paging: false
+	$grid = $('.isotope').imagesLoaded ->
+		$grid.isotope itemSelector: "li", layoutMode: 'masonry', getSortData: { name: '.name', date: '.date'}
 
 	# $(".button").on "click", ->
 	# 	sort = $(this).data("sort-by")

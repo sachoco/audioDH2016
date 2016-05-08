@@ -41,7 +41,7 @@ html, body {
 	font-weight: $font-weight;
 }
 body {
-	background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+	// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
 	&.home {
 		background: none;
 	}
@@ -135,25 +135,41 @@ button {
 }
 
 section.header{
+	header {
+		background: white;
+		padding: 10px;		
+	}
+	a {
+		color: $font-color;
+		&:hover {
+			text-decoration: none;
+		}
+	}
 	h1 {
-		background: #F6F6F6;
-		padding: 10px;
+		margin: 0;
+		// background: #F6F6F6;
+		// padding: 10px;
 		// text-align: center;
 		// font-size: 10rem;
 	}
+	h4 {
+		// font-size: 0.5em;
+	}
 	nav {
+		background: #F6F6F6;
 		text-align: center;
 		li {
 			display: inline-block;
-			padding: 15px;
+			// padding: 15px;
 		}
 	}
 }
 section.footer{
+	background-color: #F6F6F6;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	background-color: white;
+	// background-color: white;
 	padding: 10px;
 	h1 {
 		background: #F6F6F6;
@@ -170,7 +186,8 @@ section.footer{
 	}
 }
 .wrapper {
-	// width: 1200px;
+	min-width: 700px;
+	// min-height: 700px;
 }
 section {
 	tr {
@@ -187,21 +204,67 @@ section {
 		width: 100%;
 		height: auto;
 	}
+
+
+
 	&.track {
 		height: 80vh;
 		overflow: scroll;
+
 	}
 	ul.track {
 		// width: 180px;
-		float: left;
+		// margin-bottom: 200px;
+		// float: left;
+		// text-align: center;
 		li {
 			float: left;
-			width: 170px;
-			padding: 5px;
-			margin: 2px;
+			// min-width: 170px;
+			// display: inline-block;
+			padding: 5px !important;
+			// margin: 2px;
 			// background-color: #5094F7;
 			// width: 100px;
 			// height: 50px;
+		    @include gridle_grid( 4 );
+		    // @include gridle_state( c1 ) {
+		    //     @include gridle_grid( 12 );
+		    // }
+		    // @include gridle_state( c2 ) {
+		    //     @include gridle_grid( 6 );
+		    // }
+		    @include gridle_state( c3 ) {
+		        @include gridle_grid( 4 );
+		    }
+		    @include gridle_state( c4 ) {
+		        @include gridle_grid( 3 );
+		    }
+		    @include gridle_state( c5 ) {
+		        width: 20%;
+		        // @include gridle_grid( 2 );
+		    }
+		    @include gridle_state( c6 ) {
+		        @include gridle_grid( 2 );
+		    }
+		    @include gridle_state( c7 ) {
+		        width: 14,28571428571429%
+		    }
+		    @include gridle_state( c8 ) {
+		        width: 12.5%
+		    }
+		    @include gridle_state( c9 ) {
+		        width: 11,11111111111111%
+		    }
+		    @include gridle_state( c10 ) {
+		        width: 10%
+		    }
+		    @include gridle_state( c11 ) {
+		        width: 9,09090909090909%
+		    }
+		    @include gridle_state( c12 ) {
+		        @include gridle_grid( 1 );
+		    }
+
 			.duration {
 				float: right;
 			}
@@ -212,10 +275,16 @@ section {
 		}
 	}
 
-
-
+&.footer {
+	&.mini {
+		.trackinfo, .trackinfo-cur {
+			section{
+				display: none;
+			}
+		}
+	}
 	.trackinfo {
-		// margin-top: 30px;
+		margin-top: 20px;
 	}
 	.controller {
 		position: relative;
@@ -229,6 +298,13 @@ section {
 			outline: none;
 			&.playpause {
 				width: 50px;
+			}
+			&.shuffle {
+				margin-left: 10px;
+				&.active {
+					// opacity: 0.5;
+					background-color: white;
+				}
 			}
 		}
 		.cur {
@@ -260,6 +336,9 @@ section {
 				float: right;
 			}
 		}
-	}
+	}	
+}
+
+
 }
 

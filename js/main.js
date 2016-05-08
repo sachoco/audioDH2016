@@ -1,10 +1,17 @@
 (function() {
   jQuery(function($) {
-    return $('#example').DataTable({
-      paging: false
+    var $grid;
+    $grid = $('.isotope').imagesLoaded(function() {
+      return $grid.isotope({
+        itemSelector: "li",
+        layoutMode: 'masonry',
+        getSortData: {
+          name: '.name',
+          date: '.date'
+        }
+      });
     });
+    return this;
   });
-
-  this;
 
 }).call(this);

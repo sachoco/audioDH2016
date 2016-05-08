@@ -1,14 +1,25 @@
 ###
 # Gridle.js
 #
-# This little js file allow you to detect witch or your gridle state is active, when states changes, etc...
+# This little js file allow you to detect which or your gridle state is active, when states changes, etc...
 #
 # @author 	Olivier Bossel <olivier.bossel@gmail.com>
 # @created 	20.05.14
-# @updated 	09.02.15
-# @version 	1.0.12
+# @updated 	09.10.15
+# @version 	1.0.14
 ###
-do ->
+((factory) ->
+	if typeof define == 'function' and define.amd
+		# AMD. Register as an anonymous module.
+		define [ ], factory
+	else if typeof exports == 'object'
+		# Node/CommonJS
+		factory()
+	else
+		# Browser globals
+		factory()
+	return
+) () ->
 
 	###
 	Little smokesignals implementation
@@ -45,9 +56,6 @@ do ->
 		# boolean to save when the states are finded in css
 		# this is used to stop search when the states are finded
 		_statesFindedInCss : false,
-		
-		# all the css link tag in the page
-		_cssLinks : []
 
 		# settings finded in css (getted by an ajax request)
 		_cssSettings : []
@@ -66,9 +74,9 @@ do ->
 
 		# default settings that can be overrided on init
 		_settings :
-			cssPath : null 				# if set, only this css will be fetched
 			onUpdate : null
 			debug : null
+			ignoredStates : []
 
 		###
 		Init
@@ -79,114 +87,72 @@ do ->
 			@_inited = true
 
 			# process settings
-			@_settings = settings if settings?
-			@_settings.debug ? settings.debug if settings and settings.debug?
-			@_settings.onStatesChange ? settings.onStatesChange if settings and settings.onStatesChange?
+			if settings?.ignoredStates? and (default_index = settings.ignoredStates.indexOf 'default') > -1
+				settings.ignoredStates.splice default_index, 1
 
-			@_debug 'ajax request on stylesheets to find gridle states'
+			@_settings = @_extend @_settings, settings if settings
 
-			# check if a cssPath exist in options to fetch only that one
-			if @_settings.cssPath
-				@_cssLinks.push
-					href : @_settings.cssPath
-			else
-				# loop on each link tag to get each css url :
-				_cssLinks = document.getElementsByTagName 'link'
-				for index, link of _cssLinks
-					return false if not link
-					@_cssLinks.push link
 
-			# parse the css links :
-			@_loadAndParseCss if @_cssLinks.length
+			@_debug 'waiting for content to be fully loaded'
 
-			# else, launch
-			else @_launch
+			domLoaded () =>
+				@_parseCss()
+
+		###
+		Extending object function
+		###
+		_extend : (object, properties) ->
+			for key, val of properties
+				object[key] = val
+			object
 
 		###
 		Load and parse css
 		###
-		_loadAndParseCss : ->
+		_parseCss : () ->
 
-			# loop on each links
-			for index, link of @_cssLinks
-			
-				# stop if stated finded
-				return false if @_statesFindedInCss
-
-				# if no href, continue
-				continue if not link or not link.href
-
-				@_debug '|--- ajax request on ', link.href
-
-				# process ajax request on link
-				@_ajax
-					async : true,
-					url : link.href
-					success : (response) =>
-
-						return false if @_statesFindedInCss
-
-						# if no response, tell that the response is processed and stop
-						if not response
-							@_noSettingsFindedInThisCss link
-							return false
-
+			# try to find gridle settings
+			i = 0
+			j = document.styleSheets.length
+			settings_found = false
+			while i < j
+				try
+					rules = document.styleSheets[i].cssText or document.styleSheets[i].cssRules or document.styleSheets[i].rules
+					if typeof rules is 'string'
 						# try to find settings in css
-						settings = response.match(/#gridle-settings(?:\s*)\{(?:\s*)content(?:\s*):(?:\s*)\'(.+)\'(;\s*|\s*)\}/) && RegExp.$1;
+						settings = rules.match(/#gridle-settings(?:\s*)\{(?:\s*)content(?:\s*):(?:\s*)\"(.+)\"(;\s*|\s*)\}/) && RegExp.$1;
+						if settings
+							# parse settings to json
+							settings = settings.toString().replace(/\\/g,'');
+							settings = JSON.parse settings;
+							@_cssSettings = settings;
+							settings_found = true
+							@_cssSettings = settings
+							@_statesInCss = settings.states
+					else
+						for idx, rule of rules
+							if /#gridle-settings/.test(rule.cssText)
+								settings = rule.cssText.toString().match(/:(.*);/) && RegExp.$1;
+								settings = settings.toString().replace(/\\/g,'');
+								settings = settings.trim()
+								settings = settings.substr(1)
+								settings = settings.substr(0,settings.length-1)
+								settings = JSON.parse settings;
+								if settings?.states?
+									@_cssSettings = settings
+									@_statesInCss = settings.states
+									settings_found = true
+									continue
+				catch e
+					if e.name != 'SecurityError'
+						throw e
+				i++
 
-						console.log 'settings', settings
-
-						# stop if no settings
-						if not settings
-							@_noSettingsFindedInThisCss link
-							return false
-
-						# parse settings to json
-						settings = JSON.parse settings;
-						@_cssSettings = settings;
-
-						# check query :
-						if not settings.states
-							@_debug 'no queries finded in css'
-							@_noSettingsFindedInThisCss link
-							return false;
-
-						@_debug '|--- states finded in', link.href
-
-						# update states finded status 
-						@_statesFindedInCss = true
-
-						# save states :
-						@_statesInCss = settings.states
-
-						# process finded states
-						@_processFindedStates()
-
-					error : (error) =>
-
-						# check if already finded
-						return false if @_statesFindedInCss
-
-						# simulate processed link
-						@_noSettingsFindedInThisCss link
-
-					dataType : 'text'
-
-		###
-		Css link processed
-		###
-		_noSettingsFindedInThisCss : (link) ->
-
-			# remove link from array
-			@_cssLinks.shift
-
-			# check if no more links to launch
-			if not @_cssLinks.length	
-
-				@_debug 'no settings finded in css'
-
-				# launch anyway
-				# @_launch
+			# process states
+			if @_statesInCss
+				@_processFindedStates()
+			else
+				@_debug "no states found..."
 
 		###
 		Process finded states
@@ -198,8 +164,10 @@ do ->
 			# loop on each states
 			for name, query of @_statesInCss
 
-				# register a state
-				@_registerState name, query
+				if @_settings.ignoredStates.indexOf(name) == -1
+					# register a state
+					@_registerState name, query
+
 
 			# launch the app
 			@_launch()
@@ -238,6 +206,11 @@ do ->
 			# update states status
 			@_updateStatesStatus()
 
+			# debug
+			@_debug 'active states', @getActiveStatesNames().join(',') if @getActiveStatesNames().length
+			@_debug 'inactive states', @getInactiveStatesNames().join(',') if @getInactiveStatesNames().length
+			@_debug 'updated states', @getUpdatedStatesNames().join(',') if @getUpdatedStatesNames().length
+
 		###
 		Register a state
 		###
@@ -261,6 +234,11 @@ do ->
 		Update states status
 		###
 		_updateStatesStatus : ->
+
+			# check if was default state
+			defaultState = @getDefaultState()
+			defaultStateIdx = @_states.indexOf defaultState
+			wasDefault = defaultState.status
 
 			# reset trackings arrays
 			@_activeStates = [];
@@ -297,14 +275,14 @@ do ->
 					@_activeStatesNames.push state.name
 
 				# the state is not active
-				else
+				else if state.name != 'default'
 
-					# check is status has changed 
+					# check is status has changed
 					if @_states[key].status
 
 						# add state in changed ones
 						@_updatedStates.push state
-						@_updatedStatesNames.push state
+						@_updatedStatesNames.push state.name
 
 					# update status
 					@_states[key].status = false
@@ -313,6 +291,22 @@ do ->
 					@_inactiveStates.push state
 					@_inactiveStatesNames.push state.name
 
+			# if no states are active, set the default one
+			if not @_activeStates.length
+				@_states[defaultStateIdx].status = true
+				@_activeStates.push defaultState
+				@_activeStatesNames.push 'default'
+				if not wasDefault
+					@_updatedStates.push defaultState
+					@_updatedStatesNames.push 'default'
+			else
+				@_states[defaultStateIdx].status = false
+				@_inactiveStates.push defaultState
+				@_inactiveStatesNames.push 'default'
+				if wasDefault
+					@_updatedStates.push defaultState
+					@_updatedStatesNames.push 'default'
+
 			# trigger events if needed
 			@_crossEmit 'update', @_updatedStates, @_activeStates, @_inactiveStates if @_updatedStates.length
 			@_settings.onUpdate @_updatedStates, @_activeStates, @_inactiveStates if @_updatedStates.length and @_settings.onUpdate
@@ -320,7 +314,7 @@ do ->
 		###
 		Validate state
 		###
-		_validateState : (state) ->
+		_validateState : (state) =>
 
 			# validate state using matchmedia
 			return matchMedia(state.query).matches
@@ -377,7 +371,7 @@ do ->
 			http.context = args.context if args.context
 
 			# open connexion
-			http.open args.type, args.url, false
+			http.open args.type, args.url, true
 
 			# listen state change
 			http.onreadystatechange = ->
@@ -405,39 +399,46 @@ do ->
 			http.send()
 
 		###
+		Get default state
+		###
+		getDefaultState : ->
+			for state in @getRegisteredStates()
+				return state if state.name is 'default'
+
+		###
 		Get registered states
 		###
-		getRegisteredStates : ->return @_states
+		getRegisteredStates : -> @_states
 
 		###
 		Get changes states
 		###
-		getUpdatedStates : -> return @_updatedStates
+		getUpdatedStates : -> @_updatedStates
 
 		###
 		Get changes states names
 		###
-		getUpdatedStatesNames : -> return @_updatedStatesNames
+		getUpdatedStatesNames : -> @_updatedStatesNames
 
 		###
 		Get active states
 		###
-		getActiveStates : -> return @_activeStates
+		getActiveStates : -> @_activeStates
 
 		###
 		Get active states names
 		###
-		getActiveStatesNames : -> return @_activeStatesNames
+		getActiveStatesNames : -> @_activeStatesNames
 
 		###
 		Get unactive states
 		###
-		getInactiveStates : -> return @_inactiveStates
+		getInactiveStates : -> @_inactiveStates
 
 		###
 		Get unactive states names
 		###
-		getInactiveStatesNames : -> return @_inactiveStatesNames
+		getInactiveStatesNames : -> @_inactiveStatesNames
 
 		###
 		Check is a state is active
@@ -467,14 +468,78 @@ do ->
 		_debug : ->
 			console.log 'GRIDLE', arguments if @_settings.debug
 
+
+	###
+	# DomLoaded
+	###
+	_domLoaded = false
+	domLoaded = (callback) ->
+
+		_loaded = (callback) ->
+
+			if _domLoaded
+				callback()
+				return
+
+			if document.readyState is 'complete'
+				_domLoaded = true
+				callback()
+				return
+
+			`/* Internet Explorer */
+			/*@cc_on
+			@if (@_win32 || @_win64)
+				document.write('<script id="ieScriptLoad" defer src="//:"><\/script>');
+				document.getElementById('ieScriptLoad').onreadystatechange = function() {
+					if (this.readyState == 'complete') {
+						_domLoaded = true;
+						callback();
+					}
+				};
+			@end @*/
+			/* Mozilla, Chrome, Opera */
+			if (document.addEventListener) {
+				document.addEventListener('DOMContentLoaded', function() {
+					_domLoaded = true;
+					callback();
+				}, false);
+			}
+			/* Safari, iCab, Konqueror */
+			if (/KHTML|WebKit|iCab/i.test(navigator.userAgent)) {
+				var DOMLoadTimer = setInterval(function () {
+					if (/loaded|complete/i.test(document.readyState)) {
+						_domLoaded = true;
+						callback();
+						clearInterval(DOMLoadTimer);
+					}
+				}, 10);
+			}
+			/* Other web browsers */
+			window.onload = function() {
+				_domLoaded = true;
+				callback();
+			};`
+
+		if window.addEventListener
+			window.addEventListener 'load', () =>
+				_domLoaded = true
+				callback()
+			, false
+		else
+			window.attachEvent 'onload', () =>
+				_domLoaded = true
+				callback()
+		_loaded () =>
+			callback()
+
 	# make gridle event dipatcher
 	smokesignals.convert window.Gridle
 
 	# init if not already done :
-	setTimeout ->
-		Gridle.init() if not Gridle._inited
-	, 500
+	domLoaded () ->
+		setTimeout ->
+			Gridle.init() if not Gridle._inited
+		, 500
 
-	# support AMD
-	if typeof window.define is 'function' && window.define.amd
-		window.define [], -> window.Gridle
+	# return the gridle object
+	Gridle

@@ -54,128 +54,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/**
- * Str replace
- *
- * @param {string}  $string    String that you want to replace
- * @param {string}  $substr    String that is to be replaced by `$newsubstr`
- * @param {string}  $newsubstr String that replaces `$substr`
- * @param {number*} $all       Flag for replaceing all (1+) or not (0)
- * @return {string}
- */
-/**
- * Map set
- *
- * @param 	Map 	$map 		The map to use
- * @param 	String 	$key 		The key to update
- * @param 	Mixed 	$value 		The new value
- * @return 	Map 			The new map
- */
-/**
- * Get the column width in percent for the global or a specific context
- *
- * @param 	int 		$columns 					The number of columns to calculate
- * @param 	int 		$context : $gridle-columns-count 	 	The context to use
- * @return 	percentage 							The width in percent
- */
-/**
- *  Get a state map
- *
- * @param 	string 		$name 		The name of the state to get
- * @return 	map 				A state map object
- */
-/**
- * Check if a state exist :
- *
- * @param 	string 		$name 		The name of the state to check
- * @return 	Boolean 			true is exist
- */
-/**
- * Get the media queries variables :
- *
- * @param 	int 		$index 	 	The media query indes
- * @param 	String 		$var 		The media query variable name
- * @return 	String|int 			The variable value
- */
-/**
- * Get a variable
- *
- * @param 	String 		$varName 				The variable name
- * @param  	String 		$stateMap-or-stateName 	 	The state name or a map state value
- * @return 	Mixed 							The finded value
- */
-/**
- * Set a variable in a state
- * @param 	Mixed $stateName-or-stateIndex 	The state name of state index
- * @param  	String $var                    		Variable name to assign
- * @param  	Mixed $newValue          		The new value to assign
- * @return 	List                         			The states list (full)
- */
-/**
- * Generate a column
- *
- * @param 	String 		$name 			The column name (often count)
- * @param 	int 		$columns 		The column count that the column will take
- * @param 	int 		$context 		The context on witch the with will be calculed
- * @param 	Boolean 	$generateClasses 	Set if the column has to be generated in css
- */
-/**
- * Generate classname
- *
- * @param 	List 		$parrern 	The pattern to use to generate classname
- * @param 	String 		$state 		The state
- * @param 	int 		$count 		The column count
- */
-/**
- * Get the media query for a particular state, or with, etc...
- *
- * @param 	Mixed 		$state-or-min-width 		The state name of the min with
- * @param 	Mixed 		$max-width 			The max width if first param is a min width
- * @return 	String 						The media query string without the @media
- */
-/**
- * Get states count
- * 
- * @return 	int 	The number of states defined
- */
-/**
- * Setup
- */
-/**
- *  Register a clear each class
- */
-/**
- * Register a special class
- */
-/**
- * Register default states
- */
-/**
- * Register default mobile first states :
- */
-/**
- * Set the debug device (not used for now)
- * 
- * @param 	String 		$state 		The state to update
- * @para m 	String 		$device 	The device to use (iphone, etc...)
- */
-/**
- * Parent clear each
- */
-/**
- * Vertical align :
- */
-/**
- * Show inline
- *
- * @param 	String 		$state 		The state name
- */
-/**
- * Generate a custom class for all the states
- *
- * @param 	list 	$pattern 		The name pattern of the class
- * @param 	list 	$statesNames 		The states names to generate
- */
 /*********************
 BASE (MOBILE) SIZE
 This are the mobile styles. It's what people see on their phones. If
@@ -200,9 +78,6 @@ html, body {
   font-weight: normal;
 }
 
-body {
-  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
-}
 body.home {
   background: none;
 }
@@ -282,23 +157,32 @@ button {
   padding: 2em;
 }
 
-section.header h1 {
-  background: #F6F6F6;
+section.header header {
+  background: white;
   padding: 10px;
 }
+section.header a {
+  color: #555;
+}
+section.header a:hover {
+  text-decoration: none;
+}
+section.header h1 {
+  margin: 0;
+}
 section.header nav {
+  background: #F6F6F6;
   text-align: center;
 }
 section.header nav li {
   display: inline-block;
-  padding: 15px;
 }
 
 section.footer {
+  background-color: #F6F6F6;
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: white;
   padding: 10px;
 }
 section.footer h1 {
@@ -311,6 +195,10 @@ section.footer nav {
 section.footer nav li {
   display: inline-block;
   padding: 15px;
+}
+
+.wrapper {
+  min-width: 700px;
 }
 
 section tr {
@@ -330,14 +218,120 @@ section.track {
   height: 80vh;
   overflow: scroll;
 }
-section ul.track {
-  float: left;
-}
 section ul.track li {
   float: left;
-  width: 170px;
-  padding: 5px;
-  margin: 2px;
+  padding: 5px !important;
+  width: 33.33333%;
+}
+section ul.track li {
+  display: inline-block;
+  min-height: 1px;
+  float: left;
+  box-sizing: border-box;
+  vertical-align: top;
+  padding-right: 35px;
+  padding-left: 35px;
+}
+
+@media screen and (min-width: 510px) {
+  section ul.track li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+}
+@media screen and (min-width: 680px) {
+  section ul.track li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+}
+@media screen and (min-width: 1090px) {
+  section ul.track li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+}
+@media screen and (min-width: 2110px) {
+  section ul.track li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+}
+@media screen and (max-width: 768px) {
+  section ul.track li {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+@media screen and (min-width: 510px) {
+  section ul.track li {
+    width: 33.33333%;
+  }
+}
+@media screen and (min-width: 680px) {
+  section ul.track li {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 920px) {
+  section ul.track li {
+    width: 20%;
+  }
+}
+@media screen and (min-width: 1090px) {
+  section ul.track li {
+    width: 16.66667%;
+  }
+}
+@media screen and (min-width: 1260px) {
+  section ul.track li {
+    width: 14, 28571428571429%;
+  }
+}
+@media screen and (min-width: 1430px) {
+  section ul.track li {
+    width: 12.5%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  section ul.track li {
+    width: 11, 11111111111111%;
+  }
+}
+@media screen and (min-width: 1770px) {
+  section ul.track li {
+    width: 10%;
+  }
+}
+@media screen and (min-width: 1940px) {
+  section ul.track li {
+    width: 9, 9090909090909%;
+  }
+}
+@media screen and (min-width: 2110px) {
+  section ul.track li {
+    width: 8.33333%;
+  }
 }
 section ul.track li .duration {
   float: right;
@@ -345,48 +339,60 @@ section ul.track li .duration {
 section ul.track li:nth-child(even) {
   color: red;
 }
-section .controller {
+section.footer.mini .trackinfo section, section.footer.mini .trackinfo-cur section {
+  display: none;
+}
+section.footer .trackinfo {
+  margin-top: 20px;
+}
+section.footer .controller {
   position: relative;
 }
-section .controller progress {
+section.footer .controller progress {
   width: 100%;
 }
-section .controller button {
+section.footer .controller button {
   border: none;
   background: none;
   vertical-align: middle;
   outline: none;
 }
-section .controller button.playpause {
+section.footer .controller button.playpause {
   width: 50px;
 }
-section .controller .cur {
+section.footer .controller button.shuffle {
+  margin-left: 10px;
+}
+section.footer .controller button.shuffle.active {
+  background-color: white;
+}
+section.footer .controller .cur {
   float: left;
 }
-section .controller .dur {
+section.footer .controller .dur {
   float: right;
 }
-section .controller #volume-bar {
+section.footer .controller #volume-bar {
   position: absolute;
   top: 16px;
   right: 0px;
 }
-section .controller #volume-bar * {
+section.footer .controller #volume-bar * {
   cursor: pointer;
 }
-section .controller #volume-bar #volume-scrubber {
+section.footer .controller #volume-bar #volume-scrubber {
   float: left;
   position: relative;
   top: 3px;
   right: 10px;
 }
-section .controller #volume-bar #volume-indicator {
+section.footer .controller #volume-bar #volume-indicator {
   width: 100%;
   height: 100%;
   position: absolute;
   left: 0;
 }
-section .controller #volume-bar #volume-sign {
+section.footer .controller #volume-bar #volume-sign {
   float: right;
 }
 

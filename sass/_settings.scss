@@ -26,6 +26,46 @@
 @include gridle_register_state( xl, (
     min-width : 1700px
 ) );
+
+
+$base-width: 170px;
+$base-width-offset: 70px;
+// @include gridle_register_state( c1, (
+//     min-width : $base-width*1+$base-width-offset
+// ) );
+// @include gridle_register_state( c2, (
+//     min-width : $base-width*2+$base-width-offset
+// ) );
+@include gridle_register_state( c3, (
+    min-width : $base-width*3
+) );
+@include gridle_register_state( c4, (
+    min-width : $base-width*4
+) );
+@include gridle_register_state( c5, (
+    min-width : $base-width*5+$base-width-offset
+) );
+@include gridle_register_state( c6, (
+    min-width : $base-width*6+$base-width-offset
+) );
+@include gridle_register_state( c7, (
+    min-width : $base-width*7+$base-width-offset
+) );
+@include gridle_register_state( c8, (
+    min-width : $base-width*8+$base-width-offset
+) );
+@include gridle_register_state( c9, (
+    min-width : $base-width*9+$base-width-offset
+) );
+@include gridle_register_state( c10, (
+    min-width : $base-width*10+$base-width-offset
+) );
+@include gridle_register_state( c11, (
+    min-width : $base-width*11+$base-width-offset
+) );
+@include gridle_register_state( c12, (
+    min-width : $base-width*12+$base-width-offset
+) );
 // even with full custom queries :
 @include gridle_register_state ( landscape, (
 	query : "(orientation : landscape)"
