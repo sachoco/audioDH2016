@@ -299,7 +299,7 @@ section.footer {
   bottom: 0;
   width: 100%;
   background-color: white;
-  padding: 50px;
+  padding: 10px;
 }
 section.footer h1 {
   background: #F6F6F6;
@@ -311,10 +311,6 @@ section.footer nav {
 section.footer nav li {
   display: inline-block;
   padding: 15px;
-}
-
-.wrapper {
-  width: 1200px;
 }
 
 section tr {
@@ -334,20 +330,20 @@ section.track {
   height: 80vh;
   overflow: scroll;
 }
+section ul.track {
+  float: left;
+}
 section ul.track li {
+  float: left;
+  width: 170px;
   padding: 5px;
   margin: 2px;
-  background-color: #5094F7;
 }
 section ul.track li .duration {
   float: right;
 }
-section ul.track li {
-  list-style-type: none;
-}
-section ul.track li:before {
-  content: counter(item) ". ";
-  counter-increment: item;
+section ul.track li:nth-child(even) {
+  color: red;
 }
 section .controller {
   position: relative;

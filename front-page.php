@@ -8,11 +8,22 @@
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <div class="wrapper">
 <section class="grid-12">
-    <ul class="track grid-3">
+
+    <ul class="track grid-12">
+    <?php
+
+        for($i=0; $i<200; $i++){
+            echo "<li>Firstname Lastname ".$i."</li>";
+
+        }
+
+    ?>
+    </ul>
+<!--     <ul class="track grid-3">
     <?php
 
         for($i=0; $i<50; $i++){
-            echo "<li>Artist ".$i."</li>";
+            echo "<li>Firstname Lastname ".$i."</li>";
 
         }
 
@@ -22,7 +33,7 @@
     <?php
 
         for($i=50; $i<100; $i++){
-            echo "<li>Artist ".$i."</li>";
+            echo "<li>Firstname Lastname ".$i."</li>";
 
         }
 
@@ -32,7 +43,7 @@
     <?php
 
         for($i=100; $i<150; $i++){
-            echo "<li>Artist ".$i."</li>";
+            echo "<li>Firstname Lastname ".$i."</li>";
 
         }
 
@@ -42,12 +53,12 @@
     <?php
 
         for($i=150; $i<200; $i++){
-            echo "<li>Artist ".$i."</li>";
+            echo "<li>Firstname Lastname ".$i."</li>";
 
         }
 
     ?>
-    </ul>
+    </ul> -->
 <!-- <h2>Tracks</h2>
  --><table class="table table-striped table-bordered" cellspacing="0" width="100%">
 <!--         <thead>
@@ -228,7 +239,21 @@ function stopSlide(ev){
 }
 
 
+$("ul.track li").hover(
+    function(){
+        $(".trackinfo header").html($(this).html()+" - Track Title <a href='#'>website</a>");
+        $(".trackinfo section").html($(this).html()+" description ");
+    },
+    function(){
+        // $(".trackinfo header").html("");
+        // $(".trackinfo section").html("");
+    }
+    );
+
 });
+
+
+
 
 </script>
 

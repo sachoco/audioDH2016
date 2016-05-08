@@ -154,7 +154,7 @@ section.footer{
 	bottom: 0;
 	width: 100%;
 	background-color: white;
-	padding: 50px;
+	padding: 10px;
 	h1 {
 		background: #F6F6F6;
 		padding: 10px;
@@ -170,7 +170,7 @@ section.footer{
 	}
 }
 .wrapper {
-	width: 1200px;
+	// width: 1200px;
 }
 section {
 	tr {
@@ -192,27 +192,27 @@ section {
 		overflow: scroll;
 	}
 	ul.track {
+		// width: 180px;
+		float: left;
 		li {
-			// float: left;
+			float: left;
+			width: 170px;
 			padding: 5px;
 			margin: 2px;
-			background-color: #5094F7;
+			// background-color: #5094F7;
 			// width: 100px;
 			// height: 50px;
 			.duration {
 				float: right;
 			}
+			&:nth-child(even) {
+				color: red;
+			}
+
 		}
 	}
-	ul.track li
-	{
-		list-style-type: none;
-	}  
-	ul.track li:before
-	{
-		content: counter(item) ". ";
-		counter-increment: item;
-	}
+
+
 
 	.trackinfo {
 		// margin-top: 30px;

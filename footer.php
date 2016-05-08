@@ -25,7 +25,13 @@
 	<br>
 	<small><span class="cur">00.00</span><span class="dur">00.00</span></small>
 
+	    <article class="trackinfo-cur clear">
+	        <header>test</header>   
+	        <section>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione, veritatis sapiente minus reprehenderit? Dignissimos architecto earum perspiciatis placeat assumenda ratione consectetur accusamus adipisci facilis minima. Laudantium eius voluptatum quod.</section>
+	    </article>
+
 	</section>
+
 	<section class="grid-6">
 	    <article class="trackinfo clear">
 	        <header>test</header>   
