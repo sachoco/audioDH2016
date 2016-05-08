@@ -28,8 +28,8 @@
 
 	    <article class="trackinfo-cur clear">
 	        <header>
-			<!-- <small>Currently playing:</small> --> Three recycled pieces for seemingly minor instruments no1<br>Firstname Lastname - <a href='#'>website</a></header>   
-	        <section>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione, veritatis sapiente minus reprehenderit? Dignissimos architecto earum perspiciatis placeat assumenda ratione consectetur accusamus adipisci facilis minima. Laudantium eius voluptatum quod.</section>
+			<!-- <small>Currently playing:</small> --> Three recycled pieces for seemingly minor instruments no1<br>Firstname Lastname</header>   
+	        <!-- <section>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione, veritatis sapiente minus reprehenderit? Dignissimos architecto earum perspiciatis placeat assumenda ratione consectetur accusamus adipisci facilis minima. Laudantium eius voluptatum quod.</section> -->
 	    </article>
 
 	</section>

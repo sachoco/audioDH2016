@@ -26,9 +26,7 @@
 		wp_enqueue_script( 'main-script' );
 
 		wp_register_script( 'front-page-script', get_stylesheet_directory_uri() . '/js/front-page.js', array('jquery'), '', true );
-		// register main stylesheet
-		wp_register_style( 'main-css', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
-		wp_enqueue_style( 'main-css' );
+
 
 		wp_register_style( 'grid-css', get_stylesheet_directory_uri() . '/css/grid.css', array('main-css'), '', 'all' );
 		wp_enqueue_style( 'grid-css' );
@@ -36,11 +34,15 @@
 		wp_register_style( 'responsive-slides-css', get_stylesheet_directory_uri() . '/bower_components/jquery.responsive-slides/jquery.responsive-slides.css', array('main-css'), '', 'all' );
 		wp_enqueue_style( 'responsive-slides-css' );
 
-		wp_register_style( 'bootstrap', get_stylesheet_directory_uri() . '/bower_components/bootstrap/dist/css/bootstrap.min.css', array('main-css'), '', 'all' );
+		wp_register_style( 'bootstrap', get_stylesheet_directory_uri() . '/bower_components/bootstrap/dist/css/bootstrap.min.css', array(), '', 'all' );
 		wp_enqueue_style( 'bootstrap' );
 
 		wp_register_style( 'datatables-css', get_stylesheet_directory_uri() . '/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css', array('main-css'), '', 'all' );
 		wp_enqueue_style( 'datatables-css' );
+
+		// register main stylesheet
+		wp_register_style( 'main-css', get_stylesheet_directory_uri() . '/css/style.css', array('bootstrap'), '', 'all' );
+		wp_enqueue_style( 'main-css' );
 
 		// comment reply script for threaded comments
 		if ( is_front_page()) {

@@ -49,13 +49,13 @@ body {
 h1, h2, h3, h4, h5 {
 	font-family: $header-font-family;
 	font-weight: $header-font-weight;
-	a {
-		background: none;
-		&:hover {
-			background: url(images/overlay-pattern.png) rgba(0, 0, 0, 1);
-			color: white !important;
-		}
-	}
+	// a {
+	// 	background: none;
+	// 	&:hover {
+	// 		background: url(images/overlay-pattern.png) rgba(0, 0, 0, 1);
+	// 		color: white !important;
+	// 	}
+	// }
 }
 
 .h3 {
@@ -147,6 +147,7 @@ section.header{
 	}
 	h1 {
 		margin: 0;
+		font-size: 40px;
 		// background: #F6F6F6;
 		// padding: 10px;
 		// text-align: center;
@@ -214,8 +215,8 @@ section {
 	}
 	ul.track {
 		// width: 180px;
-		// margin-bottom: 200px;
-		// float: left;
+		margin-bottom: 200px;
+		float: left;
 		// text-align: center;
 		li {
 			float: left;

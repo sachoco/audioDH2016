@@ -86,13 +86,6 @@ h1, h2, h3, h4, h5 {
   font-family: "Gafata", sans-serif;
   font-weight: normal;
 }
-h1 a, h2 a, h3 a, h4 a, h5 a {
-  background: none;
-}
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
-  background: url(images/overlay-pattern.png) black;
-  color: white !important;
-}
 
 .h3 {
   font-size: 1.3em;
@@ -169,6 +162,7 @@ section.header a:hover {
 }
 section.header h1 {
   margin: 0;
+  font-size: 40px;
 }
 section.header nav {
   background: #F6F6F6;
@@ -217,6 +211,10 @@ section img {
 section.track {
   height: 80vh;
   overflow: scroll;
+}
+section ul.track {
+  margin-bottom: 200px;
+  float: left;
 }
 section ul.track li {
   float: left;
