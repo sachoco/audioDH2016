@@ -37,10 +37,9 @@
 
     <body <?php body_class(); ?>>
         <section class="header">
-            <header><a href="/">
+            <header class="gr-12">
                 <h1>audio-DH</h1>
                 <h4>sonic manifestations by --- creators from Den Haag/The Hague</h4>
-                </a>
             </header>
             <nav class="nav" role="navigation">
                 <?php wp_nav_menu(array(

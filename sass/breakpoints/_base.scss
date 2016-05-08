@@ -3,6 +3,7 @@ $bg-color: #ffffff;
 $bg-color-grey: #EDEDED;
 $base-font-size: 16px;
 $font-size-s: 0.8em;
+$font-size-l: 1.5em;
 // $font-family: 'Open Sans', sans-serif;
 $font-weight: normal;
 // $font-family: 'Hind', sans-serif;
@@ -87,28 +88,10 @@ a {
 	display: none;
 }
 .page__body  {
-	.text, .wpb_wrapper p, .press-content{
-		a {
-			// color: $font-color;
-			color: black;
-			text-decoration: none;
-			transition: all 0.1s;
-			background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
-			&:hover {
-				background-color: black;
-				// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
-				// text-decoration: underline;
-				color: white;
-				time {
-					color: $font-color;
-				}
-			}
-			time {
-				transition: none;
-			}
-		}		
-	}
-	
+	margin: 10px 0;
+}
+.page__header {
+	font-size: $font-size-l;
 }
 strong {
 	font-weight: bold;
@@ -137,7 +120,10 @@ button {
 section.header{
 	header {
 		background: white;
-		padding: 10px;		
+		// padding: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;	
+		cursor: pointer;	
 	}
 	a {
 		color: $font-color;
@@ -188,30 +174,35 @@ section.footer{
 }
 .wrapper {
 	min-width: 700px;
+	padding-top: 20px;
 	// min-height: 700px;
 }
 section {
-	tr {
-		cursor: pointer;
-		&:hover, &.nowplaying {
-			background-color: #5094F7 !important;
-		}
+	// tr {
+	// 	cursor: pointer;
+	// 	&:hover, &.nowplaying {
+	// 		background-color: #5094F7 !important;
+	// 	}
 
-		.duration {
-			float: right;
-		}
-	}
-	img {
-		width: 100%;
-		height: auto;
-	}
+	// 	.duration {
+	// 		float: right;
+	// 	}
+	// }
+	// img {
+	// 	width: 100%;
+	// 	height: auto;
+	// }
 
 
 
-	&.track {
-		height: 80vh;
-		overflow: scroll;
+	// &.track {
+	// 	height: 80vh;
+	// 	overflow: scroll;
 
+	// }
+	&.content-wrapper {
+		max-width: 900px;
+		margin: auto;
 	}
 	ul.track {
 		// width: 180px;
@@ -220,6 +211,11 @@ section {
 		// text-align: center;
 		li {
 			float: left;
+			font-family: $header-font-family;
+			cursor: pointer;
+			&:hover, &.nowplaying {
+				background-color: #F6F6F6 !important;
+			}
 			// min-width: 170px;
 			// display: inline-block;
 			padding: 5px !important;
@@ -285,7 +281,25 @@ section {
 		}
 	}
 	.trackinfo {
-		margin-top: 20px;
+		// margin-top: 10px;
+		h3 {
+			font-size: $font-size-l;
+			// font-family: $font-family;
+		}
+		h4 {
+			// font-family: $font-family;
+		}
+		.link {
+			font-size: $font-size-s;
+			margin: 10px 0;
+		}
+		section {
+			margin-top: 10px; 
+		}
+		// font-family: $header-font-family;
+	}
+	.trackinfo-cur {
+		font-family: $header-font-family;
 	}
 	.controller {
 		position: relative;
@@ -310,9 +324,11 @@ section {
 		}
 		.cur {
 			float: left;
+			font-size: $font-size-s;
 		}
 		.dur {
 			float: right;
+			font-size: $font-size-s;
 		}
 		#volume-bar {
 			position: absolute;

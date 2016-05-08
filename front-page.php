@@ -8,7 +8,7 @@
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <div class="wrapper">
 <section class="gr-12">
-
+    <section class="content-wrapper"></section>
     <ul class="track">
     <?php
 
@@ -72,7 +72,7 @@
         </tbody>
     </table>
 </section>
-s<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
 <script>
 SC.initialize({
   client_id: '098249c9bda43969033f485dc628827d'
@@ -240,8 +240,8 @@ function stopSlide(ev){
 
 $("ul.track li").hover(
     function(){
-        $(".trackinfo header").html($(this).html()+" <br>Track Title<br><a href='#'>website</a>");
-        $(".trackinfo section").html("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione, veritatis sapiente minus reprehenderit? Dignissimos architecto earum perspiciatis placeat assumenda ratione consectetur accusamus adipisci facilis minima. Laudantium eius voluptatum quod.");
+        $(".trackinfo header").html("<h3>"+$(this).html()+"</h3><h4>Track Title</h4>");
+        $(".trackinfo section").html("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione, veritatis sapiente minus reprehenderit? Dignissimos architecto earum perspiciatis placeat assumenda ratione consectetur accusamus adipisci facilis minima. Laudantium eius voluptatum quod.<div class='link'><a href='#'>website</a></div>");
     },
     function(){
         // $(".trackinfo header").html("");
@@ -251,8 +251,10 @@ $("ul.track li").hover(
 
 $("ul.track li").click(
     function(){
-        $(".trackinfo-cur header").html($(this).data('title')+"<br>"+$(this).html()+" <a href='#'>website</a>");
+        $(".trackinfo-cur header").html($(this).data('title')+"<br>"+$(this).html());
         $(".trackinfo-cur section").html("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione, veritatis sapiente minus reprehenderit? Dignissimos architecto earum perspiciatis placeat assumenda ratione consectetur accusamus adipisci facilis minima. Laudantium eius voluptatum quod.");
+        $(".track li").removeClass("nowplaying");
+        $(this).addClass("nowplaying");
     });
 
 $("button.shuffle").click(function(){
@@ -276,6 +278,33 @@ $(window).resize(function(){
 
 });
 
+ $("nav.nav a").on("click", function(e){
+    e.preventDefault();
+    $(".content-wrapper").load($(this).attr('href')+" #content",function() {
+        $(".content-wrapper").show();
+        $(".track").hide();
+    });
+    // $.ajax({
+    //     // type: 'POST',
+    //     url: $(this).attr('href'),//ajaxurl,
+    //     // data: {
+    //     //     'action' : 'load_content',
+    //     //     'id' : $(this).data(id);
+    //     // },
+    //     success: function( response ){
+    //         console.log(response);
+    //         $(".content-wrapper").append($(response).find("#content").children());
+    //         $(".track").hide();
+    //     }
+    // });
+
+ });
+
+    $("section.header header").on("click", function(e){
+        e.preventDefault();
+        $(".content-wrapper").hide();
+        $(".track").show();
+    });
 
 });
 

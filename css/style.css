@@ -107,21 +107,12 @@ a:hover {
   display: none;
 }
 
-.page__body .text a, .page__body .wpb_wrapper p a, .page__body .press-content a {
-  color: black;
-  text-decoration: none;
-  transition: all 0.1s;
-  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+.page__body {
+  margin: 10px 0;
 }
-.page__body .text a:hover, .page__body .wpb_wrapper p a:hover, .page__body .press-content a:hover {
-  background-color: black;
-  color: white;
-}
-.page__body .text a:hover time, .page__body .wpb_wrapper p a:hover time, .page__body .press-content a:hover time {
-  color: #555;
-}
-.page__body .text a time, .page__body .wpb_wrapper p a time, .page__body .press-content a time {
-  transition: none;
+
+.page__header {
+  font-size: 1.5em;
 }
 
 strong {
@@ -152,7 +143,9 @@ button {
 
 section.header header {
   background: white;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
 }
 section.header a {
   color: #555;
@@ -193,24 +186,12 @@ section.footer nav li {
 
 .wrapper {
   min-width: 700px;
+  padding-top: 20px;
 }
 
-section tr {
-  cursor: pointer;
-}
-section tr:hover, section tr.nowplaying {
-  background-color: #5094F7 !important;
-}
-section tr .duration {
-  float: right;
-}
-section img {
-  width: 100%;
-  height: auto;
-}
-section.track {
-  height: 80vh;
-  overflow: scroll;
+section.content-wrapper {
+  max-width: 900px;
+  margin: auto;
 }
 section ul.track {
   margin-bottom: 200px;
@@ -218,8 +199,13 @@ section ul.track {
 }
 section ul.track li {
   float: left;
+  font-family: "Gafata", sans-serif;
+  cursor: pointer;
   padding: 5px !important;
   width: 33.33333%;
+}
+section ul.track li:hover, section ul.track li.nowplaying {
+  background-color: #F6F6F6 !important;
 }
 section ul.track li {
   display: inline-block;
@@ -340,8 +326,18 @@ section ul.track li:nth-child(even) {
 section.footer.mini .trackinfo section, section.footer.mini .trackinfo-cur section {
   display: none;
 }
-section.footer .trackinfo {
-  margin-top: 20px;
+section.footer .trackinfo h3 {
+  font-size: 1.5em;
+}
+section.footer .trackinfo .link {
+  font-size: 0.8em;
+  margin: 10px 0;
+}
+section.footer .trackinfo section {
+  margin-top: 10px;
+}
+section.footer .trackinfo-cur {
+  font-family: "Gafata", sans-serif;
 }
 section.footer .controller {
   position: relative;
@@ -366,9 +362,11 @@ section.footer .controller button.shuffle.active {
 }
 section.footer .controller .cur {
   float: left;
+  font-size: 0.8em;
 }
 section.footer .controller .dur {
   float: right;
+  font-size: 0.8em;
 }
 section.footer .controller #volume-bar {
   position: absolute;
