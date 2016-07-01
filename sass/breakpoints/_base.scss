@@ -315,6 +315,20 @@ section {
 	}
 	.curtrack-description {
 		margin: 10px 0; 
+		h3 {
+			font-size: $font-size-l;
+			// font-family: $font-family;
+		}
+		h4 {
+			// font-family: $font-family;
+		}
+		.link {
+			font-size: $font-size-s;
+			margin: 10px 0;
+		}
+		section {
+			margin-top: 10px; 
+		}
 		// display: none;
 	}
 	.controller {

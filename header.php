@@ -39,7 +39,7 @@
         <section class="header">
             <header class="gr-12">
                 <h1>audio-DH</h1>
-                <h4>sonic manifestations by --- creators from Den Haag/The Hague</h4>
+                <h4>sonic manifestations by 250 artists from Den Haag/The Hague</h4>
             </header>
             <nav class="nav" role="navigation">
                 <?php wp_nav_menu(array(

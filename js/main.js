@@ -65,10 +65,12 @@
         artist_name = track.artist_full ? track.artist_full : track.artist;
         $(".trackinfo-cur .title").html(track.track_title);
         $(".trackinfo-cur .artist").html(artist_name);
-        if (track.artist_link) {
-          $(".trackinfo-cur .link").html("<a href='" + track.artist_link + "'>" + track.artist_link + "</a>");
+        if (track.link) {
+          $(".trackinfo-cur .link").html("<a href='" + track.link + "' target='_blank'>" + track.artist_link + "</a>");
         }
-        $(".curtrack-description").html(track.description).show();
+        $(".curtrack-description header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
+        $(".curtrack-description section").html(track.description + "<div class='link'><a href='" + track.link + "' target='_blank'>" + track.artist_link + "</a></div>");
+        $(".curtrack-description").show();
         $(".controller .dur").html(timecode(dur));
         $(".trackinfo").hide();
         player.on("time", function() {
@@ -205,8 +207,8 @@
         });
         track = track[0];
         $(".curtrack-description").hide();
-        $(".trackinfo header").html("<h3>" + track.artist + "</h3><h4>" + track.track_title + "</h4>");
-        $(".trackinfo section").html(track.description + "<div class='link'><a href='" + track.link + "'>website</a></div>");
+        $(".trackinfo header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
+        $(".trackinfo section").html(track.description + "<div class='link'><a href='" + track.link + "' target='_blank'>" + track.artist_link + "</a></div>");
         $(".trackinfo").show();
       } else {
         showCurtrackDesc();
@@ -222,13 +224,11 @@
       track = track[0];
       index = $.inArray(track, tracks);
       nowplaying = index;
-      $(".trackinfo-cur header").html(track.track_title + "<br>" + track.artist);
-      $(".trackinfo-cur section").html(track.description);
       $(".tracks li").removeClass("nowplaying");
       $(this).addClass("nowplaying");
       return play(track);
     });
-    $("nav.nav a").on("click", function(e) {
+    $("nav.nav li:not('.download') a").on("click", function(e) {
       e.preventDefault();
       return $(".content-wrapper").load($(this).attr('href') + " #content", function() {
         $(".content-wrapper").show();

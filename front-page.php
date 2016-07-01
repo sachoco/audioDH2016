@@ -37,7 +37,7 @@
                     'description' => $post->post_content
                 );
                
-
+                if(!$track[artist_full]) $track[artist_full]=$track[artist];
                 array_push($tracks, $track);
 
 

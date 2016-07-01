@@ -38,7 +38,10 @@
 	</section>
 
 	<section class="gr-6 no-gutter">
-		<div class="gr-12 curtrack-description"></div>
+		<div class="gr-12 curtrack-description">
+	        <header></header>   
+	        <section></section>
+		</div>
 	    <article class="gr-12 trackinfo clear">
 	        <header></header>   
 	        <section></section>

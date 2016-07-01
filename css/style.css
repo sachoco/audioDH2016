@@ -221,7 +221,7 @@ section ul.tracks li {
   padding-left: 35px;
 }
 
-@media screen and (min-width: 510px) {
+@media screen and (min-width: 570px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -232,7 +232,7 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 680px) {
+@media screen and (min-width: 760px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -243,7 +243,7 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 1090px) {
+@media screen and (min-width: 1210px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -254,7 +254,7 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 2110px) {
+@media screen and (min-width: 2350px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -271,52 +271,52 @@ section ul.tracks li {
     padding-left: 5px;
   }
 }
-@media screen and (min-width: 510px) {
+@media screen and (min-width: 570px) {
   section ul.tracks li {
     width: 33.33333%;
   }
 }
-@media screen and (min-width: 680px) {
+@media screen and (min-width: 760px) {
   section ul.tracks li {
     width: 25%;
   }
 }
-@media screen and (min-width: 920px) {
+@media screen and (min-width: 1020px) {
   section ul.tracks li {
     width: 20%;
   }
 }
-@media screen and (min-width: 1090px) {
+@media screen and (min-width: 1210px) {
   section ul.tracks li {
     width: 16.66667%;
   }
 }
-@media screen and (min-width: 1260px) {
+@media screen and (min-width: 1400px) {
   section ul.tracks li {
     width: 14, 28571428571429%;
   }
 }
-@media screen and (min-width: 1430px) {
+@media screen and (min-width: 1590px) {
   section ul.tracks li {
     width: 12.5%;
   }
 }
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1780px) {
   section ul.tracks li {
     width: 11, 11111111111111%;
   }
 }
-@media screen and (min-width: 1770px) {
+@media screen and (min-width: 1970px) {
   section ul.tracks li {
     width: 10%;
   }
 }
-@media screen and (min-width: 1940px) {
+@media screen and (min-width: 2160px) {
   section ul.tracks li {
     width: 9, 9090909090909%;
   }
 }
-@media screen and (min-width: 2110px) {
+@media screen and (min-width: 2350px) {
   section ul.tracks li {
     width: 8.33333%;
   }
@@ -358,6 +358,16 @@ section.footer .trackinfo-cur {
 }
 section.footer .curtrack-description {
   margin: 10px 0;
+}
+section.footer .curtrack-description h3 {
+  font-size: 1.5em;
+}
+section.footer .curtrack-description .link {
+  font-size: 0.8em;
+  margin: 10px 0;
+}
+section.footer .curtrack-description section {
+  margin-top: 10px;
 }
 section.footer .controller {
   position: relative;

@@ -46,8 +46,10 @@ jQuery ($) ->
 			artist_name = if track.artist_full then track.artist_full else track.artist
 			$(".trackinfo-cur .title").html(track.track_title);
 			$(".trackinfo-cur .artist").html(artist_name);
-			if track.artist_link then $(".trackinfo-cur .link").html("<a href='"+track.artist_link+"'>"+track.artist_link+"</a>");
-			$(".curtrack-description").html(track.description).show()
+			if track.link then $(".trackinfo-cur .link").html("<a href='"+track.link+"' target='_blank'>"+track.artist_link+"</a>");
+			$(".curtrack-description header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
+			$(".curtrack-description section").html(track.description+"<div class='link'><a href='"+track.link+"' target='_blank'>"+track.artist_link+"</a></div>")
+			$(".curtrack-description").show()
 			$(".controller .dur").html(timecode(dur))
 			$(".trackinfo").hide()
 
@@ -165,8 +167,8 @@ jQuery ($) ->
 			track = track[0]
 			# console.log(track)
 			$(".curtrack-description").hide()
-			$(".trackinfo header").html("<h3>"+track.artist+"</h3><h4>"+track.track_title+"</h4>")
-			$(".trackinfo section").html(track.description+"<div class='link'><a href='"+track.link+"'>website</a></div>")
+			$(".trackinfo header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
+			$(".trackinfo section").html(track.description+"<div class='link'><a href='"+track.link+"' target='_blank'>"+track.artist_link+"</a></div>")
 			$(".trackinfo").show()
 		else
 			showCurtrackDesc()
@@ -180,14 +182,19 @@ jQuery ($) ->
 		track = track[0]
 		index = $.inArray(track, tracks)
 		nowplaying = index
-		$(".trackinfo-cur header").html(track.track_title+"<br>"+track.artist)
-		$(".trackinfo-cur section").html(track.description)
+		# $(".trackinfo-cur .title").html(track.track_title)
+		# $(".trackinfo-cur .artist").html(track.artist_full)
+		# $(".trackinfo-cur .link").html("<a href='"+track.link+"'>website</a>")
+		# $(".curtrack-description header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
+		# $(".curtrack-description section").html(track.description+"<div class='link'><a href='"+track.link+"'>website</a></div>")
+
+		# $(".curtrack-description").html(track.description)
 		$(".tracks li").removeClass("nowplaying")
 		$(this).addClass("nowplaying")
 		play(track)
 
 
-	$("nav.nav a").on "click", (e) ->
+	$("nav.nav li:not('.download') a").on "click", (e) ->
 		e.preventDefault()
 		$(".content-wrapper").load $(this).attr('href')+" #content", ->
 			$(".content-wrapper").show()
