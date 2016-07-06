@@ -66,10 +66,10 @@
         $(".trackinfo-cur .title").html(track.track_title);
         $(".trackinfo-cur .artist").html(artist_name);
         if (track.link) {
-          $(".trackinfo-cur .link").html("<a href='" + track.link + "' target='_blank'>" + track.artist_link + "</a>");
+          $(".trackinfo-cur .link").html("<a href='" + track.link + "' target='_blank'>" + track.link + "</a>");
         }
         $(".curtrack-description header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
-        $(".curtrack-description section").html(track.description + "<div class='link'><a href='" + track.link + "' target='_blank'>" + track.artist_link + "</a></div>");
+        $(".curtrack-description section").html(track.description + "<div class='link'><a href='" + track.link + "' target='_blank'>" + track.link + "</a></div>");
         $(".curtrack-description").show();
         $(".controller .dur").html(timecode(dur));
         $(".trackinfo").hide();
@@ -208,7 +208,7 @@
         track = track[0];
         $(".curtrack-description").hide();
         $(".trackinfo header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
-        $(".trackinfo section").html(track.description + "<div class='link'><a href='" + track.link + "' target='_blank'>" + track.artist_link + "</a></div>");
+        $(".trackinfo section").html(track.description + "<div class='link'><a href='" + track.link + "' target='_blank'>" + track.link + "</a></div>");
         $(".trackinfo").show();
       } else {
         showCurtrackDesc();
