@@ -194,7 +194,7 @@ section.content-wrapper {
   margin: auto;
 }
 section ul.tracks {
-  margin-bottom: 200px;
+  margin-bottom: 50px;
   float: left;
   width: 100%;
 }
@@ -221,7 +221,7 @@ section ul.tracks li {
   padding-left: 35px;
 }
 
-@media screen and (min-width: 570px) {
+@media screen and (min-width: 630px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -232,7 +232,7 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 840px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -243,7 +243,7 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 1210px) {
+@media screen and (min-width: 1330px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -254,7 +254,7 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 2350px) {
+@media screen and (min-width: 2590px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -271,52 +271,52 @@ section ul.tracks li {
     padding-left: 5px;
   }
 }
-@media screen and (min-width: 570px) {
+@media screen and (min-width: 630px) {
   section ul.tracks li {
     width: 33.33333%;
   }
 }
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 840px) {
   section ul.tracks li {
     width: 25%;
   }
 }
-@media screen and (min-width: 1020px) {
+@media screen and (min-width: 1120px) {
   section ul.tracks li {
     width: 20%;
   }
 }
-@media screen and (min-width: 1210px) {
+@media screen and (min-width: 1330px) {
   section ul.tracks li {
     width: 16.66667%;
   }
 }
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1540px) {
   section ul.tracks li {
     width: 14, 28571428571429%;
   }
 }
-@media screen and (min-width: 1590px) {
+@media screen and (min-width: 1750px) {
   section ul.tracks li {
     width: 12.5%;
   }
 }
-@media screen and (min-width: 1780px) {
+@media screen and (min-width: 1960px) {
   section ul.tracks li {
     width: 11, 11111111111111%;
   }
 }
-@media screen and (min-width: 1970px) {
+@media screen and (min-width: 2170px) {
   section ul.tracks li {
     width: 10%;
   }
 }
-@media screen and (min-width: 2160px) {
+@media screen and (min-width: 2380px) {
   section ul.tracks li {
     width: 9, 9090909090909%;
   }
 }
-@media screen and (min-width: 2350px) {
+@media screen and (min-width: 2590px) {
   section ul.tracks li {
     width: 8.33333%;
   }
@@ -327,6 +327,10 @@ section ul.tracks li .duration {
 section ul.tracks li:nth-child(even) {
   color: red;
 }
+section .download-link {
+  margin-bottom: 200px;
+  text-align: right;
+}
 section.footer {
   padding-top: 0;
   padding-right: 0;
@@ -334,21 +338,48 @@ section.footer {
   padding-left: 0;
   background-color: #FFE6E6;
 }
+section.footer .table {
+  display: table;
+  height: 100%;
+  margin-bottom: 0;
+}
+section.footer .row {
+  display: table-row;
+}
+section.footer .row.align-bottom {
+  vertical-align: bottom;
+}
+section.footer .cell {
+  vertical-align: top;
+  display: table-cell;
+  height: 100%;
+}
+section.footer .cell.half {
+  width: 50%;
+}
+section.footer .cell.padding {
+  padding: 10px;
+}
+section.footer .trackinfo-container {
+  height: 100%;
+  box-sizing: border-box;
+}
 section.footer.mini .trackinfo section, section.footer.mini .trackinfo-cur section {
   display: none;
 }
 section.footer .trackinfo {
-  display: none;
+  display: table;
   background-color: #EDEDED;
-  padding-bottom: 0px;
-  padding-top: 10px;
+  width: 100%;
+  padding: 10px;
+  height: 100%;
 }
 section.footer .trackinfo h3 {
   font-size: 1.5em;
 }
-section.footer .trackinfo .link {
+section.footer .trackinfo footer {
   font-size: 0.8em;
-  margin: 10px 0;
+  margin: 10px 0 0;
 }
 section.footer .trackinfo section {
   margin-top: 10px;
@@ -357,7 +388,9 @@ section.footer .trackinfo-cur {
   font-family: "Gafata", sans-serif;
 }
 section.footer .curtrack-description {
-  margin: 10px 0;
+  padding: 10px;
+  display: table;
+  height: 100%;
 }
 section.footer .curtrack-description h3 {
   font-size: 1.5em;
@@ -368,6 +401,10 @@ section.footer .curtrack-description .link {
 }
 section.footer .curtrack-description section {
   margin-top: 10px;
+}
+section.footer .curtrack-description footer {
+  font-size: 0.8em;
+  margin: 10px 0 0;
 }
 section.footer .controller {
   position: relative;

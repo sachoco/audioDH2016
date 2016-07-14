@@ -53,6 +53,13 @@
 
     ?>
     </ul>
+    <div class="download-link gr-12">
+    <?php
+        $options = get_option( 'audioDH_theme_options' );
+        if($options['download_all_link']) echo "<a href='".$options['download_all_link']."' target='_blank'>download all tracks</a>";
+    ?>        
+    </div>
+
     
 </section>
 <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>

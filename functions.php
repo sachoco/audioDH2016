@@ -1,4 +1,5 @@
 <?php
+	require_once ( get_stylesheet_directory() . '/theme-options.php' );
 	function register_my_menu() {
 	  register_nav_menu('main-menu',__( 'Main Menu' ));
 	}
@@ -103,3 +104,5 @@
 	// adding the function to the Wordpress init
 	add_action( 'init', 'custom_post_tracks');
 	/**
+
+

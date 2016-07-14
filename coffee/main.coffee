@@ -46,9 +46,10 @@ jQuery ($) ->
 			artist_name = if track.artist_full then track.artist_full else track.artist
 			$(".trackinfo-cur .title").html(track.track_title);
 			$(".trackinfo-cur .artist").html(artist_name);
-			if track.link then $(".trackinfo-cur .link").html("<a href='"+track.link+"' target='_blank'>"+track.link+"</a>");
+			# if track.link then $(".trackinfo-cur .link").html("<a href='"+track.link+"' target='_blank'>"+track.link+"</a>");
 			$(".curtrack-description header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
-			$(".curtrack-description section").html(track.description+"<div class='link'><a href='"+track.link+"' target='_blank'>"+track.link+"</a></div>")
+			$(".curtrack-description section").html(track.description)
+			$(".curtrack-description footer").html("<a href='"+track.link+"' target='_blank'>"+track.link+"</a>")
 			$(".curtrack-description").show()
 			$(".controller .dur").html(timecode(dur))
 			$(".trackinfo").hide()
@@ -168,7 +169,8 @@ jQuery ($) ->
 			# console.log(track)
 			$(".curtrack-description").hide()
 			$(".trackinfo header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
-			$(".trackinfo section").html(track.description+"<div class='link'><a href='"+track.link+"' target='_blank'>"+track.link+"</a></div>")
+			$(".trackinfo section").html(track.description)
+			$(".trackinfo footer").html("<a href='"+track.link+"' target='_blank'>"+track.link+"</a>")
 			$(".trackinfo").show()
 		else
 			showCurtrackDesc()
@@ -209,7 +211,8 @@ jQuery ($) ->
 		$(".curtrack-description").show()
 		$(".trackinfo").hide()
 
-	$(".footer .controller").hover -> showCurtrackDesc()
+	# $(".footer .controller").hover -> showCurtrackDesc()
+	$(".footer").hover -> showCurtrackDesc()
 	$(".header").hover -> showCurtrackDesc()
 
 

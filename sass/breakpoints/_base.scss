@@ -177,6 +177,7 @@ section.footer{
 	padding-top: 20px;
 	// min-height: 700px;
 }
+
 section {
 	// tr {
 	// 	cursor: pointer;
@@ -206,7 +207,7 @@ section {
 	}
 	ul.tracks {
 		// width: 180px;
-		margin-bottom: 200px;
+		margin-bottom: 50px;
 		float: left;
 		width: 100%;
 		// text-align: center;
@@ -275,11 +276,45 @@ section {
 
 		}
 	}
+	.download-link {
+		margin-bottom: 200px;
+		text-align: right;
+	}
 
 &.footer {
 	@include gridle_no_gutter();
 	background-color: #FFE6E6;
+	// display: table;
+	.table {
+	    display: table;
+	    height:100%;
+	    margin-bottom: 0;
+	}
+	.row {
+		display: table-row;
+	    &.align-bottom {
+	    	vertical-align: bottom;	
+	    }
+	}
+	.cell {
+	    // border: 2px solid black;
+	    vertical-align: top;
+	    display: table-cell;
+	    height:100%;
+	    &.half {
+	    	width: 50%;
+	    }
+	    &.padding {
+	    	padding: 10px;
+	    }
 
+	}
+
+	.trackinfo-container {
+	    height: 100%;
+	    // border: 2px solid green;
+	    box-sizing: border-box;
+	}
 	&.mini {
 		.trackinfo, .trackinfo-cur {
 			section{
@@ -288,11 +323,11 @@ section {
 		}
 	}
 	.trackinfo {
-		display: none;
+		display: table;
 		background-color: $bg-color-grey;
-		padding-bottom: 0px;
-		padding-top: 10px;
-
+		width: 100%;
+		padding: 10px;
+		height: 100%;
 		// margin-top: 10px;
 		h3 {
 			font-size: $font-size-l;
@@ -301,9 +336,9 @@ section {
 		h4 {
 			// font-family: $font-family;
 		}
-		.link {
+		footer {
 			font-size: $font-size-s;
-			margin: 10px 0;
+			margin: 10px 0 0;
 		}
 		section {
 			margin-top: 10px; 
@@ -314,7 +349,10 @@ section {
 		font-family: $header-font-family;
 	}
 	.curtrack-description {
-		margin: 10px 0; 
+		// margin: 10px 0; 
+		padding: 10px;
+		display: table;
+		height: 100%;
 		h3 {
 			font-size: $font-size-l;
 			// font-family: $font-family;
@@ -326,13 +364,27 @@ section {
 			font-size: $font-size-s;
 			margin: 10px 0;
 		}
+		header {
+		}
 		section {
 			margin-top: 10px; 
 		}
+		footer {
+			font-size: $font-size-s;
+			margin: 10px 0 0;
+		}
 		// display: none;
+	}
+	.trackinfo-wrap {
+		// display: table-cell;
+		// height: 100%;
+		// float: none;
 	}
 	.controller {
 		position: relative;
+		// display: table-cell;
+		// height: 100%;
+		// float: none;
 		progress {
 			width: 100%;
 		}
