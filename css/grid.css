@@ -149,6 +149,8 @@
   font-size: 16px;
   font-size: 16px;
   font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 1rem;
   padding-right: 35px;
   padding-left: 35px;
@@ -159,6 +161,8 @@
   width: 99999px;
   white-space: nowrap;
   box-sizing: border-box;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 16px;
   font-size: 16px;
   font-size: 16px;
@@ -2171,6 +2175,8 @@
   font-size: 16px;
   font-size: 16px;
   font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 1rem;
 }
 @-moz-document url-prefix() {
@@ -2186,6 +2192,8 @@
 .row-align-center > * {
   float: none !important;
   vertical-align: bottom;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 16px;
   font-size: 16px;
   font-size: 16px;
@@ -2443,6 +2451,8 @@
   font-size: 16px;
   font-size: 16px;
   font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 1rem;
 }
 @-moz-document url-prefix() {
@@ -2462,6 +2472,8 @@
 .row-align-middle > * {
   float: none !important;
   vertical-align: middle;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 16px;
   font-size: 16px;
   font-size: 16px;
@@ -2715,6 +2727,8 @@
   font-size: 16px;
   font-size: 16px;
   font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 1rem;
 }
 @-moz-document url-prefix() {
@@ -2730,6 +2744,8 @@
 .row-align-bottom > * {
   float: none !important;
   vertical-align: bottom;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 16px;
   font-size: 16px;
   font-size: 16px;

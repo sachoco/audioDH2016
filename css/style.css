@@ -113,12 +113,6 @@ a:hover {
 
 .page__body {
   margin: 10px 0;
-  -webkit-columns: 2;
-     -moz-columns: 2;
-          columns: 2;
-  -webkit-column-gap: 3em;
-     -moz-column-gap: 3em;
-          column-gap: 3em;
 }
 
 .page__header {
