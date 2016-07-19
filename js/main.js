@@ -227,17 +227,17 @@
       $(this).addClass("nowplaying");
       return play(track);
     });
-    $("nav.nav li:not('.download') a").on("click", function(e) {
+    $("nav.nav li:not('.home-btn') a").on("click", function(e) {
       e.preventDefault();
       return $(".content-wrapper").load($(this).attr('href') + " #content", function() {
         $(".content-wrapper").show();
-        return $(".tracks").hide();
+        return $(".tracks-wrapper").hide();
       });
     });
-    $("section.header header").on("click", function(e) {
+    $("section.header header, nav.nav li.home-btn a").on("click", function(e) {
       e.preventDefault();
       $(".content-wrapper").hide();
-      return $(".tracks").show();
+      return $(".tracks-wrapper").show();
     });
     showCurtrackDesc = function() {
       $(".curtrack-description").show();

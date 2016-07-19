@@ -66,24 +66,28 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 }
 
 html {
-  background-color: #ffffff;
+  height: 100%;
+  background: url(images/bg-overlay.png) left top;
+  background-color: #FAF5BD;
+  background-attachment: fixed;
 }
 
 html, body {
   position: relative;
   font-size: 16px;
   font-family: "Maven Pro", sans-serif;
-  color: #555;
+  color: #050D9E;
   line-height: 1.2;
   font-weight: normal;
+  height: 100%;
 }
 
-body.home {
+body {
   background: none;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: "Gafata", sans-serif;
+  font-family: "Maven Pro", sans-serif;
   font-weight: normal;
 }
 
@@ -96,7 +100,7 @@ p {
 }
 
 a {
-  color: #555;
+  color: #050D9E;
   text-decoration: none;
 }
 a:hover {
@@ -109,6 +113,12 @@ a:hover {
 
 .page__body {
   margin: 10px 0;
+  -webkit-columns: 2;
+     -moz-columns: 2;
+          columns: 2;
+  -webkit-column-gap: 3em;
+     -moz-column-gap: 3em;
+          column-gap: 3em;
 }
 
 .page__header {
@@ -141,47 +151,51 @@ button {
   padding: 2em;
 }
 
+section.header {
+  float: left;
+  width: 100%;
+}
 section.header header {
-  background: white;
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: pointer;
+  overflow: hidden;
+  background: url(images/header-bg-overlay.png) left top #FAF5BD no-repeat;
+  background-position: 393px 0px;
 }
-section.header a {
-  color: #555;
+section.header .logo {
+  margin-left: 1em;
+  background: url(images/logo.png) no-repeat center center;
+  width: 290px;
+  height: 80px;
 }
-section.header a:hover {
-  text-decoration: none;
-}
-section.header h1 {
+section.header .logo h1 {
   margin: 0;
   font-size: 40px;
+  text-indent: -99999em;
+}
+section.header .logo h4 {
+  text-indent: -99999em;
 }
 section.header nav {
-  background: #F6F6F6;
+  background: #050D9E;
   text-align: center;
 }
 section.header nav li {
   display: inline-block;
 }
-
-section.footer {
-  background-color: #F6F6F6;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
+section.header nav li > a {
+  color: #FAF5BD;
+  background-color: #050D9E;
+  text-transform: uppercase;
 }
-section.footer h1 {
-  background: #F6F6F6;
-  padding: 10px;
+section.header nav li > a:focus {
+  background-color: #050D9E;
 }
-section.footer nav {
-  text-align: center;
-}
-section.footer nav li {
-  display: inline-block;
-  padding: 15px;
+section.header nav li > a:hover {
+  color: #050D9E;
+  text-decoration: none;
+  background-color: #FAF5BD;
 }
 
 .wrapper {
@@ -189,9 +203,14 @@ section.footer nav li {
   padding-top: 20px;
 }
 
+section.body {
+  padding-top: 2em;
+}
 section.content-wrapper {
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
+  margin-bottom: 300px;
+  display: none;
 }
 section ul.tracks {
   margin-bottom: 50px;
@@ -200,16 +219,24 @@ section ul.tracks {
 }
 section ul.tracks li {
   float: left;
-  font-family: "Gafata", sans-serif;
+  font-family: "Maven Pro", sans-serif;
   cursor: pointer;
-  padding: 5px !important;
+  padding: 0px !important;
   width: 33.33333%;
 }
-section ul.tracks li:hover {
-  background-color: #F6F6F6 !important;
+section ul.tracks li span {
+  padding: 2px 2px 2px 2px !important;
+  margin-right: 1em;
+  display: block;
+}
+section ul.tracks li:hover span {
+  background-color: #F1F1F1 !important;
 }
 section ul.tracks li.nowplaying {
-  background-color: #FFE6E6 !important;
+  font-weight: bold;
+}
+section ul.tracks li.nowplaying span {
+  background-color: #FF485B !important;
 }
 section ul.tracks li {
   display: inline-block;
@@ -221,7 +248,7 @@ section ul.tracks li {
   padding-left: 35px;
 }
 
-@media screen and (min-width: 630px) {
+@media screen and (min-width: 660px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -232,7 +259,7 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 840px) {
+@media screen and (min-width: 880px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -243,7 +270,7 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 1330px) {
+@media screen and (min-width: 1390px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -254,7 +281,7 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 2590px) {
+@media screen and (min-width: 2710px) {
   section ul.tracks li {
     display: inline-block;
     min-height: 1px;
@@ -271,52 +298,52 @@ section ul.tracks li {
     padding-left: 5px;
   }
 }
-@media screen and (min-width: 630px) {
+@media screen and (min-width: 660px) {
   section ul.tracks li {
     width: 33.33333%;
   }
 }
-@media screen and (min-width: 840px) {
+@media screen and (min-width: 880px) {
   section ul.tracks li {
     width: 25%;
   }
 }
-@media screen and (min-width: 1120px) {
+@media screen and (min-width: 1170px) {
   section ul.tracks li {
     width: 20%;
   }
 }
-@media screen and (min-width: 1330px) {
+@media screen and (min-width: 1390px) {
   section ul.tracks li {
     width: 16.66667%;
   }
 }
-@media screen and (min-width: 1540px) {
+@media screen and (min-width: 1610px) {
   section ul.tracks li {
     width: 14, 28571428571429%;
   }
 }
-@media screen and (min-width: 1750px) {
+@media screen and (min-width: 1830px) {
   section ul.tracks li {
     width: 12.5%;
   }
 }
-@media screen and (min-width: 1960px) {
+@media screen and (min-width: 2050px) {
   section ul.tracks li {
     width: 11, 11111111111111%;
   }
 }
-@media screen and (min-width: 2170px) {
+@media screen and (min-width: 2270px) {
   section ul.tracks li {
     width: 10%;
   }
 }
-@media screen and (min-width: 2380px) {
+@media screen and (min-width: 2490px) {
   section ul.tracks li {
     width: 9, 9090909090909%;
   }
 }
-@media screen and (min-width: 2590px) {
+@media screen and (min-width: 2710px) {
   section ul.tracks li {
     width: 8.33333%;
   }
@@ -324,19 +351,41 @@ section ul.tracks li {
 section ul.tracks li .duration {
   float: right;
 }
-section ul.tracks li:nth-child(even) {
-  color: red;
-}
 section .download-link {
   margin-bottom: 200px;
-  text-align: right;
+  text-align: center;
+}
+section .download-link a {
+  color: #FF485B;
+  border: 1px solid #FF485B;
+  padding: 0.8em;
+}
+section .download-link a:hover {
+  text-decoration: none;
+  background-color: #FF485B;
+  color: #FAF5BD;
 }
 section.footer {
   padding-top: 0;
   padding-right: 0;
   padding-bottom: 0;
   padding-left: 0;
-  background-color: #FFE6E6;
+  background-color: #FF485B;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #FAF5BD;
+}
+section.footer h1 {
+  background: #F6F6F6;
+  padding: 10px;
+}
+section.footer nav {
+  text-align: center;
+}
+section.footer nav li {
+  display: inline-block;
+  padding: 15px;
 }
 section.footer .table {
   display: table;
@@ -358,7 +407,7 @@ section.footer .cell.half {
   width: 50%;
 }
 section.footer .cell.padding {
-  padding: 10px;
+  padding: 2em 4em;
 }
 section.footer .trackinfo-container {
   height: 100%;
@@ -368,14 +417,16 @@ section.footer.mini .trackinfo section, section.footer.mini .trackinfo-cur secti
   display: none;
 }
 section.footer .trackinfo {
+  color: #FF485B;
   display: table;
   background-color: #EDEDED;
   width: 100%;
-  padding: 10px;
+  padding: 1em;
   height: 100%;
 }
 section.footer .trackinfo h3 {
   font-size: 1.5em;
+  font-weight: bold;
 }
 section.footer .trackinfo footer {
   font-size: 0.8em;
@@ -385,7 +436,7 @@ section.footer .trackinfo section {
   margin-top: 10px;
 }
 section.footer .trackinfo-cur {
-  font-family: "Gafata", sans-serif;
+  font-family: "Maven Pro", sans-serif;
 }
 section.footer .curtrack-description {
   padding: 10px;
@@ -409,28 +460,61 @@ section.footer .curtrack-description footer {
 section.footer .controller {
   position: relative;
 }
+section.footer .controller .controller-wrapper {
+  position: relative;
+  margin: auto;
+}
 section.footer .controller progress {
   width: 100%;
+}
+section.footer .controller .devider {
+  width: 0px;
+  border-left: 1px solid;
+  height: 23px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #3c3c3c;
 }
 section.footer .controller button {
   border: none;
   background: none;
   vertical-align: middle;
   outline: none;
+  margin: 0 6px;
+  background-repeat: no-repeat;
 }
 section.footer .controller button.playpause {
   width: 50px;
 }
+section.footer .controller button.playpause {
+  background-image: url(images/play.svg);
+  width: 19px;
+  height: 23px;
+}
+section.footer .controller button.prev {
+  background-image: url(images/prev.svg);
+  width: 38px;
+  height: 23px;
+}
+section.footer .controller button.next {
+  background-image: url(images/next.svg);
+  width: 38px;
+  height: 23px;
+}
 section.footer .controller button.shuffle {
-  margin-left: 10px;
+  background-image: url(images/shuffle.svg);
+  width: 22px;
+  height: 23px;
 }
 section.footer .controller button.shuffle.active {
   background-color: white;
 }
 section.footer .controller button.download {
-  margin-left: 10px;
   opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  background-image: url(images/download.svg);
+  width: 23px;
+  height: 23px;
 }
 section.footer .controller button.download.active {
   opacity: 1;
@@ -468,7 +552,7 @@ section.footer .controller .dur {
 }
 section.footer .controller #volume-bar {
   position: absolute;
-  top: 16px;
+  top: 10px;
   right: 0px;
 }
 section.footer .controller #volume-bar * {
@@ -480,7 +564,6 @@ section.footer .controller #volume-bar #volume-scrubber {
   top: 3px;
   right: 10px;
   height: 6px;
-  border: 1px solid #e3e3e3;
   width: 80px;
   background: #e3e3e3;
 }
@@ -493,6 +576,12 @@ section.footer .controller #volume-bar #volume-indicator {
 }
 section.footer .controller #volume-bar #volume-sign {
   float: right;
+  background: url(images/volume.svg);
+  width: 17px;
+  height: 16px;
+}
+section.footer .controller #progress-bar {
+  margin-top: 1em;
 }
 section.footer .controller #progress-bar * {
   cursor: pointer;
@@ -501,7 +590,6 @@ section.footer .controller #progress-bar #progress-scrubber {
   float: left;
   position: relative;
   height: 6px;
-  border: 1px solid #e3e3e3;
   width: 100%;
   background: #e3e3e3;
 }

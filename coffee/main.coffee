@@ -196,16 +196,16 @@ jQuery ($) ->
 		play(track)
 
 
-	$("nav.nav li:not('.download') a").on "click", (e) ->
+	$("nav.nav li:not('.home-btn') a").on "click", (e) ->
 		e.preventDefault()
 		$(".content-wrapper").load $(this).attr('href')+" #content", ->
 			$(".content-wrapper").show()
-			$(".tracks").hide()
+			$(".tracks-wrapper").hide()
 
-	$("section.header header").on "click", (e)->
+	$("section.header header, nav.nav li.home-btn a").on "click", (e)->
 		e.preventDefault()
 		$(".content-wrapper").hide()
-		$(".tracks").show()
+		$(".tracks-wrapper").show()
 
 	showCurtrackDesc = ->
 		$(".curtrack-description").show()

@@ -17,7 +17,7 @@
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/grid.css">
-        <link href='http://fonts.googleapis.com/css?family=Nova+Round|Gafata|Karla|Exo+2:400,300,200,100|Ruda|Merriweather+Sans:400,300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
 <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs-3.3.6/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.css"/>
@@ -38,10 +38,13 @@
     <body <?php body_class(); ?>>
         <section class="header">
             <header class="gr-12">
-                <h1>audio-DH</h1>
-                <h4>sonic manifestations by 250 artists from Den Haag/The Hague</h4>
+                <div class="logo">
+                    <h1>audio-DH</h1>
+                    <h4>sonic manifestations by 250 artists from Den Haag/The Hague</h4>    
+                </div>
+                
             </header>
-            <nav class="nav" role="navigation">
+            <nav class="nav gr-12" role="navigation">
                 <?php wp_nav_menu(array(
                     'container' => false,                           // remove nav container
                     'container_class' => 'menu cf',                 // class of container (should you choose to use it)
