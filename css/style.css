@@ -67,7 +67,6 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 
 html {
   height: 100%;
-  background: url(images/bg-overlay.png) left top;
   background-color: #FAF5BD;
   background-attachment: fixed;
 }
@@ -146,8 +145,9 @@ button {
 }
 
 section.header {
-  float: left;
   width: 100%;
+  max-width: 1440px;
+  margin: auto;
 }
 section.header header {
   padding-top: 10px;
@@ -195,10 +195,13 @@ section.header nav li > a:hover {
 .wrapper {
   min-width: 700px;
   padding-top: 20px;
+  max-width: 1440px;
+  margin: auto;
 }
 
 section.body {
   padding-top: 2em;
+  background: url(images/bg-overlay.png) left top;
 }
 section.content-wrapper {
   max-width: 1200px;
@@ -275,17 +278,6 @@ section ul.tracks li {
     padding-left: 35px;
   }
 }
-@media screen and (min-width: 2710px) {
-  section ul.tracks li {
-    display: inline-block;
-    min-height: 1px;
-    float: left;
-    box-sizing: border-box;
-    vertical-align: top;
-    padding-right: 35px;
-    padding-left: 35px;
-  }
-}
 @media screen and (max-width: 768px) {
   section ul.tracks li {
     padding-right: 5px;
@@ -317,31 +309,6 @@ section ul.tracks li {
     width: 14, 28571428571429%;
   }
 }
-@media screen and (min-width: 1830px) {
-  section ul.tracks li {
-    width: 12.5%;
-  }
-}
-@media screen and (min-width: 2050px) {
-  section ul.tracks li {
-    width: 11, 11111111111111%;
-  }
-}
-@media screen and (min-width: 2270px) {
-  section ul.tracks li {
-    width: 10%;
-  }
-}
-@media screen and (min-width: 2490px) {
-  section ul.tracks li {
-    width: 9, 9090909090909%;
-  }
-}
-@media screen and (min-width: 2710px) {
-  section ul.tracks li {
-    width: 8.33333%;
-  }
-}
 section ul.tracks li .duration {
   float: right;
 }
@@ -369,6 +336,11 @@ section.footer {
   bottom: 0;
   width: 100%;
   color: #FAF5BD;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  max-width: 1440px;
 }
 section.footer h1 {
   background: #F6F6F6;
@@ -501,7 +473,7 @@ section.footer .controller button.shuffle {
   height: 23px;
 }
 section.footer .controller button.shuffle.active {
-  background-color: white;
+  background-image: url(images/shuffle-active.svg);
 }
 section.footer .controller button.download {
   opacity: 0.5;

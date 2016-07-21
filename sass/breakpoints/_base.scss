@@ -37,7 +37,6 @@ $header-height: 60px;
 }
 html {
 	height: 100%;
-	background: url(images/bg-overlay.png) left top;
 	background-color: $bg-color;
 	background-attachment: fixed;
 }
@@ -132,9 +131,10 @@ button {
 }
 
 section.header{
-	float: left;
+	// float: left;
 	width: 100%;
-
+	max-width: 1440px;
+	margin: auto;
 	header {
 		// background: white;
 		// padding: 10px;
@@ -195,12 +195,16 @@ section.header{
 .wrapper {
 	min-width: 700px;
 	padding-top: 20px;
+	max-width: 1440px;
+	margin: auto;
 	// min-height: 700px;
+
 }
 
 section {
 	&.body {
 		padding-top: 2em;
+		background: url(images/bg-overlay.png) left top;
 		// background: url(images/bg-overlay.png) left top;
 		// background-size: cover;
 	}
@@ -268,21 +272,21 @@ section {
 		    @include gridle_state( c7 ) {
 		        width: 14,28571428571429%
 		    }
-		    @include gridle_state( c8 ) {
-		        width: 12.5%
-		    }
-		    @include gridle_state( c9 ) {
-		        width: 11,11111111111111%
-		    }
-		    @include gridle_state( c10 ) {
-		        width: 10%
-		    }
-		    @include gridle_state( c11 ) {
-		        width: 9,09090909090909%
-		    }
-		    @include gridle_state( c12 ) {
-		        @include gridle_grid( 1 );
-		    }
+		    // @include gridle_state( c8 ) {
+		    //     width: 12.5%
+		    // }
+		    // @include gridle_state( c9 ) {
+		    //     width: 11,11111111111111%
+		    // }
+		    // @include gridle_state( c10 ) {
+		    //     width: 10%
+		    // }
+		    // @include gridle_state( c11 ) {
+		    //     width: 9,09090909090909%
+		    // }
+		    // @include gridle_state( c12 ) {
+		    //     @include gridle_grid( 1 );
+		    // }
 
 			.duration {
 				float: right;
@@ -316,6 +320,9 @@ section {
 	bottom: 0;
 	width: 100%;
 	color: $yellow;
+	left: 50%;
+	transform: translateX(-50%);
+	max-width: 1440px;
 	// background-color: white;
 	h1 {
 		background: #F6F6F6;
@@ -479,7 +486,8 @@ section {
 				height: 23px;				
 				&.active {
 					// opacity: 0.5;
-					background-color: white;
+					background-image: url(images/shuffle-active.svg);
+
 				}
 			}
 			&.download {
