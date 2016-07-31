@@ -23,11 +23,18 @@
                     while ( $the_query->have_posts() ) : $the_query->the_post();
                         // var_dump($post);
                         
-
+                        $categories = get_the_category();
+                        $permalink = get_the_permalink();
+ 
+                        if ( ! empty( $categories ) ) {
+                            $cat = esc_html( $categories[0]->name );   
+                        }
 
                         echo "<li class='gr-4' data-id='".$post->ID."' ><div>";
                         the_post_thumbnail('medium');
-                        echo "<h3>".$post->post_title."</h3><date>".$post->post_date."</date> | <span>PUBLICATION</span><div class='devider'>--------</div><div class='excerpt'>".$post->excerpt."</div></div></li>";
+                        echo "<h3>".$post->post_title."</h3><date>".mysql2date('j F Y', $post->post_date)."</date> | <span class='category'>".$cat."</span><div class='devider'>--------</div><div class='excerpt'>";
+                        the_excerpt();
+                        echo "<a href='".$permalink."' class='readmore'>Read More</a></div></div></li>";
                         $i++;
                     endwhile;
                 endif;

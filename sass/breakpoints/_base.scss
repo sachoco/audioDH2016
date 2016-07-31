@@ -610,17 +610,42 @@ section {
 	}
 
 	ul.news {
+		float: left;
+		margin-bottom: 300px;
 		li {
 			text-align: center;
 			margin-bottom: 30px;
 			>div {
 				background-color: white;
+				padding-bottom: 3em;
 				h3 {
 					font-size: 2em;
 					font-weight: 900;
 					width: 260px;
-					margin: auto;
+					margin: 0.5em auto;
 					text-transform: uppercase;
+				}
+				date {
+					text-transform: uppercase;
+				}
+				.category {
+					text-transform: uppercase;
+				}
+				.excerpt {
+					p {
+					margin: 0 30px 3em;
+					text-align: justify;	
+					}
+					
+				}
+				.readmore {
+					text-transform: uppercase;
+					background-color: $blue;
+					color: $yellow;
+					padding: 0.7em 1.2em;
+				}
+				.devider {
+					font-size: 2em;
 				}
 			}
 			

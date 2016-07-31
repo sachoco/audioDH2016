@@ -580,19 +580,43 @@ section.footer .controller #progress-bar #progress-indicator {
   left: 0;
   background: #3c3c3c;
 }
+section ul.news {
+  float: left;
+  margin-bottom: 300px;
+}
 section ul.news li {
   text-align: center;
   margin-bottom: 30px;
 }
 section ul.news li > div {
   background-color: white;
+  padding-bottom: 3em;
 }
 section ul.news li > div h3 {
   font-size: 2em;
   font-weight: 900;
   width: 260px;
-  margin: auto;
+  margin: 0.5em auto;
   text-transform: uppercase;
+}
+section ul.news li > div date {
+  text-transform: uppercase;
+}
+section ul.news li > div .category {
+  text-transform: uppercase;
+}
+section ul.news li > div .excerpt p {
+  margin: 0 30px 3em;
+  text-align: justify;
+}
+section ul.news li > div .readmore {
+  text-transform: uppercase;
+  background-color: #050D9E;
+  color: #FAF5BD;
+  padding: 0.7em 1.2em;
+}
+section ul.news li > div .devider {
+  font-size: 2em;
 }
 section ul.news li img {
   width: 100%;
