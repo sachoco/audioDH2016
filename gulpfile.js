@@ -54,8 +54,19 @@ gulp.task('compass', function(){
     }))
 });
 
+gulp.task('griddle', function(){
+    gulp.src('sass/griddle.scss')
+    .pipe(plumber())
+    .pipe(compass({
+        config_file: 'config.rb',
+        comments: false,
+        css: 'css/',
+        sass: 'sass/'
+    }))
+});
+
 gulp.task('ple', function() {
-  return gulp.src('css/*.css')
+  return gulp.src(['css/*.css','!css/grid.css'])
     .pipe(pleeease({
         autoprefixer: ['last 4 versions'], //ベンダープレフィックス
         minifier: false //圧縮の有無 true/false
@@ -73,5 +84,5 @@ gulp.task("default", function(){
 	gulp.watch(["js/**/*.js","!js/min/**/*.js"],["js"]);
 	gulp.watch("sass/**/*.scss",["compass"]);
 	gulp.watch("coffee/**/*.coffee",["coffee"]);
-	return gulp.watch(['css/*.css'], ['ple']);
+	return gulp.watch('css/**/*.css', ['ple']);
 });

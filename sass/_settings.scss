@@ -51,21 +51,21 @@ $base-width-offset: 70px;
 @include gridle_register_state( c7, (
     min-width : $base-width*7+$base-width-offset
 ) );
-@include gridle_register_state( c8, (
-    min-width : $base-width*8+$base-width-offset
-) );
-@include gridle_register_state( c9, (
-    min-width : $base-width*9+$base-width-offset
-) );
-@include gridle_register_state( c10, (
-    min-width : $base-width*10+$base-width-offset
-) );
-@include gridle_register_state( c11, (
-    min-width : $base-width*11+$base-width-offset
-) );
-@include gridle_register_state( c12, (
-    min-width : $base-width*12+$base-width-offset
-) );
+// @include gridle_register_state( c8, (
+//     min-width : $base-width*8+$base-width-offset
+// ) );
+// @include gridle_register_state( c9, (
+//     min-width : $base-width*9+$base-width-offset
+// ) );
+// @include gridle_register_state( c10, (
+//     min-width : $base-width*10+$base-width-offset
+// ) );
+// @include gridle_register_state( c11, (
+//     min-width : $base-width*11+$base-width-offset
+// ) );
+// @include gridle_register_state( c12, (
+//     min-width : $base-width*12+$base-width-offset
+// ) );
 // even with full custom queries :
 @include gridle_register_state ( landscape, (
 	query : "(orientation : landscape)"
