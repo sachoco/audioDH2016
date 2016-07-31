@@ -1,6 +1,7 @@
 $yellow : #FAF5BD;
 $blue : #050D9E;
 $red: #FF485B;
+$grey: #3c3c3c;
 $light-grey: #ccc;
 $font-color: $blue;
 $bg-color: #FAF5BD;
@@ -471,54 +472,64 @@ section {
 				background: none;
 				vertical-align: middle;
 				outline: none;
-				margin: 0 6px;
+				margin: 0;
+				padding-bottom: 0;
 				background-repeat: no-repeat;
-				&.playpause {
-					width: 50px;
+				font-size: 22px;
+				&:active {
+					color: $grey;
 				}
-				&.playpause {
-					background-image: url(images/play.svg);
-					width: 19px;
-					height: 23px;
-				}
-				&.prev {
-					background-image: url(images/prev.svg);
-					width: 38px;
-					height: 23px;
-					&:active {
-						background-image: url(images/prev-active.svg);
-					}
-				}
-				&.next {
-					background-image: url(images/next.svg);
-					width: 38px;
-					height: 23px;
-					&:active {
-						background-image: url(images/next-active.svg);
-					}				}
+
+				// &.playpause {
+				// 	width: 50px;
+				// }
+				// &.playpause {
+				// 	background-image: url(images/play.svg);
+				// 	width: 19px;
+				// 	height: 23px;
+				// }
+				// &.prev {
+				// 	// background-image: url(images/prev.svg);
+				// 	// width: 38px;
+				// 	// height: 23px;
+				// 	font-size: 22px;
+				// 	&:active {
+				// 		// background-image: url(images/prev-active.svg);
+				// 		color: $grey;
+				// 	}
+				// }
+				// &.next {
+				// 	background-image: url(images/next.svg);
+				// 	width: 38px;
+				// 	height: 23px;
+				// 	&:active {
+				// 		background-image: url(images/next-active.svg);
+				// 	}				}
 				&.shuffle {
 					// margin-left: 10px;
-					background-image: url(images/shuffle.svg);
-					width: 22px;
-					height: 23px;				
+					// background-image: url(images/shuffle.svg);
+					// width: 22px;
+					// height: 23px;				
 					&.active {
 						// opacity: 0.5;
-						background-image: url(images/shuffle-active.svg);
+						color: $grey;
+						// background-image: url(images/shuffle-active.svg);
 
 					}
 				}
 				&.download {
 					// margin-left: 10px;
 					opacity: 0.5;
-					background-image: url(images/download.svg);
-					width: 23px;
-					height: 23px;	
+					// background-image: url(images/download.svg);
+					// width: 23px;
+					// height: 23px;	
 					&.active {
 						opacity: 1;
-
+						
 					}
 					&:active {
-						background-image: url(images/download-active.svg);
+						// background-image: url(images/download-active.svg);
+						color: $yellow;
 					}
 				}
 			}
@@ -578,9 +589,10 @@ section {
 				}
 				#volume-sign {
 					float: right;
-					background: url(images/volume.svg);
-					width: 17px;
-					height: 16px;					
+					margin-top: -2px;
+					// background: url(images/volume.svg);
+					// width: 17px;
+					// height: 16px;					
 				}
 			}
 			#progress-bar {

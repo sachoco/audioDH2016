@@ -54,6 +54,51 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
+@font-face {
+  font-family: 'audioDH';
+  src: url("fonts/audioDH.eot?3b54t4");
+  src: url("fonts/audioDH.eot?3b54t4#iefix") format("embedded-opentype"), url("fonts/audioDH.ttf?3b54t4") format("truetype"), url("fonts/audioDH.woff?3b54t4") format("woff"), url("fonts/audioDH.svg?3b54t4#audioDH") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'audioDH' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.audiodh-download:before {
+  content: "\e900";
+}
+
+.audiodh-next:before {
+  content: "\e901";
+}
+
+.audiodh-play:before {
+  content: "\e902";
+}
+
+.audiodh-prev:before {
+  content: "\e903";
+}
+
+.audiodh-shuffle:before {
+  content: "\e904";
+}
+
+.audiodh-volume:before {
+  content: "\e905";
+}
+
 /*********************
 BASE (MOBILE) SIZE
 This are the mobile styles. It's what people see on their phones. If
@@ -451,54 +496,27 @@ section.footer .controller button {
   background: none;
   vertical-align: middle;
   outline: none;
-  margin: 0 6px;
+  margin: 0;
+  padding-bottom: 0;
   background-repeat: no-repeat;
+  font-size: 22px;
 }
-section.footer .controller button.playpause {
-  width: 50px;
-}
-section.footer .controller button.playpause {
-  background-image: url(images/play.svg);
-  width: 19px;
-  height: 23px;
-}
-section.footer .controller button.prev {
-  background-image: url(images/prev.svg);
-  width: 38px;
-  height: 23px;
-}
-section.footer .controller button.prev:active {
-  background-image: url(images/prev-active.svg);
-}
-section.footer .controller button.next {
-  background-image: url(images/next.svg);
-  width: 38px;
-  height: 23px;
-}
-section.footer .controller button.next:active {
-  background-image: url(images/next-active.svg);
-}
-section.footer .controller button.shuffle {
-  background-image: url(images/shuffle.svg);
-  width: 22px;
-  height: 23px;
+section.footer .controller button:active {
+  color: #3c3c3c;
 }
 section.footer .controller button.shuffle.active {
-  background-image: url(images/shuffle-active.svg);
+  color: #3c3c3c;
 }
 section.footer .controller button.download {
   opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-  background-image: url(images/download.svg);
-  width: 23px;
-  height: 23px;
 }
 section.footer .controller button.download.active {
   opacity: 1;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 section.footer .controller button.download:active {
-  background-image: url(images/download-active.svg);
+  color: #FAF5BD;
 }
 section.footer .controller a.download {
   float: left;
@@ -556,9 +574,7 @@ section.footer .controller #volume-bar #volume-indicator {
 }
 section.footer .controller #volume-bar #volume-sign {
   float: right;
-  background: url(images/volume.svg);
-  width: 17px;
-  height: 16px;
+  margin-top: -2px;
 }
 section.footer .controller #progress-bar {
   margin-top: 1em;

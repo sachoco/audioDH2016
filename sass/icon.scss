@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'audioDH';
+  src:  url('fonts/audioDH.eot?3b54t4');
+  src:  url('fonts/audioDH.eot?3b54t4#iefix') format('embedded-opentype'),
+    url('fonts/audioDH.ttf?3b54t4') format('truetype'),
+    url('fonts/audioDH.woff?3b54t4') format('woff'),
+    url('fonts/audioDH.svg?3b54t4#audioDH') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'audioDH' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.audiodh-download:before {
+  content: "\e900";
+}
+.audiodh-next:before {
+  content: "\e901";
+}
+.audiodh-play:before {
+  content: "\e902";
+}
+.audiodh-prev:before {
+  content: "\e903";
+}
+.audiodh-shuffle:before {
+  content: "\e904";
+}
+.audiodh-volume:before {
+  content: "\e905";
+}
+

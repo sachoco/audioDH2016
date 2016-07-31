@@ -3,19 +3,19 @@
 <div class="table">
     <div class="controller cell half padding">
 	    <div class="controller-wrapper">
-			<button class="prev"></button>
-			<button class="playpause"></button>
-			<button class="next"></button>
+			<button class="prev"><i class="audiodh-prev"></i></button>
+			<button class="playpause"><i class="audiodh-play"></i></button>
+			<button class="next"><i class="audiodh-next"></i></button>
 			<div class="devider"></div>
-			<button class="shuffle"></button>
-			<button class="download" disabled></button>
+			<button class="shuffle"><i class="audiodh-shuffle"></i></button>
+			<button class="download" disabled><i class="audiodh-download"></i></button>
 			<div class="devider"></div>
 
 			<div id="volume-bar" class="">
 			    <div id="volume-scrubber">
 			        <div id="volume-indicator"></div>
 			    </div>
-			    <div id="volume-sign"></div>
+			    <div id="volume-sign"><i class="audiodh-volume"></i></div>
 			</div>
 
 			<br>

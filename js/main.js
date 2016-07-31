@@ -143,7 +143,7 @@
       width = $target.width();
       x = e.clientX - offset.left;
       percentage = x / width;
-      $("#volume-indicator").width((percentage * 100) + '%');
+      $("#progress-indicator").width((percentage * 100) + '%');
       if (myplayer) {
         return myplayer.seek(percentage * dur);
       }
