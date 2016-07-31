@@ -159,19 +159,29 @@ jQuery ($) ->
 
 	$("#volume-scrubber").on('mousedown', startVolumeSlide)
 	$(document).on('mouseup', stopVolumeSlide)
-
-	$("ul.tracks li").hover ->
+	isAnimating = false
+	isAnimating2 = false
+	$("ul.tracks li").on "mouseenter", ->
 		if !$(this).hasClass("nowplaying")
-			id = $(this).data('id')
-			track = $.grep tracks, (track) ->
-				track.id == id
-			track = track[0]
-			# console.log(track)
-			$(".curtrack-description").hide()
-			$(".trackinfo header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
-			$(".trackinfo section").html(track.description)
-			$(".trackinfo footer").html("<a href='"+track.link+"' target='_blank'>"+track.link+"</a>")
-			$(".trackinfo").show()
+			if !isAnimating
+				id = $(this).data('id')
+				track = $.grep tracks, (track) ->
+					track.id == id
+				track = track[0]
+				# console.log(track)
+				$(".curtrack-description").hide()
+				$(".trackinfo header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
+				$(".trackinfo section").html(track.description)
+				$(".trackinfo footer").html("<a href='"+track.link+"' target='_blank'>"+track.link+"</a>")
+				$(".trackinfo").show()
+				$(".info-area").addClass('grey')
+				$(".footer").velocity { height: Math.max($(".trackinfo").outerHeight() , $(".controller").height()+40 )}, { duration: 500, queue: false
+				# , begin: ->
+				# 	isAnimating2 = true
+				# ,complete: ->
+				# 	isAnimating2 = false
+				}
+			# $(".footer").css("max-height", $(".trackinfo-container").height()).css("min-height", $(".trackinfo-container").height())
 		else
 			showCurtrackDesc()
 		@
@@ -208,14 +218,31 @@ jQuery ($) ->
 		$(".tracks-wrapper").show()
 
 	showCurtrackDesc = ->
-		$(".curtrack-description").show()
-		$(".trackinfo").hide()
+		# console.log goingDown
+		if !isAnimating2
+			$(".curtrack-description").show()
+			$(".trackinfo").hide()
+			# $(".footer").css("max-height", $(".trackinfo-container").height()).css("min-height", $(".trackinfo-container").height())
+			$(".footer").velocity { height: Math.max($(".curtrack-description").outerHeight(), $(".controller-wrapper").height()+40)  }, { duration: 500, queue: false, begin: ->
+				isAnimating = true
+			,complete: ->
+				isAnimating = false
+			}
+			$(".info-area").removeClass('grey')
 
 	# $(".footer .controller").hover -> showCurtrackDesc()
-	$(".footer").hover -> showCurtrackDesc()
+	# $(".footer").hover -> showCurtrackDesc()
 	$(".header").hover -> showCurtrackDesc()
+	$(".footer").on "mouseenter", -> showCurtrackDesc()
 
-
+	# mY = 0
+	# goingDown = false
+	# $('body').mousemove (e)->
+	# 	if e.pageY > mY
+	# 		goingDown = true
+	# 	else
+	# 		goingDown = false
+	# 	mY = e.pageY
 
 	$(window).resize ->
 		h = $(window).height()

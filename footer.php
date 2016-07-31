@@ -36,7 +36,7 @@
 		    </article>
 	    </div>
     </div>
-    <div class="cell half">
+    <div class="cell half info-area">
         <div class="trackinfo-container">
 			<div class="curtrack-description">
 		        <div class="row">

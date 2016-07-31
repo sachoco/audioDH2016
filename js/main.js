@@ -44,7 +44,7 @@
   }
 
   jQuery(function($) {
-    var moveProgressSlide, moveVolumeSlide, pause, play, playNext, playPause, playPrev, showCurtrackDesc, startProgressSlide, startVolumeSlide, stopProgressSlide, stopVolumeSlide;
+    var isAnimating, isAnimating2, moveProgressSlide, moveVolumeSlide, pause, play, playNext, playPause, playPrev, showCurtrackDesc, startProgressSlide, startVolumeSlide, stopProgressSlide, stopVolumeSlide;
     playPause = function() {
       if (isPlaying) {
         return pause();
@@ -196,19 +196,30 @@
     };
     $("#volume-scrubber").on('mousedown', startVolumeSlide);
     $(document).on('mouseup', stopVolumeSlide);
-    $("ul.tracks li").hover(function() {
+    isAnimating = false;
+    isAnimating2 = false;
+    $("ul.tracks li").on("mouseenter", function() {
       var id, track;
       if (!$(this).hasClass("nowplaying")) {
-        id = $(this).data('id');
-        track = $.grep(tracks, function(track) {
-          return track.id === id;
-        });
-        track = track[0];
-        $(".curtrack-description").hide();
-        $(".trackinfo header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
-        $(".trackinfo section").html(track.description);
-        $(".trackinfo footer").html("<a href='" + track.link + "' target='_blank'>" + track.link + "</a>");
-        $(".trackinfo").show();
+        if (!isAnimating) {
+          id = $(this).data('id');
+          track = $.grep(tracks, function(track) {
+            return track.id === id;
+          });
+          track = track[0];
+          $(".curtrack-description").hide();
+          $(".trackinfo header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
+          $(".trackinfo section").html(track.description);
+          $(".trackinfo footer").html("<a href='" + track.link + "' target='_blank'>" + track.link + "</a>");
+          $(".trackinfo").show();
+          $(".info-area").addClass('grey');
+          $(".footer").velocity({
+            height: Math.max($(".trackinfo").outerHeight(), $(".controller").height() + 40)
+          }, {
+            duration: 500,
+            queue: false
+          });
+        }
       } else {
         showCurtrackDesc();
       }
@@ -240,13 +251,28 @@
       return $(".tracks-wrapper").show();
     });
     showCurtrackDesc = function() {
-      $(".curtrack-description").show();
-      return $(".trackinfo").hide();
+      if (!isAnimating2) {
+        $(".curtrack-description").show();
+        $(".trackinfo").hide();
+        $(".footer").velocity({
+          height: Math.max($(".curtrack-description").outerHeight(), $(".controller-wrapper").height() + 40)
+        }, {
+          duration: 500,
+          queue: false,
+          begin: function() {
+            return isAnimating = true;
+          },
+          complete: function() {
+            return isAnimating = false;
+          }
+        });
+        return $(".info-area").removeClass('grey');
+      }
     };
-    $(".footer").hover(function() {
+    $(".header").hover(function() {
       return showCurtrackDesc();
     });
-    $(".header").hover(function() {
+    $(".footer").on("mouseenter", function() {
       return showCurtrackDesc();
     });
     $(window).resize(function() {

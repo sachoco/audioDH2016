@@ -194,7 +194,6 @@ section.header nav li > a:hover {
 
 .wrapper {
   min-width: 700px;
-  padding-top: 20px;
   max-width: 1440px;
   margin: auto;
 }
@@ -204,7 +203,6 @@ section.body {
   background: url(images/bg-overlay.png) left top;
 }
 section.content-wrapper {
-  max-width: 1200px;
   margin: auto;
   margin-bottom: 300px;
   display: none;
@@ -241,8 +239,8 @@ section ul.tracks li {
   float: left;
   box-sizing: border-box;
   vertical-align: top;
-  padding-right: 35px;
-  padding-left: 35px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 @media screen and (min-width: 660px) {
@@ -252,8 +250,8 @@ section ul.tracks li {
     float: left;
     box-sizing: border-box;
     vertical-align: top;
-    padding-right: 35px;
-    padding-left: 35px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media screen and (min-width: 880px) {
@@ -263,8 +261,8 @@ section ul.tracks li {
     float: left;
     box-sizing: border-box;
     vertical-align: top;
-    padding-right: 35px;
-    padding-left: 35px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media screen and (min-width: 1390px) {
@@ -274,8 +272,8 @@ section ul.tracks li {
     float: left;
     box-sizing: border-box;
     vertical-align: top;
-    padding-right: 35px;
-    padding-left: 35px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -372,11 +370,17 @@ section.footer .cell {
 section.footer .cell.half {
   width: 50%;
 }
+section.footer .cell.half.grey:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #EDEDED;
+}
 section.footer .cell.padding {
   padding: 2em 4em;
 }
 section.footer .trackinfo-container {
-  height: 100%;
   box-sizing: border-box;
 }
 section.footer.mini .trackinfo section, section.footer.mini .trackinfo-cur section {
@@ -389,6 +393,7 @@ section.footer .trackinfo {
   width: 100%;
   padding: 1em;
   height: 100%;
+  display: none;
 }
 section.footer .trackinfo h3 {
   font-size: 1.5em;
@@ -462,10 +467,16 @@ section.footer .controller button.prev {
   width: 38px;
   height: 23px;
 }
+section.footer .controller button.prev:active {
+  background-image: url(images/prev-active.svg);
+}
 section.footer .controller button.next {
   background-image: url(images/next.svg);
   width: 38px;
   height: 23px;
+}
+section.footer .controller button.next:active {
+  background-image: url(images/next-active.svg);
 }
 section.footer .controller button.shuffle {
   background-image: url(images/shuffle.svg);
@@ -485,6 +496,9 @@ section.footer .controller button.download {
 section.footer .controller button.download.active {
   opacity: 1;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+section.footer .controller button.download:active {
+  background-image: url(images/download-active.svg);
 }
 section.footer .controller a.download {
   float: left;
@@ -565,6 +579,24 @@ section.footer .controller #progress-bar #progress-indicator {
   position: absolute;
   left: 0;
   background: #3c3c3c;
+}
+section ul.news li {
+  text-align: center;
+  margin-bottom: 30px;
+}
+section ul.news li > div {
+  background-color: white;
+}
+section ul.news li > div h3 {
+  font-size: 2em;
+  font-weight: 900;
+  width: 260px;
+  margin: auto;
+  text-transform: uppercase;
+}
+section ul.news li img {
+  width: 100%;
+  height: auto;
 }
 
 /*********************
