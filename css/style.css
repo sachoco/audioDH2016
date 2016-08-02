@@ -56,8 +56,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 @font-face {
   font-family: 'audioDH';
-  src: url("fonts/audioDH.eot?3b54t4");
-  src: url("fonts/audioDH.eot?3b54t4#iefix") format("embedded-opentype"), url("fonts/audioDH.ttf?3b54t4") format("truetype"), url("fonts/audioDH.woff?3b54t4") format("woff"), url("fonts/audioDH.svg?3b54t4#audioDH") format("svg");
+  src: url("fonts/audioDH.eot?d61pgo");
+  src: url("fonts/audioDH.eot?d61pgo#iefix") format("embedded-opentype"), url("fonts/audioDH.ttf?d61pgo") format("truetype"), url("fonts/audioDH.woff?d61pgo") format("woff"), url("fonts/audioDH.svg?d61pgo#audioDH") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -73,6 +73,10 @@ i {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.audiodh-pause:before {
+  content: "\e906";
 }
 
 .audiodh-download:before {

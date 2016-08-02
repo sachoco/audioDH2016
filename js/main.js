@@ -78,7 +78,7 @@
         player.on("finish", function() {
           return playNext();
         });
-        $("button.playpause i").addClass("fa-pause").removeClass("fa-play");
+        $("button.playpause i").addClass("audiodh-pause").removeClass("audiodh-play");
         $("ul.tracks li").removeClass("nowplaying");
         $("ul.tracks li[data-id='" + track.id + "']").addClass("nowplaying");
         return isPlaying = true;
@@ -86,7 +86,7 @@
     };
     pause = function() {
       myplayer.pause();
-      $("button.playpause i").removeClass("fa-pause").addClass("fa-play");
+      $("button.playpause i").removeClass("audiodh-pause").addClass("audiodh-play");
       return isPlaying = false;
     };
     playNext = function() {
