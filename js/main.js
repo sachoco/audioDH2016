@@ -68,7 +68,7 @@
         $(".curtrack-description header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
         $(".curtrack-description section").html(track.description);
         $(".curtrack-description footer").html("<a href='" + track.link + "' target='_blank'>" + track.link + "</a>");
-        $(".curtrack-description").show();
+        $(".curtrack-description").css('display', 'table');
         $(".controller .dur").html(timecode(dur));
         $(".trackinfo").hide();
         player.on("time", function() {
@@ -207,12 +207,12 @@
             return track.id === id;
           });
           track = track[0];
-          $(".curtrack-description").hide();
           $(".trackinfo header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
           $(".trackinfo section").html(track.description);
           $(".trackinfo footer").html("<a href='" + track.link + "' target='_blank'>" + track.link + "</a>");
-          $(".trackinfo").show();
+          $(".trackinfo").css('display', 'table');
           $(".info-area").addClass('grey');
+          $(".curtrack-description").hide();
           $(".footer").velocity({
             height: Math.max($(".trackinfo").outerHeight(), $(".controller").height() + 40)
           }, {

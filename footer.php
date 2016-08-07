@@ -47,7 +47,7 @@
 		        	
 		        </div>   
 		        <div class="row align-bottom">
-		        	<div class="cell">
+		        	<div class="cell align-bottom">
 		        		<footer></footer>
 		        	</div>
 		        	
@@ -62,7 +62,7 @@
 		        	
 		        </div>   
 		        <div class="row align-bottom">
-		        	<div class="cell">
+		        	<div class="cell align-bottom">
 		        		<footer></footer>
 		        	</div>
 		        </div>

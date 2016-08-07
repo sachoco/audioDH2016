@@ -416,6 +416,9 @@ section.footer .cell {
   display: table-cell;
   height: 100%;
 }
+section.footer .cell.align-bottom {
+  vertical-align: bottom;
+}
 section.footer .cell.half {
   width: 50%;
 }
@@ -430,6 +433,7 @@ section.footer .cell.padding {
   padding: 2em 4em;
 }
 section.footer .trackinfo-container {
+  height: 100%;
   box-sizing: border-box;
 }
 section.footer.mini .trackinfo section, section.footer.mini .trackinfo-cur section {
@@ -440,7 +444,7 @@ section.footer .trackinfo {
   display: table;
   background-color: #EDEDED;
   width: 100%;
-  padding: 1em;
+  padding: 10px;
   height: 100%;
   display: none;
 }
