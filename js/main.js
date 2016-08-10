@@ -276,6 +276,11 @@
     $(".footer").on("mouseenter", function() {
       return showCurtrackDesc();
     });
+    $(document).keydown(function(e) {
+      if (e.keyCode === 73) {
+        return $("body").toggleClass("invert");
+      }
+    });
     $(window).resize(function() {
       var h, top;
       h = $(window).height();

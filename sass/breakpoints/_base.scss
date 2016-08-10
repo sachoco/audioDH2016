@@ -34,12 +34,11 @@ $header-height: 60px;
 
 * {
 	box-sizing: border-box;
-	transition: filter 2s;
+	// transition: filter 2s;
 }
 html {
 	height: 100%;
-	background-color: $bg-color;
-	background-attachment: fixed;
+
 }
 html, body {
 	// height: 100%;
@@ -50,14 +49,17 @@ html, body {
 	line-height: 1.2;
 	font-weight: $font-weight;
 	height: 100%;
+
 }
 body {
 	// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
-	background: none;
+	// background: none;
+	background-color: $bg-color;
 
-	&.home {
-		// background: none;
-	}
+	&.invert {
+		filter: invert(100%) !important;
+		background-color: invert($bg-color);
+	}	
 }
 h1, h2, h3, h4, h5 {
 	font-family: $header-font-family;

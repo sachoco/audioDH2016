@@ -111,13 +111,10 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 *********************/
 * {
   box-sizing: border-box;
-  transition: -webkit-filter 2s, filter 2s;
 }
 
 html {
   height: 100%;
-  background-color: #FAF5BD;
-  background-attachment: fixed;
 }
 
 html, body {
@@ -131,7 +128,13 @@ html, body {
 }
 
 body {
-  background: none;
+  background-color: #FAF5BD;
+}
+body.invert {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
+  -webkit-filter: invert(100%) !important;
+          filter: invert(100%) !important;
+  background-color: #050a42;
 }
 
 h1, h2, h3, h4, h5 {

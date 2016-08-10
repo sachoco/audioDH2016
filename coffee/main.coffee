@@ -248,6 +248,9 @@ jQuery ($) ->
 	# 		goingDown = false
 	# 	mY = e.pageY
 
+	$(document).keydown (e)->
+		if e.keyCode==73 then $("body").toggleClass("invert")
+
 	$(window).resize ->
 		h = $(window).height()
 		top = $("section.footer").offset().top
