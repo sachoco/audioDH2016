@@ -64,6 +64,8 @@ jQuery ($) ->
 			$("button.playpause i").addClass("audiodh-pause").removeClass("audiodh-play")
 			$("ul.tracks li").removeClass("nowplaying")
 			$("ul.tracks li[data-id='"+track.id+"']").addClass("nowplaying")
+			$(".info-area").removeClass('grey')
+
 			isPlaying = true;
 
 	pause = ->
@@ -176,6 +178,7 @@ jQuery ($) ->
 				$(".info-area").addClass('grey')
 				$(".curtrack-description").hide()
 
+				# $(".footer").velocity { height: Math.max($(".trackinfo div.cell:first-child").height()+40 , $(".controller").height()+40 )}, { duration: 500, queue: false
 				$(".footer").velocity { height: Math.max($(".trackinfo").outerHeight() , $(".controller").height()+40 )}, { duration: 500, queue: false
 				# , begin: ->
 				# 	isAnimating2 = true

@@ -412,12 +412,10 @@ section.footer .row.align-bottom {
   vertical-align: bottom;
 }
 section.footer .cell {
+  position: relative;
   vertical-align: top;
   display: table-cell;
   height: 100%;
-}
-section.footer .cell.align-bottom {
-  vertical-align: bottom;
 }
 section.footer .cell.half {
   width: 50%;
@@ -433,7 +431,6 @@ section.footer .cell.padding {
   padding: 2em 4em;
 }
 section.footer .trackinfo-container {
-  height: 100%;
   box-sizing: border-box;
 }
 section.footer.mini .trackinfo section, section.footer.mini .trackinfo-cur section {

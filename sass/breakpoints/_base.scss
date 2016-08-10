@@ -352,11 +352,12 @@ section {
 		}
 		.cell {
 		    // border: 2px solid black;
+		    position: relative;
 		    vertical-align: top;
 		    display: table-cell;
 		    height:100%;
 		    &.align-bottom {
-		    	vertical-align: bottom;	
+		    	// vertical-align: bottom;	
 		    }
 		    &.half {
 		    	width: 50%;
@@ -378,7 +379,7 @@ section {
 		}
 
 		.trackinfo-container {
-		    height: 100%;
+		    // height: 100%;
 		    // border: 2px solid green;
 		    box-sizing: border-box;
 		}

@@ -81,6 +81,7 @@
         $("button.playpause i").addClass("audiodh-pause").removeClass("audiodh-play");
         $("ul.tracks li").removeClass("nowplaying");
         $("ul.tracks li[data-id='" + track.id + "']").addClass("nowplaying");
+        $(".info-area").removeClass('grey');
         return isPlaying = true;
       });
     };
