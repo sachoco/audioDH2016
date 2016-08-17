@@ -243,6 +243,9 @@ section.header nav li > a:hover {
   text-decoration: none;
   background-color: #FAF5BD;
 }
+section.header nav li > a.fa {
+  line-height: inherit;
+}
 
 .wrapper {
   min-width: 700px;

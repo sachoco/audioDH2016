@@ -190,8 +190,12 @@ section.header{
 					text-decoration: none;
 					background-color: $yellow;
 				}
+				&.fa {
+					line-height: inherit;
+				}
 			}
 		}
+
 	}
 }
 

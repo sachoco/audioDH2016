@@ -56,11 +56,12 @@
                     'link_before' => '',                            // before each link
                     'link_after' => '',                             // after each link
                     'depth' => 2,                                   // limit the depth of the nav
-                    'fallback_cb' => ''                             // fallback function (if there is one)
+                    'fallback_cb' => '',                             // fallback function (if there is one)
+                    'items_wrap' => '<ul id=%1$s class=%2$s>%3$s<li class="invert-btn"><a href="#invert" class="fa fa-adjust" aria-hidden="true"></a></li></ul>'
                 )); ?>
-
 <!--                 <div class="mobile-menu"><i class="fa fa-bars fa-2x fa-border"></i></div>
- -->            </nav>
+ -->
+            </nav>
         </section>
 
 

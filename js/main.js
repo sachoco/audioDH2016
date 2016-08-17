@@ -82,6 +82,23 @@
         $("ul.tracks li").removeClass("nowplaying");
         $("ul.tracks li[data-id='" + track.id + "']").addClass("nowplaying");
         $(".info-area").removeClass('grey');
+        if ($(".controller-wrapper").outerHeight() + 40 > $(".curtrack-description").outerHeight()) {
+          $(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight() + 40);
+        }
+        $(".footer").velocity({
+          height: Math.max($(".curtrack-description").outerHeight(), $(".controller").height() + 40)
+        }, {
+          duration: 500,
+          queue: false,
+          begin: function() {
+            var isAnimating;
+            return isAnimating = true;
+          },
+          complete: function() {
+            var isAnimating;
+            return isAnimating = false;
+          }
+        });
         return isPlaying = true;
       });
     };
@@ -214,8 +231,11 @@
           $(".trackinfo").css('display', 'table');
           $(".info-area").addClass('grey');
           $(".curtrack-description").hide();
+          if ($(".controller-wrapper").outerHeight() + 40 > $(".trackinfo").outerHeight()) {
+            $(".trackinfo").outerHeight($(".controller-wrapper").outerHeight() + 40);
+          }
           $(".footer").velocity({
-            height: Math.max($(".trackinfo").outerHeight(), $(".controller").height() + 40)
+            height: Math.max($(".trackinfo").outerHeight(), $(".controller-wrapper").outerHeight() + 40)
           }, {
             duration: 500,
             queue: false
@@ -239,7 +259,7 @@
       $(this).addClass("nowplaying");
       return play(track);
     });
-    $("nav.nav li:not('.home-btn') a").on("click", function(e) {
+    $("nav.nav li:not('.home-btn, .invert-btn') a").on("click", function(e) {
       e.preventDefault();
       return $(".content-wrapper").load($(this).attr('href') + " #content", function() {
         $(".content-wrapper").show();
@@ -255,8 +275,11 @@
       if (!isAnimating2) {
         $(".curtrack-description").show();
         $(".trackinfo").hide();
+        if ($(".controller-wrapper").outerHeight() + 40 > $(".curtrack-description").outerHeight()) {
+          $(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight() + 40);
+        }
         $(".footer").velocity({
-          height: Math.max($(".curtrack-description").outerHeight(), $(".controller-wrapper").height() + 40)
+          height: Math.max($(".curtrack-description").outerHeight(), $(".controller").height() + 40)
         }, {
           duration: 500,
           queue: false,
@@ -276,10 +299,8 @@
     $(".footer").on("mouseenter", function() {
       return showCurtrackDesc();
     });
-    $(document).keydown(function(e) {
-      if (e.keyCode === 73) {
-        return $("body").toggleClass("invert");
-      }
+    $(document).on("click", "li.invert-btn a", function(e) {
+      return $("body").toggleClass("invert");
     });
     $(window).resize(function() {
       var h, top;

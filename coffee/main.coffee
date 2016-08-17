@@ -65,7 +65,13 @@ jQuery ($) ->
 			$("ul.tracks li").removeClass("nowplaying")
 			$("ul.tracks li[data-id='"+track.id+"']").addClass("nowplaying")
 			$(".info-area").removeClass('grey')
-
+			if  $(".controller-wrapper").outerHeight()+40 > $(".curtrack-description").outerHeight()
+				$(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight()+40)
+			$(".footer").velocity { height: Math.max($(".curtrack-description").outerHeight(), $(".controller").height()+40)  }, { duration: 500, queue: false, begin: ->
+				isAnimating = true
+			,complete: ->
+				isAnimating = false
+			}
 			isPlaying = true;
 
 	pause = ->
@@ -179,7 +185,9 @@ jQuery ($) ->
 				$(".curtrack-description").hide()
 
 				# $(".footer").velocity { height: Math.max($(".trackinfo div.cell:first-child").height()+40 , $(".controller").height()+40 )}, { duration: 500, queue: false
-				$(".footer").velocity { height: Math.max($(".trackinfo").outerHeight() , $(".controller").height()+40 )}, { duration: 500, queue: false
+				if  $(".controller-wrapper").outerHeight()+40 > $(".trackinfo").outerHeight()
+					$(".trackinfo").outerHeight($(".controller-wrapper").outerHeight()+40)
+				$(".footer").velocity { height: Math.max($(".trackinfo").outerHeight() , $(".controller-wrapper").outerHeight()+40 )}, { duration: 500, queue: false
 				# , begin: ->
 				# 	isAnimating2 = true
 				# ,complete: ->
@@ -210,7 +218,7 @@ jQuery ($) ->
 		play(track)
 
 
-	$("nav.nav li:not('.home-btn') a").on "click", (e) ->
+	$("nav.nav li:not('.home-btn, .invert-btn') a").on "click", (e) ->
 		e.preventDefault()
 		$(".content-wrapper").load $(this).attr('href')+" #content", ->
 			$(".content-wrapper").show()
@@ -227,11 +235,14 @@ jQuery ($) ->
 			$(".curtrack-description").show()
 			$(".trackinfo").hide()
 			# $(".footer").css("max-height", $(".trackinfo-container").height()).css("min-height", $(".trackinfo-container").height())
-			$(".footer").velocity { height: Math.max($(".curtrack-description").outerHeight(), $(".controller-wrapper").height()+40)  }, { duration: 500, queue: false, begin: ->
+			if  $(".controller-wrapper").outerHeight()+40 > $(".curtrack-description").outerHeight()
+				$(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight()+40)
+			$(".footer").velocity { height: Math.max($(".curtrack-description").outerHeight(), $(".controller").height()+40)  }, { duration: 500, queue: false, begin: ->
 				isAnimating = true
 			,complete: ->
 				isAnimating = false
 			}
+
 			$(".info-area").removeClass('grey')
 
 	# $(".footer .controller").hover -> showCurtrackDesc()
@@ -248,8 +259,11 @@ jQuery ($) ->
 	# 		goingDown = false
 	# 	mY = e.pageY
 
-	$(document).keydown (e)->
-		if e.keyCode==73 then $("body").toggleClass("invert")
+	# $(document).keydown (e)->
+	# 	if e.keyCode==73 then $("body").toggleClass("invert")
+
+	$(document).on "click", "li.invert-btn a", (e)->
+		$("body").toggleClass("invert")
 
 	$(window).resize ->
 		h = $(window).height()
