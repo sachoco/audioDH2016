@@ -1,15 +1,37 @@
-section.home {
-	width: calc(100% - 300px);
-	min-width: 900px;
+section {
+	&.footer {
+		left: 50%;
+		transform: translateX(-50%);
+		.table {
+		    
+		}
+		.row {
+			
+		}
+		.cell {
+		    &.padding {
+		    	padding: 2em 4em;
+		    }
+		}
 
-}
-section.page--single {
-	width: calc(100% - 300px);
-	min-width: 1030px;
-}
+		.trackinfo-container {
 
-section.page {
-	width: calc(100% - 300px);
-	min-width: 900px;
+		}
+		&.mini {
 
+		}
+		.trackinfo {
+
+		}
+
+		.curtrack-description {
+
+		}
+		.trackinfo-wrap {
+
+		}
+		.controller {
+
+		}
+	}
 }

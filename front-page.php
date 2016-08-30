@@ -1,9 +1,3 @@
-<?php 
-    require_once("include/Mobile_Detect.php");
-    $detect = new Mobile_Detect;
-    $is_mobile = false;
-    if ( $detect->isMobile() && !$detect->isIpad() )  $is_mobile = ture;
-?>  
 <?php include('header.php') ?>
 <div class="wrapper">
 <section class="body gr-12">

@@ -173,34 +173,60 @@ section.header{
 		background: $blue;
 		text-align: center;
 
-		li {
-			display: inline-block;
-			// padding: 15px;
-			>a {
-				// border: 1px solid $blue;
-				color: $yellow;
-				background-color: $blue;
-				text-transform: uppercase;
-				&:focus {
+		// display: none;
+		ul {
+			max-height: 0;
+			overflow: hidden;
+			position: absolute;
+			width: 100%;
+		    left: 0;
+			transition: max-height 0.5s;
+			&.active {
+				max-height: 800px;
+			}
+			li {
+				display: block;
+				// padding: 15px;
+				>a {
+					// border: 1px solid $blue;
+					padding: 10px 7px;
+					color: $yellow;
 					background-color: $blue;
+					text-transform: uppercase;
+					&:focus {
+						background-color: $blue;
+					}
+					&:hover {
+						// border: 1px solid $light-grey;
+						color: $blue;
+						text-decoration: none;
+						background-color: $yellow;
+					}
+					&.fa {
+						line-height: inherit;
+					}
 				}
+			}	
+		}
+		
+
+		.mobile-menu {
+			text-align: center;
+			padding: 5px;
+			font-size: 0.7em;
+			a.fa {
+				color: $yellow;
 				&:hover {
-					// border: 1px solid $light-grey;
-					color: $blue;
 					text-decoration: none;
-					background-color: $yellow;
-				}
-				&.fa {
-					line-height: inherit;
 				}
 			}
 		}
-
 	}
+
 }
 
 .wrapper {
-	min-width: 700px;
+	// min-width: 700px;
 	// padding-top: 20px;
 	max-width: 1440px;
 	margin: auto;
@@ -212,6 +238,8 @@ section {
 	&.body {
 		padding-top: 2em;
 		background: url(images/bg-overlay.png) left top;
+		background-attachment: fixed;
+
 		// background: url(images/bg-overlay.png) left top;
 		// background-size: cover;
 	}
@@ -256,11 +284,11 @@ section {
 			// background-color: #5094F7;
 			// width: 100px;
 			// height: 50px;
-		    @include gridle_grid( 4 );
+		    @include gridle_grid( 6 );
 		    // @include gridle_state( c1 ) {
 		    //     @include gridle_grid( 12 );
 		    // }
-		    // @include gridle_state( c2 ) {
+		    // @include gridle_state( mobile ) {
 		    //     @include gridle_grid( 6 );
 		    // }
 		    @include gridle_state( c3 ) {
@@ -327,8 +355,7 @@ section {
 		bottom: 0;
 		width: 100%;
 		color: $yellow;
-		left: 50%;
-		transform: translateX(-50%);
+
 		max-width: 1440px;
 		// background-color: white;
 		// transition: all 1s;
@@ -360,13 +387,13 @@ section {
 		    // border: 2px solid black;
 		    position: relative;
 		    vertical-align: top;
-		    display: table-cell;
+		    display: block;
 		    height:100%;
 		    &.align-bottom {
 		    	// vertical-align: bottom;	
 		    }
 		    &.half {
-		    	width: 50%;
+		    	width: 100%;
 		    	&.grey {
 		    		&:after {
 		    			content: "";
@@ -377,9 +404,13 @@ section {
 		    		}
 		    		
 		    	}
+
 		    }
+	    	&.info-area {
+	    		display: none;
+	    	}
 		    &.padding {
-		    	padding: 2em 4em;
+		    	padding: 1em;
 		    }
 
 		}

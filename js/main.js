@@ -82,23 +82,27 @@
         $("ul.tracks li").removeClass("nowplaying");
         $("ul.tracks li[data-id='" + track.id + "']").addClass("nowplaying");
         $(".info-area").removeClass('grey');
-        if ($(".controller-wrapper").outerHeight() + 40 > $(".curtrack-description").outerHeight()) {
-          $(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight() + 40);
-        }
-        $(".footer").velocity({
-          height: Math.max($(".curtrack-description").outerHeight(), $(".controller").height() + 40)
-        }, {
-          duration: 500,
-          queue: false,
-          begin: function() {
-            var isAnimating;
-            return isAnimating = true;
-          },
-          complete: function() {
-            var isAnimating;
-            return isAnimating = false;
+        if ($("body").hasClass("mobile")) {
+
+        } else {
+          if ($(".controller-wrapper").outerHeight() + 40 > $(".curtrack-description").outerHeight()) {
+            $(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight() + 40);
           }
-        });
+          $(".footer").velocity({
+            height: Math.max($(".curtrack-description").outerHeight(), $(".controller").height() + 40)
+          }, {
+            duration: 500,
+            queue: false,
+            begin: function() {
+              var isAnimating;
+              return isAnimating = true;
+            },
+            complete: function() {
+              var isAnimating;
+              return isAnimating = false;
+            }
+          });
+        }
         return isPlaying = true;
       });
     };
@@ -216,36 +220,44 @@
     $(document).on('mouseup', stopVolumeSlide);
     isAnimating = false;
     isAnimating2 = false;
-    $("ul.tracks li").on("mouseenter", function() {
-      var id, track;
-      if (!$(this).hasClass("nowplaying")) {
-        if (!isAnimating) {
-          id = $(this).data('id');
-          track = $.grep(tracks, function(track) {
-            return track.id === id;
-          });
-          track = track[0];
-          $(".trackinfo header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
-          $(".trackinfo section").html(track.description);
-          $(".trackinfo footer").html("<a href='" + track.link + "' target='_blank'>" + track.link + "</a>");
-          $(".trackinfo").css('display', 'table');
-          $(".info-area").addClass('grey');
-          $(".curtrack-description").hide();
-          if ($(".controller-wrapper").outerHeight() + 40 > $(".trackinfo").outerHeight()) {
-            $(".trackinfo").outerHeight($(".controller-wrapper").outerHeight() + 40);
+    if (!$("body").hasClass("mobile")) {
+      $("ul.tracks li").on("mouseenter", function() {
+        var id, track;
+        if (!$(this).hasClass("nowplaying")) {
+          if (!isAnimating) {
+            id = $(this).data('id');
+            track = $.grep(tracks, function(track) {
+              return track.id === id;
+            });
+            track = track[0];
+            $(".trackinfo header").html("<h3>" + track.artist_full + "</h3><h4>" + track.track_title + "</h4>");
+            $(".trackinfo section").html(track.description);
+            $(".trackinfo footer").html("<a href='" + track.link + "' target='_blank'>" + track.link + "</a>");
+            $(".trackinfo").css('display', 'table');
+            $(".info-area").addClass('grey');
+            $(".curtrack-description").hide();
+            if ($(".controller-wrapper").outerHeight() + 40 > $(".trackinfo").outerHeight()) {
+              $(".trackinfo").outerHeight($(".controller-wrapper").outerHeight() + 40);
+            }
+            $(".footer").velocity({
+              height: Math.max($(".trackinfo").outerHeight(), $(".controller-wrapper").outerHeight() + 40)
+            }, {
+              duration: 500,
+              queue: false
+            });
           }
-          $(".footer").velocity({
-            height: Math.max($(".trackinfo").outerHeight(), $(".controller-wrapper").outerHeight() + 40)
-          }, {
-            duration: 500,
-            queue: false
-          });
+        } else {
+          showCurtrackDesc();
         }
-      } else {
-        showCurtrackDesc();
-      }
-      return this;
-    });
+        return this;
+      });
+      $(".header").hover(function() {
+        return showCurtrackDesc();
+      });
+      $(".footer").on("mouseenter", function() {
+        return showCurtrackDesc();
+      });
+    }
     $("ul.tracks li").click(function() {
       var id, index, track;
       id = $(this).data('id');
@@ -293,14 +305,11 @@
         return $(".info-area").removeClass('grey');
       }
     };
-    $(".header").hover(function() {
-      return showCurtrackDesc();
-    });
-    $(".footer").on("mouseenter", function() {
-      return showCurtrackDesc();
-    });
     $(document).on("click", "li.invert-btn a", function(e) {
       return $("body").toggleClass("invert");
+    });
+    $(document).on("click", "div.mobile-menu", function(e) {
+      return $("nav ul").toggleClass("active");
     });
     $(window).resize(function() {
       var h, top;

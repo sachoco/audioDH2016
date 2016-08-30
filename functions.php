@@ -1,4 +1,9 @@
 <?php
+    // require_once("include/Mobile_Detect.php");
+    // $detect = new Mobile_Detect;
+    // $is_mobile = false;
+    
+
 	require_once ( get_stylesheet_directory() . '/theme-options.php' );
 	function register_my_menu() {
 	  register_nav_menu('main-menu',__( 'Main Menu' ));
@@ -50,7 +55,10 @@
 		// comment reply script for threaded comments
 		if ( is_front_page()) {
 			wp_enqueue_script( 'front-page-script' );
-		}		
+		}	
+		// if ( $detect->isMobile() && !$detect->isIpad() ) {
+
+		// } 	
 
 	}
 
@@ -103,6 +111,7 @@
 
 	// adding the function to the Wordpress init
 	add_action( 'init', 'custom_post_tracks');
+
+
+
 	/**
-
-

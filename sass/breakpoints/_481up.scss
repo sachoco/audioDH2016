@@ -2,39 +2,29 @@
 	display: block;
 }
 
-section.home {
-	width: calc(100% - 75px);
-	// min-width: 680px;
+section.header {
 
-}
+	nav {
+		display: inline-block;
 
-
-section.page {
-	width: calc(100% - 75px);
-	// min-width: 680px;
-
-}
-.event-content, .press-content {
-	width: calc(100% - 400px);
-}
-
-.event-list, .press-list {
-	// max-height: 100vh;
-	// overflow: scroll;
-	width: 200px;
-	float: left;
-	&.right {
-		float: right;
-	}
-	li {
-		padding: 0.5em 0;
-		font-size: 0.8em;
-		a {
-			color: black;
+		.mobile-menu {
+			display: none;
 		}
-		time {
+		&.mobile-nav {
+			display: none !important;
+		}
+		ul {
 			display: block;
-			font-size: 0.8em;
+			max-height: none;
+			overflow: hidden;
+			position: relative;
+			// width: 100%;
+		 //    left: 0;
+			li {
+				display: inline-block;
+			}
+			// list-style: none;
 		}
+
 	}
 }

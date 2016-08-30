@@ -34,8 +34,15 @@
   </style>
 <![endif]-->
     </head>
-
-    <body <?php body_class(); ?>>
+<?php
+    require_once("include/Mobile_Detect.php");
+    $detect = new Mobile_Detect;
+    $body_class = "non-mobile";
+    if ( $detect->isMobile() && !$detect->isIpad() ) {
+        $body_class = "mobile";
+    } 
+?>
+    <body <?php body_class($body_class); ?>>
         <section class="header">
             <header class="gr-12">
                 <div class="logo">
@@ -44,7 +51,10 @@
                 </div>
                 
             </header>
+
             <nav class="nav gr-12" role="navigation">
+                <div class="mobile-menu"><a class="fa fa-2x fa-bars fa-border"></a></div>
+
                 <?php wp_nav_menu(array(
                     'container' => false,                           // remove nav container
                     'container_class' => 'menu cf',                 // class of container (should you choose to use it)
@@ -59,9 +69,9 @@
                     'fallback_cb' => '',                             // fallback function (if there is one)
                     'items_wrap' => '<ul id=%1$s class=%2$s>%3$s<li class="invert-btn"><a href="#invert" class="fa fa-adjust" aria-hidden="true"></a></li></ul>'
                 )); ?>
-<!--                 <div class="mobile-menu"><i class="fa fa-bars fa-2x fa-border"></i></div>
- -->
+
             </nav>
+
         </section>
 
 

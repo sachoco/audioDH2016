@@ -65,13 +65,20 @@ jQuery ($) ->
 			$("ul.tracks li").removeClass("nowplaying")
 			$("ul.tracks li[data-id='"+track.id+"']").addClass("nowplaying")
 			$(".info-area").removeClass('grey')
-			if  $(".controller-wrapper").outerHeight()+40 > $(".curtrack-description").outerHeight()
-				$(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight()+40)
-			$(".footer").velocity { height: Math.max($(".curtrack-description").outerHeight(), $(".controller").height()+40)  }, { duration: 500, queue: false, begin: ->
-				isAnimating = true
-			,complete: ->
-				isAnimating = false
-			}
+			if $("body").hasClass("mobile")
+				# $(".footer").velocity { height: $(".controller").height()+30 }, { duration: 500, queue: false, begin: ->
+				# 	isAnimating = true
+				# ,complete: ->
+				# 	isAnimating = false
+				# }
+			else
+				if  $(".controller-wrapper").outerHeight()+40 > $(".curtrack-description").outerHeight()
+					$(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight()+40)
+				$(".footer").velocity { height: Math.max($(".curtrack-description").outerHeight(), $(".controller").height()+40)  }, { duration: 500, queue: false, begin: ->
+					isAnimating = true
+				,complete: ->
+					isAnimating = false
+				}
 			isPlaying = true;
 
 	pause = ->
@@ -169,34 +176,38 @@ jQuery ($) ->
 	$(document).on('mouseup', stopVolumeSlide)
 	isAnimating = false
 	isAnimating2 = false
-	$("ul.tracks li").on "mouseenter", ->
-		if !$(this).hasClass("nowplaying")
-			if !isAnimating
-				id = $(this).data('id')
-				track = $.grep tracks, (track) ->
-					track.id == id
-				track = track[0]
-				# console.log(track)
-				$(".trackinfo header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
-				$(".trackinfo section").html(track.description)
-				$(".trackinfo footer").html("<a href='"+track.link+"' target='_blank'>"+track.link+"</a>")
-				$(".trackinfo").css('display', 'table')
-				$(".info-area").addClass('grey')
-				$(".curtrack-description").hide()
 
-				# $(".footer").velocity { height: Math.max($(".trackinfo div.cell:first-child").height()+40 , $(".controller").height()+40 )}, { duration: 500, queue: false
-				if  $(".controller-wrapper").outerHeight()+40 > $(".trackinfo").outerHeight()
-					$(".trackinfo").outerHeight($(".controller-wrapper").outerHeight()+40)
-				$(".footer").velocity { height: Math.max($(".trackinfo").outerHeight() , $(".controller-wrapper").outerHeight()+40 )}, { duration: 500, queue: false
-				# , begin: ->
-				# 	isAnimating2 = true
-				# ,complete: ->
-				# 	isAnimating2 = false
-				}
-			# $(".footer").css("max-height", $(".trackinfo-container").height()).css("min-height", $(".trackinfo-container").height())
-		else
-			showCurtrackDesc()
-		@
+	if !$("body").hasClass("mobile")
+		$("ul.tracks li").on "mouseenter", ->
+			if !$(this).hasClass("nowplaying")
+				if !isAnimating
+					id = $(this).data('id')
+					track = $.grep tracks, (track) ->
+						track.id == id
+					track = track[0]
+					# console.log(track)
+					$(".trackinfo header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
+					$(".trackinfo section").html(track.description)
+					$(".trackinfo footer").html("<a href='"+track.link+"' target='_blank'>"+track.link+"</a>")
+					$(".trackinfo").css('display', 'table')
+					$(".info-area").addClass('grey')
+					$(".curtrack-description").hide()
+
+					# $(".footer").velocity { height: Math.max($(".trackinfo div.cell:first-child").height()+40 , $(".controller").height()+40 )}, { duration: 500, queue: false
+					if  $(".controller-wrapper").outerHeight()+40 > $(".trackinfo").outerHeight()
+						$(".trackinfo").outerHeight($(".controller-wrapper").outerHeight()+40)
+					$(".footer").velocity { height: Math.max($(".trackinfo").outerHeight() , $(".controller-wrapper").outerHeight()+40 )}, { duration: 500, queue: false
+					# , begin: ->
+					# 	isAnimating2 = true
+					# ,complete: ->
+					# 	isAnimating2 = false
+					}
+				# $(".footer").css("max-height", $(".trackinfo-container").height()).css("min-height", $(".trackinfo-container").height())
+			else
+				showCurtrackDesc()
+			@
+		$(".header").hover -> showCurtrackDesc()
+		$(".footer").on "mouseenter", -> showCurtrackDesc()
 
 	$("ul.tracks li").click ->
 		id = $(this).data('id')
@@ -247,8 +258,7 @@ jQuery ($) ->
 
 	# $(".footer .controller").hover -> showCurtrackDesc()
 	# $(".footer").hover -> showCurtrackDesc()
-	$(".header").hover -> showCurtrackDesc()
-	$(".footer").on "mouseenter", -> showCurtrackDesc()
+
 
 	# mY = 0
 	# goingDown = false
@@ -264,6 +274,9 @@ jQuery ($) ->
 
 	$(document).on "click", "li.invert-btn a", (e)->
 		$("body").toggleClass("invert")
+
+	$(document).on "click", "div.mobile-menu", (e)->
+		$("nav ul").toggleClass("active")
 
 	$(window).resize ->
 		h = $(window).height()
