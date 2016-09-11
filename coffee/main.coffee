@@ -36,11 +36,15 @@ jQuery ($) ->
 
 	play = (track)->
 		SC.get('/tracks/'+track.track_id).then (track)->
+		# SC.get('/tracks/293').then (track)->
 			dur = track.duration
 			downloadURL = track.download_url
 			$("button.download").addClass('active').removeAttr('disabled')
 
 		SC.stream('/tracks/'+track.track_id).then (player)->
+		# SC.stream('/tracks/293').then (player)->
+			if player.options.protocols[0] == 'rtmp'
+				player.options.protocols.splice(0, 1)
 			player.play()
 			myplayer = player
 			artist_name = if track.artist_full then track.artist_full else track.artist

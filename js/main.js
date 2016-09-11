@@ -60,6 +60,9 @@
       });
       return SC.stream('/tracks/' + track.track_id).then(function(player) {
         var artist_name;
+        if (player.options.protocols[0] === 'rtmp') {
+          player.options.protocols.splice(0, 1);
+        }
         player.play();
         myplayer = player;
         artist_name = track.artist_full ? track.artist_full : track.artist;
