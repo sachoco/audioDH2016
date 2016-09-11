@@ -216,7 +216,8 @@ section.header header {
 }
 section.header .logo {
   margin-left: 1em;
-  background: url(images/logo.png) no-repeat center center;
+  background: url(images/logo-high.png) no-repeat center center;
+  background-size: contain;
   width: 290px;
   height: 80px;
 }
@@ -309,9 +310,6 @@ section ul.tracks li span {
 }
 section ul.tracks li:hover span {
   background-color: #F1F1F1 !important;
-}
-section ul.tracks li.nowplaying {
-  font-weight: bold;
 }
 section ul.tracks li.nowplaying span {
   background-color: #FF485B !important;

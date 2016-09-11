@@ -154,7 +154,8 @@ section.header{
 
 	.logo {
 		margin-left: 1em;
-		background: url(images/logo.png) no-repeat center center;
+		background: url(images/logo-high.png) no-repeat center center;
+		background-size: contain; 
 		width: 290px;
 		height: 80px;
 		h1 {
@@ -275,7 +276,7 @@ section {
 				}
 			}
 			&.nowplaying {
-				font-weight: bold;
+				// font-weight: bold;
 				span {
 					background-color: $red !important;
 				}
