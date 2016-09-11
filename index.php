@@ -3,7 +3,7 @@
 
 
 	<section id="content">
-        <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section>
+        <!-- <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section> -->
         <section class="page__body">
             <?php the_content(); ?>
 

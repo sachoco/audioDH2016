@@ -7,7 +7,7 @@
 			<button class="playpause"><i class="audiodh-play"></i></button>
 			<button class="next"><i class="audiodh-next"></i></button>
 			<div class="devider"></div>
-			<button class="shuffle"><i class="audiodh-shuffle"></i></button>
+			<button class="shuffle" title="Shuffle"><i class="audiodh-shuffle"></i></button>
 			<button class="download" disabled><i class="audiodh-download"></i></button>
 			<div class="devider"></div>
 
