@@ -29,6 +29,8 @@
 
 		wp_register_script( 'underscore', get_stylesheet_directory_uri() . '/bower_components/underscore/underscore-.min.js', array('jquery'), '', true );
 		// wp_enqueue_script( 'underscore' );
+		wp_register_script( 'soundmanager', get_stylesheet_directory_uri() . '/soundmanagerv2/script/soundmanager2.js', array('jquery'), '', true );
+		wp_enqueue_script( 'soundmanager' );
 		// register main script
 		wp_register_script( 'main-script', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), '', true );
 		wp_enqueue_script( 'main-script' );

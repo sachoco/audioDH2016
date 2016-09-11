@@ -141,6 +141,19 @@ body.invert img, body.invert iframe {
   -webkit-filter: invert(100%) !important;
           filter: invert(100%) !important;
 }
+body.mobile #progress-bar {
+  display: none;
+}
+body.mobile .controller br {
+  display: none;
+}
+body.mobile small .cur {
+  display: none;
+}
+body.mobile small .dur {
+  float: left !important;
+  display: none;
+}
 
 h1, h2, h3, h4, h5 {
   font-family: "Maven Pro", sans-serif;
@@ -536,6 +549,7 @@ section.footer .controller button {
   padding-bottom: 0;
   background-repeat: no-repeat;
   font-size: 22px;
+  padding: 0 10px;
 }
 section.footer .controller button:active {
   color: #3c3c3c;
@@ -651,7 +665,6 @@ section ul.news li > div h3 {
   font-weight: 900;
   width: 260px;
   margin: 0.5em auto;
-  text-transform: uppercase;
 }
 section ul.news li > div date {
   text-transform: uppercase;

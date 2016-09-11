@@ -46,25 +46,38 @@
   jQuery(function($) {
     var isAnimating, isAnimating2, moveProgressSlide, moveVolumeSlide, pause, play, playNext, playPause, playPrev, showCurtrackDesc, startProgressSlide, startVolumeSlide, stopProgressSlide, stopVolumeSlide;
     playPause = function() {
-      if (isPlaying) {
-        return pause();
+      if ($("body").hasClass("mobile")) {
+        if (isPlaying) {
+          return pause();
+        } else {
+          soundManager.play('mySound', {
+            onfinish: function() {
+              nowplaying++;
+              if (nowplaying >= tracks.length) {
+                nowplaying = 0;
+              }
+              soundManager.setPosition('mySound', 0);
+              soundManager.load('mySound');
+              return play(tracks[nowplaying]);
+            }
+          });
+          $("button.playpause i").addClass("audiodh-pause").removeClass("audiodh-play");
+          return isPlaying = true;
+        }
       } else {
-        return play(tracks[nowplaying]);
+        if (isPlaying) {
+          return pause();
+        } else {
+          return play(tracks[nowplaying]);
+        }
       }
     };
     play = function(track) {
-      SC.get('/tracks/' + track.track_id).then(function(track) {
-        dur = track.duration;
-        downloadURL = track.download_url;
-        return $("button.download").addClass('active').removeAttr('disabled');
-      });
-      return SC.stream('/tracks/' + track.track_id).then(function(player) {
+      return SC.get('/tracks/' + track.track_id).then(function(mytrack) {
         var artist_name;
-        if (player.options.protocols[0] === 'rtmp') {
-          player.options.protocols.splice(0, 1);
-        }
-        player.play();
-        myplayer = player;
+        dur = mytrack.duration;
+        downloadURL = mytrack.download_url;
+        $("button.download").addClass('active').removeAttr('disabled');
         artist_name = track.artist_full ? track.artist_full : track.artist;
         $(".trackinfo-cur .title").html(track.track_title);
         $(".trackinfo-cur .artist").html(artist_name);
@@ -74,19 +87,17 @@
         $(".curtrack-description").css('display', 'table');
         $(".controller .dur").html(timecode(dur));
         $(".trackinfo").hide();
-        player.on("time", function() {
-          $(".controller .cur").html(timecode(player.currentTime()));
-          return $("#progress-indicator").width((player.currentTime() / dur * 100) + '%');
-        });
-        player.on("finish", function() {
-          return playNext();
-        });
-        $("button.playpause i").addClass("audiodh-pause").removeClass("audiodh-play");
         $("ul.tracks li").removeClass("nowplaying");
         $("ul.tracks li[data-id='" + track.id + "']").addClass("nowplaying");
         $(".info-area").removeClass('grey');
         if ($("body").hasClass("mobile")) {
-
+          soundManager.destroySound('mySound');
+          myplayer = soundManager.createSound({
+            id: 'mySound',
+            url: mytrack.stream_url + "?client_id=d71d92737e650fa0a479ca7aaff8b652",
+            stream: true
+          });
+          return soundManager.play('mySound');
         } else {
           if ($(".controller-wrapper").outerHeight() + 40 > $(".curtrack-description").outerHeight()) {
             $(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight() + 40);
@@ -105,8 +116,23 @@
               return isAnimating = false;
             }
           });
+          return SC.stream('/tracks/' + track.track_id).then(function(player) {
+            if (player.options.protocols[0] === 'rtmp') {
+              player.options.protocols.splice(0, 1);
+            }
+            player.play();
+            myplayer = player;
+            player.on("time", function() {
+              $(".controller .cur").html(timecode(player.currentTime()));
+              return $("#progress-indicator").width((player.currentTime() / dur * 100) + '%');
+            });
+            player.on("finish", function() {
+              return playNext();
+            });
+            $("button.playpause i").addClass("audiodh-pause").removeClass("audiodh-play");
+            return isPlaying = true;
+          });
         }
-        return isPlaying = true;
       });
     };
     pause = function() {
@@ -119,8 +145,14 @@
       if (nowplaying >= tracks.length) {
         nowplaying = 0;
       }
-      if (myplayer) {
-        myplayer.seek(0);
+      if ($("body").hasClass("mobile")) {
+        if (myplayer) {
+          soundManager.setPosition('mySound', 0);
+        }
+      } else {
+        if (myplayer) {
+          myplayer.seek(0);
+        }
       }
       return play(tracks[nowplaying]);
     };
@@ -129,8 +161,14 @@
       if (nowplaying < 0) {
         nowplaying = mytracks.length;
       }
-      if (myplayer) {
-        myplayer.seek(0);
+      if ($("body").hasClass("mobile")) {
+        if (myplayer) {
+          soundManager.setPosition('mySound', 0);
+        }
+      } else {
+        if (myplayer) {
+          myplayer.seek(0);
+        }
       }
       return play(tracks[nowplaying]);
     };
@@ -169,8 +207,14 @@
       x = e.clientX - offset.left;
       percentage = x / width;
       $("#progress-indicator").width((percentage * 100) + '%');
-      if (myplayer) {
-        return myplayer.seek(percentage * dur);
+      if ($("body").hasClass("mobile")) {
+        if (myplayer) {
+          return soundManager.setPosition('mySound', percentage * dur);
+        }
+      } else {
+        if (myplayer) {
+          return myplayer.seek(percentage * dur);
+        }
       }
     };
     startProgressSlide = function(e) {
@@ -182,8 +226,14 @@
       percentage = x / width;
       $("#progress-scrubber").on('mousemove', moveProgressSlide);
       $("#progress-indicator").width((percentage * 100) + '%');
-      if (myplayer) {
-        return myplayer.seek(percentage * dur);
+      if ($("body").hasClass("mobile")) {
+        if (myplayer) {
+          return soundManager.setPosition('mySound', percentage * dur);
+        }
+      } else {
+        if (myplayer) {
+          return myplayer.seek(percentage * dur);
+        }
       }
     };
     stopProgressSlide = function(e) {

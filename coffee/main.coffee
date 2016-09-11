@@ -32,21 +32,29 @@ Array::shuffle ?= ->
 jQuery ($) -> 	
 
 	playPause = ->
-		if isPlaying then pause() else play(tracks[nowplaying])
+		if $("body").hasClass("mobile")
+			if isPlaying 
+				pause() 
+			else 
+				soundManager.play('mySound',{ onfinish: ->
+					nowplaying++
+					if nowplaying>=tracks.length then nowplaying = 0
+					soundManager.setPosition('mySound',0)
+					soundManager.load('mySound');
+					play(tracks[nowplaying])			
+				})
+				$("button.playpause i").addClass("audiodh-pause").removeClass("audiodh-play")
+				isPlaying = true
+
+		else
+			if isPlaying then pause() else play(tracks[nowplaying])
 
 	play = (track)->
-		SC.get('/tracks/'+track.track_id).then (track)->
+		SC.get('/tracks/'+track.track_id).then (mytrack)->
 		# SC.get('/tracks/293').then (track)->
-			dur = track.duration
-			downloadURL = track.download_url
+			dur = mytrack.duration
+			downloadURL = mytrack.download_url
 			$("button.download").addClass('active').removeAttr('disabled')
-
-		SC.stream('/tracks/'+track.track_id).then (player)->
-		# SC.stream('/tracks/293').then (player)->
-			if player.options.protocols[0] == 'rtmp'
-				player.options.protocols.splice(0, 1)
-			player.play()
-			myplayer = player
 			artist_name = if track.artist_full then track.artist_full else track.artist
 			$(".trackinfo-cur .title").html(track.track_title);
 			$(".trackinfo-cur .artist").html(artist_name);
@@ -57,24 +65,16 @@ jQuery ($) ->
 			$(".curtrack-description").css('display','table')
 			$(".controller .dur").html(timecode(dur))
 			$(".trackinfo").hide()
-
-			player.on "time", ->
-				$(".controller .cur").html(timecode(player.currentTime()))
-				$("#progress-indicator").width((player.currentTime()/dur*100) + '%')
-			
-			player.on "finish", ->
-				playNext();
-			
-			$("button.playpause i").addClass("audiodh-pause").removeClass("audiodh-play")
 			$("ul.tracks li").removeClass("nowplaying")
 			$("ul.tracks li[data-id='"+track.id+"']").addClass("nowplaying")
 			$(".info-area").removeClass('grey')
+				
+
 			if $("body").hasClass("mobile")
-				# $(".footer").velocity { height: $(".controller").height()+30 }, { duration: 500, queue: false, begin: ->
-				# 	isAnimating = true
-				# ,complete: ->
-				# 	isAnimating = false
-				# }
+				soundManager.destroySound('mySound')
+				# if isPlaying then pause() 
+				myplayer = soundManager.createSound({ id: 'mySound', url: mytrack.stream_url + "?client_id=d71d92737e650fa0a479ca7aaff8b652", stream: true})
+				soundManager.play('mySound')
 			else
 				if  $(".controller-wrapper").outerHeight()+40 > $(".curtrack-description").outerHeight()
 					$(".curtrack-description").outerHeight($(".controller-wrapper").outerHeight()+40)
@@ -83,7 +83,28 @@ jQuery ($) ->
 				,complete: ->
 					isAnimating = false
 				}
-			isPlaying = true;
+				SC.stream('/tracks/'+track.track_id).then (player)->
+				# SC.stream('/tracks/293').then (player)->
+					if player.options.protocols[0] == 'rtmp'
+						player.options.protocols.splice(0, 1)
+
+					
+					player.play()
+
+					myplayer = player
+
+
+
+					player.on "time", ->
+						$(".controller .cur").html(timecode(player.currentTime()))
+						$("#progress-indicator").width((player.currentTime()/dur*100) + '%')
+					
+					player.on "finish", ->
+						playNext();
+					
+					$("button.playpause i").addClass("audiodh-pause").removeClass("audiodh-play")
+					
+					isPlaying = true;
 
 	pause = ->
 		myplayer.pause()
@@ -93,13 +114,21 @@ jQuery ($) ->
 	playNext = ->
 		nowplaying++
 		if nowplaying>=tracks.length then nowplaying = 0
-		if myplayer then myplayer.seek(0)
+		if $("body").hasClass("mobile")
+			if myplayer
+				soundManager.setPosition('mySound',0)
+		else
+			if myplayer then myplayer.seek(0)
 		play(tracks[nowplaying])
 
 	playPrev = ->
 		nowplaying--
 		if nowplaying<0 then nowplaying = mytracks.length
-		if myplayer then myplayer.seek(0)
+		if $("body").hasClass("mobile")
+			if myplayer
+				soundManager.setPosition('mySound',0)
+		else
+			if myplayer then myplayer.seek(0)
 		play(tracks[nowplaying])
 
 	$("button.playpause").on "click", -> playPause()
@@ -136,7 +165,11 @@ jQuery ($) ->
 		x = e.clientX - offset.left
 		percentage = x / width
 		$("#progress-indicator").width((percentage * 100) + '%')
-		if myplayer then myplayer.seek(percentage*dur)
+		if $("body").hasClass("mobile")
+			if myplayer
+				soundManager.setPosition('mySound',percentage*dur)
+		else
+			if myplayer then myplayer.seek(percentage*dur)
 
 	startProgressSlide = (e)->
 		$target = $("#progress-scrubber")
@@ -146,7 +179,11 @@ jQuery ($) ->
 		percentage = x / width
 		$("#progress-scrubber").on('mousemove', moveProgressSlide)
 		$("#progress-indicator").width((percentage * 100) + '%')
-		if myplayer then myplayer.seek(percentage*dur)
+		if $("body").hasClass("mobile")
+			if myplayer
+				soundManager.setPosition('mySound',percentage*dur)
+		else
+			if myplayer then myplayer.seek(percentage*dur)
 
 	stopProgressSlide = (e)->
 		$("#progress-scrubber").off('mousemove', moveProgressSlide)
@@ -230,6 +267,7 @@ jQuery ($) ->
 		# $(".curtrack-description").html(track.description)
 		$(".tracks li").removeClass("nowplaying")
 		$(this).addClass("nowplaying")
+
 		play(track)
 
 

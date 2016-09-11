@@ -50,14 +50,13 @@
         ?>        
         </div>
     </section>
-    
 </section>
 <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
 <script>
     SC.initialize({
       client_id: 'd71d92737e650fa0a479ca7aaff8b652'
     });
-            
+   
     var tracks = <?php echo json_encode($tracks) ?>;
 </script>
 

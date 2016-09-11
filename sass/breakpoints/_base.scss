@@ -63,6 +63,26 @@ body {
 			filter: invert(100%) !important;
 		}
 	}	
+	&.mobile {
+		#progress-bar {
+			display: none;
+		}
+		.controller {
+			br {
+				display: none;
+			}
+		}
+		small {
+			.cur {
+				display: none;
+			}
+			.dur {
+				float: left !important;
+				display: none;
+			}
+		}
+		
+	}
 }
 h1, h2, h3, h4, h5 {
 	font-family: $header-font-family;
@@ -521,6 +541,7 @@ section {
 				padding-bottom: 0;
 				background-repeat: no-repeat;
 				font-size: 22px;
+				padding: 0 10px;
 				&:active {
 					color: $grey;
 				}
@@ -683,7 +704,7 @@ section {
 					font-weight: 900;
 					width: 260px;
 					margin: 0.5em auto;
-					text-transform: uppercase;
+					// text-transform: uppercase;
 				}
 				date {
 					text-transform: uppercase;
