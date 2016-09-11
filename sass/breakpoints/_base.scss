@@ -59,7 +59,7 @@ body {
 	&.invert {
 		filter: invert(100%) !important;
 		background-color: invert($bg-color);
-		img {
+		img, iframe {
 			filter: invert(100%) !important;
 		}
 	}	
