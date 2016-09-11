@@ -1,7 +1,15 @@
 .hide-on-mobile {
 	display: block;
 }
-
+section {
+	&.footer {
+		.controller {
+			#volume-bar {
+				display: block;
+			}
+		}
+	}
+}
 section.header {
 
 	nav {
