@@ -136,6 +136,11 @@ body.invert {
           filter: invert(100%) !important;
   background-color: #050a42;
 }
+body.invert img {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
+  -webkit-filter: invert(100%) !important;
+          filter: invert(100%) !important;
+}
 
 h1, h2, h3, h4, h5 {
   font-family: "Maven Pro", sans-serif;

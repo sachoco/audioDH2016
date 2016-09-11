@@ -59,6 +59,9 @@ body {
 	&.invert {
 		filter: invert(100%) !important;
 		background-color: invert($bg-color);
+		img {
+			filter: invert(100%) !important;
+		}
 	}	
 }
 h1, h2, h3, h4, h5 {
