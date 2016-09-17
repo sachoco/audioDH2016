@@ -30,13 +30,15 @@
                             $cat = esc_html( $categories[0]->name );   
                         }
 
-                        echo "<li class='gr-4' data-id='".$post->ID."' ><div>";
+                        echo "<li data-id='".$post->ID."' ><div>";
                         the_post_thumbnail('thumbnail');
+                        echo "<div class='text'>";
                         echo "<h3><a href='".$permalink."' target='_self'>".$post->post_title."</a></h3>";
                         // echo "<date>".mysql2date('j F Y', $post->post_date)."</date> | <span class='category'>".$cat."</span>";
                         echo "<div class='devider'>--------</div><div class='excerpt'>";
                         the_excerpt();
                         // echo "<a href='".$permalink."' class='readmore'>Read More</a></div></div></li>";
+                        echo "</div>";
                         $i++;
                     endwhile;
                 endif;

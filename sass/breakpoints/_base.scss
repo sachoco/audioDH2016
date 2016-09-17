@@ -699,10 +699,38 @@ section {
 		li {
 			text-align: center;
 			margin-bottom: 30px;
+		    @include gridle_grid( 12 );
+		    @include gridle_state( sm ) {
+		        @include gridle_grid( 6 );
+		    }
+		    @include gridle_state( md ) {
+		        @include gridle_grid( 4 );
+
+		    }
+		    @include gridle_state( lg ) {
+		        // @include gridle_grid( 4 );
+		    }
+		    
 			>div {
 				background-color: white;
 				padding-bottom: 30px;
-				height: 530px;
+				// height: 590px;
+
+				div.text {
+					height: 240px;
+					@include gridle_state( sm ) {
+						height: 250px;
+				    }
+				    @include gridle_state( md ) {
+				        // height: 250px;
+				    }
+				    @include gridle_state( lg ) {
+				        height: 240px;
+				    }
+					
+				}
+
+
 				h3 {
 					font-size: 2em;
 					font-weight: 900;

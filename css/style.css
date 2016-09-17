@@ -330,7 +330,7 @@ section ul.tracks li:hover span {
 section ul.tracks li.nowplaying span {
   background-color: #FF485B !important;
 }
-section ul.tracks li {
+section ul.tracks li, section ul.news li {
   display: inline-block;
   min-height: 1px;
   float: left;
@@ -340,6 +340,28 @@ section ul.tracks li {
   padding-left: 15px;
 }
 
+@media screen and (min-width: 600px) {
+  section ul.news li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+@media screen and (min-width: 992px) {
+  section ul.news li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
 @media screen and (min-width: 660px) {
   section ul.tracks li {
     display: inline-block;
@@ -658,11 +680,40 @@ section ul.news {
 section ul.news li {
   text-align: center;
   margin-bottom: 30px;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  section ul.news li {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+@media screen and (min-width: 600px) {
+  section ul.news li {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 992px) {
+  section ul.news li {
+    width: 33.33333%;
+  }
 }
 section ul.news li > div {
   background-color: white;
   padding-bottom: 30px;
-  height: 530px;
+}
+section ul.news li > div div.text {
+  height: 240px;
+}
+@media screen and (min-width: 600px) {
+  section ul.news li > div div.text {
+    height: 250px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  section ul.news li > div div.text {
+    height: 240px;
+  }
 }
 section ul.news li > div h3 {
   font-size: 2em;

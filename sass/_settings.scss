@@ -15,7 +15,7 @@
 	gutter-width : 10px
 ) );
 @include gridle_register_state( sm , (
-    min-width : 768px
+    min-width : 600px
 ) );
 @include gridle_register_state( md, (
     min-width : 992px

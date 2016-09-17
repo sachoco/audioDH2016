@@ -36,3 +36,16 @@ section.header {
 
 	}
 }
+section {
+	ul.news {
+		li {
+			// @include gridle_grid( 6 );
+		    
+			>div {
+
+				div.text {
+				}
+			}
+		}
+	}
+}

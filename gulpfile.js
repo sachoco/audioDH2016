@@ -55,7 +55,7 @@ gulp.task('compass', function(){
 });
 
 gulp.task('griddle', function(){
-    gulp.src('sass/griddle.scss')
+    gulp.src('sass/grid.scss')
     .pipe(plumber())
     .pipe(compass({
         config_file: 'config.rb',
