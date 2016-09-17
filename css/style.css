@@ -301,7 +301,7 @@ section.body {
 }
 section.content-wrapper {
   margin: auto;
-  margin-bottom: 300px;
+  margin-bottom: 100px;
   display: none;
 }
 section.content-wrapper a {
