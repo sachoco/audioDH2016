@@ -272,6 +272,9 @@ section {
 		margin: auto;
 		margin-bottom: 300px;
 		display: none;
+		a {
+			color: $red;
+		}
 	}
 	ul.tracks {
 		// width: 180px;
@@ -698,7 +701,8 @@ section {
 			margin-bottom: 30px;
 			>div {
 				background-color: white;
-				padding-bottom: 3em;
+				padding-bottom: 30px;
+				height: 530px;
 				h3 {
 					font-size: 2em;
 					font-weight: 900;
@@ -714,7 +718,7 @@ section {
 				}
 				.excerpt {
 					p {
-					margin: 0 30px 3em;
+					margin: 0 30px;
 					text-align: justify;	
 					}
 					

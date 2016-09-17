@@ -331,6 +331,13 @@
         return $(".tracks-wrapper").hide();
       });
     });
+    $(document).on("click", "ul.news h3 a", function(e) {
+      e.preventDefault();
+      return $(".content-wrapper").load($(this).attr('href') + " #content", function() {
+        $(".content-wrapper").show();
+        return $(".tracks-wrapper").hide();
+      });
+    });
     $("section.header header, nav.nav li.home-btn a").on("click", function(e) {
       e.preventDefault();
       $(".content-wrapper").hide();

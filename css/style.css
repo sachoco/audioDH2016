@@ -304,6 +304,9 @@ section.content-wrapper {
   margin-bottom: 300px;
   display: none;
 }
+section.content-wrapper a {
+  color: #FF485B;
+}
 section ul.tracks {
   margin-bottom: 50px;
   float: left;
@@ -658,7 +661,8 @@ section ul.news li {
 }
 section ul.news li > div {
   background-color: white;
-  padding-bottom: 3em;
+  padding-bottom: 30px;
+  height: 530px;
 }
 section ul.news li > div h3 {
   font-size: 2em;
@@ -673,7 +677,7 @@ section ul.news li > div .category {
   text-transform: uppercase;
 }
 section ul.news li > div .excerpt p {
-  margin: 0 30px 3em;
+  margin: 0 30px;
   text-align: justify;
 }
 section ul.news li > div .readmore {

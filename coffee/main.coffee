@@ -277,6 +277,12 @@ jQuery ($) ->
 			$(".content-wrapper").show()
 			$(".tracks-wrapper").hide()
 
+	$(document).on "click", "ul.news h3 a", (e)->
+		e.preventDefault()
+		$(".content-wrapper").load $(this).attr('href')+" #content", ->
+			$(".content-wrapper").show()
+			$(".tracks-wrapper").hide()
+
 	$("section.header header, nav.nav li.home-btn a").on "click", (e)->
 		e.preventDefault()
 		$(".content-wrapper").hide()
@@ -325,3 +331,4 @@ jQuery ($) ->
 		top = $("section.footer").offset().top
 		if h < 550 then $("section.footer").addClass("mini") else $("section.footer").removeClass("mini")
 	@
+
