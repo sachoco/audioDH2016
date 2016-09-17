@@ -147,6 +147,12 @@ body.mobile #progress-bar {
 body.mobile .controller br {
   display: none;
 }
+body.mobile .controller .download {
+  display: none;
+}
+body.mobile .controller #volume-bar {
+  display: none;
+}
 body.mobile small .cur {
   display: none;
 }
@@ -624,7 +630,6 @@ section.footer .controller .dur {
   font-size: 0.8em;
 }
 section.footer .controller #volume-bar {
-  display: none;
   position: absolute;
   top: 10px;
   right: 0px;
@@ -753,10 +758,6 @@ tweeners.
 *********************/
 @media only screen and (min-width: 481px) {
   .hide-on-mobile {
-    display: block;
-  }
-
-  section.footer .controller #volume-bar {
     display: block;
   }
 

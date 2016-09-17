@@ -196,84 +196,84 @@
         return nowplaying = $.inArray(cur_track, tracks);
       }
     });
-    $("button.download").on("click", function() {
-      return window.location.href = downloadURL + '?client_id=098249c9bda43969033f485dc628827d';
-    });
-    moveProgressSlide = function(e) {
-      var $target, offset, percentage, width, x;
-      $target = $("#progress-scrubber");
-      offset = $target.offset();
-      width = $target.width();
-      x = e.clientX - offset.left;
-      percentage = x / width;
-      $("#progress-indicator").width((percentage * 100) + '%');
-      if ($("body").hasClass("mobile")) {
-        if (myplayer) {
-          return soundManager.setPosition('mySound', percentage * dur);
-        }
-      } else {
-        if (myplayer) {
-          return myplayer.seek(percentage * dur);
-        }
-      }
-    };
-    startProgressSlide = function(e) {
-      var $target, offset, percentage, width, x;
-      $target = $("#progress-scrubber");
-      offset = $target.offset();
-      width = $target.width();
-      x = e.clientX - offset.left;
-      percentage = x / width;
-      $("#progress-scrubber").on('mousemove', moveProgressSlide);
-      $("#progress-indicator").width((percentage * 100) + '%');
-      if ($("body").hasClass("mobile")) {
-        if (myplayer) {
-          return soundManager.setPosition('mySound', percentage * dur);
-        }
-      } else {
-        if (myplayer) {
-          return myplayer.seek(percentage * dur);
-        }
-      }
-    };
-    stopProgressSlide = function(e) {
-      return $("#progress-scrubber").off('mousemove', moveProgressSlide);
-    };
-    $("#progress-scrubber").on('mousedown', startProgressSlide);
-    $(document).on('mouseup', stopProgressSlide);
-    moveVolumeSlide = function(e) {
-      var $target, offset, percentage, width, x;
-      $target = $("#volume-scrubber");
-      offset = $target.offset();
-      width = $target.width();
-      x = e.clientX - offset.left;
-      percentage = x / width;
-      $("#volume-indicator").width((percentage * 100) + '%');
-      if (myplayer) {
-        return myplayer.setVolume(percentage);
-      }
-    };
-    startVolumeSlide = function(e) {
-      var $target, offset, percentage, width, x;
-      $target = $("#volume-scrubber");
-      offset = $target.offset();
-      width = $target.width();
-      x = e.clientX - offset.left;
-      percentage = x / width;
-      $("#volume-scrubber").on('mousemove', moveVolumeSlide);
-      $("#volume-indicator").width((percentage * 100) + '%');
-      if (myplayer) {
-        return myplayer.setVolume(percentage);
-      }
-    };
-    stopVolumeSlide = function(e) {
-      return $("#volume-scrubber").off('mousemove', moveVolumeSlide);
-    };
-    $("#volume-scrubber").on('mousedown', startVolumeSlide);
-    $(document).on('mouseup', stopVolumeSlide);
-    isAnimating = false;
-    isAnimating2 = false;
     if (!$("body").hasClass("mobile")) {
+      $("button.download").on("click", function() {
+        return window.location.href = downloadURL + '?client_id=098249c9bda43969033f485dc628827d';
+      });
+      moveProgressSlide = function(e) {
+        var $target, offset, percentage, width, x;
+        $target = $("#progress-scrubber");
+        offset = $target.offset();
+        width = $target.width();
+        x = e.clientX - offset.left;
+        percentage = x / width;
+        $("#progress-indicator").width((percentage * 100) + '%');
+        if ($("body").hasClass("mobile")) {
+          if (myplayer) {
+            return soundManager.setPosition('mySound', percentage * dur);
+          }
+        } else {
+          if (myplayer) {
+            return myplayer.seek(percentage * dur);
+          }
+        }
+      };
+      startProgressSlide = function(e) {
+        var $target, offset, percentage, width, x;
+        $target = $("#progress-scrubber");
+        offset = $target.offset();
+        width = $target.width();
+        x = e.clientX - offset.left;
+        percentage = x / width;
+        $("#progress-scrubber").on('mousemove', moveProgressSlide);
+        $("#progress-indicator").width((percentage * 100) + '%');
+        if ($("body").hasClass("mobile")) {
+          if (myplayer) {
+            return soundManager.setPosition('mySound', percentage * dur);
+          }
+        } else {
+          if (myplayer) {
+            return myplayer.seek(percentage * dur);
+          }
+        }
+      };
+      stopProgressSlide = function(e) {
+        return $("#progress-scrubber").off('mousemove', moveProgressSlide);
+      };
+      $("#progress-scrubber").on('mousedown', startProgressSlide);
+      $(document).on('mouseup', stopProgressSlide);
+      moveVolumeSlide = function(e) {
+        var $target, offset, percentage, width, x;
+        $target = $("#volume-scrubber");
+        offset = $target.offset();
+        width = $target.width();
+        x = e.clientX - offset.left;
+        percentage = x / width;
+        $("#volume-indicator").width((percentage * 100) + '%');
+        if (myplayer) {
+          return myplayer.setVolume(percentage);
+        }
+      };
+      startVolumeSlide = function(e) {
+        var $target, offset, percentage, width, x;
+        $target = $("#volume-scrubber");
+        offset = $target.offset();
+        width = $target.width();
+        x = e.clientX - offset.left;
+        percentage = x / width;
+        $("#volume-scrubber").on('mousemove', moveVolumeSlide);
+        $("#volume-indicator").width((percentage * 100) + '%');
+        if (myplayer) {
+          return myplayer.setVolume(percentage);
+        }
+      };
+      stopVolumeSlide = function(e) {
+        return $("#volume-scrubber").off('mousemove', moveVolumeSlide);
+      };
+      $("#volume-scrubber").on('mousedown', startVolumeSlide);
+      $(document).on('mouseup', stopVolumeSlide);
+      isAnimating = false;
+      isAnimating2 = false;
       $("ul.tracks li").on("mouseenter", function() {
         var id, track;
         if (!$(this).hasClass("nowplaying")) {
@@ -368,7 +368,7 @@
     $(document).on("click", "li.invert-btn a", function(e) {
       return $("body").toggleClass("invert");
     });
-    $(document).on("click", "div.mobile-menu", function(e) {
+    $("div.mobile-menu").on("click", function(e) {
       return $("nav ul").toggleClass("active");
     });
     $(window).resize(function() {

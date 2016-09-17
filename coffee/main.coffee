@@ -151,74 +151,75 @@ jQuery ($) ->
 		# console.log(tracks)
 		# console.log(nowplaying)
 
-	$("button.download").on "click", ->
-		window.location.href = downloadURL+'?client_id=098249c9bda43969033f485dc628827d'
-		# cur_track = tracks[nowplaying]
-		# SC.get('/tracks/'+cur_track.track_id+'/download')
-
-
-    
-	moveProgressSlide = (e)->
-		$target = $("#progress-scrubber")
-		offset = $target.offset()
-		width = $target.width()
-		x = e.clientX - offset.left
-		percentage = x / width
-		$("#progress-indicator").width((percentage * 100) + '%')
-		if $("body").hasClass("mobile")
-			if myplayer
-				soundManager.setPosition('mySound',percentage*dur)
-		else
-			if myplayer then myplayer.seek(percentage*dur)
-
-	startProgressSlide = (e)->
-		$target = $("#progress-scrubber")
-		offset = $target.offset()
-		width = $target.width()
-		x = e.clientX - offset.left
-		percentage = x / width
-		$("#progress-scrubber").on('mousemove', moveProgressSlide)
-		$("#progress-indicator").width((percentage * 100) + '%')
-		if $("body").hasClass("mobile")
-			if myplayer
-				soundManager.setPosition('mySound',percentage*dur)
-		else
-			if myplayer then myplayer.seek(percentage*dur)
-
-	stopProgressSlide = (e)->
-		$("#progress-scrubber").off('mousemove', moveProgressSlide)
-
-	$("#progress-scrubber").on('mousedown', startProgressSlide)
-	$(document).on('mouseup', stopProgressSlide)
-
-	moveVolumeSlide = (e)->
-		$target = $("#volume-scrubber")
-		offset = $target.offset()
-		width = $target.width()
-		x = e.clientX - offset.left
-		percentage = x / width
-		$("#volume-indicator").width((percentage * 100) + '%')
-		if myplayer then myplayer.setVolume(percentage)
-
-	startVolumeSlide = (e)->
-		$target = $("#volume-scrubber")
-		offset = $target.offset()
-		width = $target.width()
-		x = e.clientX - offset.left
-		percentage = x / width
-		$("#volume-scrubber").on('mousemove', moveVolumeSlide)
-		$("#volume-indicator").width((percentage * 100) + '%')
-		if myplayer then myplayer.setVolume(percentage)
-
-	stopVolumeSlide = (e)->
-		$("#volume-scrubber").off('mousemove', moveVolumeSlide)
-
-	$("#volume-scrubber").on('mousedown', startVolumeSlide)
-	$(document).on('mouseup', stopVolumeSlide)
-	isAnimating = false
-	isAnimating2 = false
 
 	if !$("body").hasClass("mobile")
+		$("button.download").on "click", ->
+			window.location.href = downloadURL+'?client_id=098249c9bda43969033f485dc628827d'
+			# cur_track = tracks[nowplaying]
+			# SC.get('/tracks/'+cur_track.track_id+'/download')
+
+
+	    
+		moveProgressSlide = (e)->
+			$target = $("#progress-scrubber")
+			offset = $target.offset()
+			width = $target.width()
+			x = e.clientX - offset.left
+			percentage = x / width
+			$("#progress-indicator").width((percentage * 100) + '%')
+			if $("body").hasClass("mobile")
+				if myplayer
+					soundManager.setPosition('mySound',percentage*dur)
+			else
+				if myplayer then myplayer.seek(percentage*dur)
+
+		startProgressSlide = (e)->
+			$target = $("#progress-scrubber")
+			offset = $target.offset()
+			width = $target.width()
+			x = e.clientX - offset.left
+			percentage = x / width
+			$("#progress-scrubber").on('mousemove', moveProgressSlide)
+			$("#progress-indicator").width((percentage * 100) + '%')
+			if $("body").hasClass("mobile")
+				if myplayer
+					soundManager.setPosition('mySound',percentage*dur)
+			else
+				if myplayer then myplayer.seek(percentage*dur)
+
+		stopProgressSlide = (e)->
+			$("#progress-scrubber").off('mousemove', moveProgressSlide)
+
+		$("#progress-scrubber").on('mousedown', startProgressSlide)
+		$(document).on('mouseup', stopProgressSlide)
+
+		moveVolumeSlide = (e)->
+			$target = $("#volume-scrubber")
+			offset = $target.offset()
+			width = $target.width()
+			x = e.clientX - offset.left
+			percentage = x / width
+			$("#volume-indicator").width((percentage * 100) + '%')
+			if myplayer then myplayer.setVolume(percentage)
+
+		startVolumeSlide = (e)->
+			$target = $("#volume-scrubber")
+			offset = $target.offset()
+			width = $target.width()
+			x = e.clientX - offset.left
+			percentage = x / width
+			$("#volume-scrubber").on('mousemove', moveVolumeSlide)
+			$("#volume-indicator").width((percentage * 100) + '%')
+			if myplayer then myplayer.setVolume(percentage)
+
+		stopVolumeSlide = (e)->
+			$("#volume-scrubber").off('mousemove', moveVolumeSlide)
+
+		$("#volume-scrubber").on('mousedown', startVolumeSlide)
+		$(document).on('mouseup', stopVolumeSlide)
+		isAnimating = false
+		isAnimating2 = false
+
 		$("ul.tracks li").on "mouseenter", ->
 			if !$(this).hasClass("nowplaying")
 				if !isAnimating
@@ -258,13 +259,7 @@ jQuery ($) ->
 		track = track[0]
 		index = $.inArray(track, tracks)
 		nowplaying = index
-		# $(".trackinfo-cur .title").html(track.track_title)
-		# $(".trackinfo-cur .artist").html(track.artist_full)
-		# $(".trackinfo-cur .link").html("<a href='"+track.link+"'>website</a>")
-		# $(".curtrack-description header").html("<h3>"+track.artist_full+"</h3><h4>"+track.track_title+"</h4>")
-		# $(".curtrack-description section").html(track.description+"<div class='link'><a href='"+track.link+"'>website</a></div>")
 
-		# $(".curtrack-description").html(track.description)
 		$(".tracks li").removeClass("nowplaying")
 		$(this).addClass("nowplaying")
 
@@ -304,26 +299,12 @@ jQuery ($) ->
 
 			$(".info-area").removeClass('grey')
 
-	# $(".footer .controller").hover -> showCurtrackDesc()
-	# $(".footer").hover -> showCurtrackDesc()
-
-
-	# mY = 0
-	# goingDown = false
-	# $('body').mousemove (e)->
-	# 	if e.pageY > mY
-	# 		goingDown = true
-	# 	else
-	# 		goingDown = false
-	# 	mY = e.pageY
-
-	# $(document).keydown (e)->
-	# 	if e.keyCode==73 then $("body").toggleClass("invert")
 
 	$(document).on "click", "li.invert-btn a", (e)->
 		$("body").toggleClass("invert")
 
-	$(document).on "click", "div.mobile-menu", (e)->
+	$("div.mobile-menu").on "click", (e)->
+	# $(document).on "click", "div.mobile-menu", (e)->
 		$("nav ul").toggleClass("active")
 
 	$(window).resize ->

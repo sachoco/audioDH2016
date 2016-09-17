@@ -71,6 +71,12 @@ body {
 			br {
 				display: none;
 			}
+			.download {
+				display: none;
+			}
+			#volume-bar {
+				display: none;
+			}
 		}
 		small {
 			.cur {
@@ -634,7 +640,7 @@ section {
 				font-size: $font-size-s;
 			}
 			#volume-bar {
-				display: none;
+				// display: none;
 				position: absolute;
 				top: 10px;
 				right: 0px;
