@@ -255,7 +255,6 @@ section.header nav {
 section.header nav ul {
   max-height: 0;
   overflow: hidden;
-  position: absolute;
   width: 100%;
   left: 0;
   transition: max-height 0.5s;
