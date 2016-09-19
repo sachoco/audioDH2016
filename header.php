@@ -73,7 +73,7 @@
         $body_class = "mobile";
     } 
 ?>
-    <body <?php body_class($body_class); ?>>
+    <body <?php body_class($body_class." invert"); ?>>
         <section class="header">
             <header class="gr-12">
                 <div class="logo">

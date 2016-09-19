@@ -131,10 +131,25 @@ body {
   background-color: #FAF5BD;
 }
 body.invert {
+  background-color: #050a42;
+}
+body.invert section.header {
   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
   -webkit-filter: invert(100%) !important;
           filter: invert(100%) !important;
-  background-color: #050a42;
+}
+body.invert section.body {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
+  -webkit-filter: invert(100%) !important;
+          filter: invert(100%) !important;
+}
+body.invert section.footer {
+  background-color: #00b7a4;
+}
+body.invert section.footer > .table {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
+  -webkit-filter: invert(100%) !important;
+          filter: invert(100%) !important;
 }
 body.invert img, body.invert iframe {
   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
@@ -264,6 +279,7 @@ section.header nav ul.active {
 }
 section.header nav ul li {
   display: block;
+  vertical-align: top;
 }
 section.header nav ul li > a {
   padding: 10px 7px;
@@ -303,6 +319,7 @@ section.body {
   padding-top: 2em;
   background: url(images/bg-overlay.png) left top;
   background-attachment: fixed;
+  background-position: center top;
 }
 section.content-wrapper {
   margin: auto;
