@@ -203,7 +203,7 @@ button {
 section.header{
 	// float: left;
 	width: 100%;
-	max-width: 1440px;
+	max-width: 1400px;
 	margin: auto;
 	header {
 		// background: white;
@@ -297,7 +297,7 @@ section.header{
 .wrapper {
 	// min-width: 700px;
 	// padding-top: 20px;
-	max-width: 1440px;
+	max-width: 1400px;
 	margin: auto;
 	// min-height: 700px;
 
@@ -306,12 +306,38 @@ section.header{
 section {
 	&.body {
 		padding-top: 2em;
-		background: url(images/bg-overlay.png) left top;
-		background-attachment: fixed;
-		background-position: center top;
+		position: relative;
+		// background: url(images/bg-overlay-2.png) left top;
+		// background-attachment: fixed;
+		// background-position: center top;
 
 		// background: url(images/bg-overlay.png) left top;
 		// background-size: cover;
+	}
+	&.background {
+		position: fixed;
+		width: 1400px;
+		height: 100vh;
+		z-index: -1;
+		top:0px;
+		left:50%;
+		transform: translateX(-50%);
+		.bg-overlay {
+			// background: url(images/bg-overlay.png) left top;
+			width: 100%;
+			height: 100%;
+			min-height: 880px;
+			overflow: hidden;
+			img {
+				height: 100%;
+				width: 1400px;
+			}
+			// height: 
+			&.flip {
+				transform: scaleY(-1);
+			}
+		}
+		
 	}
 	&.content-wrapper {
 		// max-width: 1200px;
@@ -429,7 +455,7 @@ section {
 		width: 100%;
 		color: $yellow;
 
-		max-width: 1440px;
+		max-width: 1400px;
 		// background-color: white;
 		// transition: all 1s;
 		h1 {

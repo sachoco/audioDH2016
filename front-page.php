@@ -1,6 +1,10 @@
 <?php include('header.php') ?>
 <div class="wrapper">
+<section class="background">
+    <div class="bg-overlay"><img src="<?php echo bloginfo("stylesheet_directory"); ?>/css/images/bg-overlay-2.png" alt=""></div>
+</section>
 <section class="body gr-12">
+
     <section class="content-wrapper"></section>
     <section class="tracks-wrapper">
         <ul class="tracks">
