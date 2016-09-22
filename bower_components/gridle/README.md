@@ -1,4 +1,4 @@
-# gridle (v1.3.38)
+# gridle (v2.0.46)
 
 
 One grid system to rule them all (.scss)
@@ -54,14 +54,14 @@ Generate all classes :
 Use your grid in hrml :
 
 ```markup
-<div class="container">
-	<div class="grid-12 hide-print">
+<div class="row">
+	<div class="gr-12 hide-print">
 		Header
 	</div>
-	<div class="grid-8 grid-mobile-12">
+	<div class="gr-8 gr-12@mobile">
 		Content
 	</div>
-	<div class="grid-4 grid-mobile-12 hide-print">
+	<div class="gr-4 gr-12@mobile">
 		Sidebar
 	</div>
 </div>
@@ -70,24 +70,31 @@ Use your grid in hrml :
 Or with mixins :
 
 ```scss
-.container {
-	@include gridle_container();
+.row {
+	@include gridle_row();
 	max-width:960px;
 	margin:0 auto;
 }
 #header {
-	@include gridle(12);
+	@include gridle_grid(12);
 }
 #sidebar {
-	@include gridle(8);
-	@include gridle(12,  mobile );
+	@include gridle_grid(8);
+	@include gridle_state( mobile tablet ) {
+		@include gridle_grid(12);
+		content : "#{gridle_current_state_name()}";
+	}
 }
 #sidebar {
-	@include gridle(4);
-	@include gridle_hide( mobile );
+	@include gridle_set( (
+		grid : 4,
+		mobile : (
+			hide : true
+		)
+	) );
 }
 @footer {
-	@include gridle(12);
+	@include gridle_grid(12);
 }
 ```
 
@@ -102,6 +109,37 @@ Customize your content look and feel with Gridle mixins
 	}
 }
 ```
+
+## Element queries support
+
+Gridle has support for element queries with an easy mixin as all the rest of the framework. Thanks to [Marc J Schmidt](https://github.com/marcj/css-element-queries) for his awesome work on the hight efficient "polyfill".
+
+```scss
+.component {
+	background: yellow;
+
+	@include gridle_eq(+600px) {
+		// when the component is 600px and greater
+		background: pink;
+	}
+	@include gridle_eq(-300px) {
+		// when the component is 300px and lower
+		background: green;
+	}
+	@include gridle_eq(-100px) {
+		// when the component is 100px and lower
+		background: black;
+
+		.my-nested-element {
+			display: none;
+		}
+	}
+}
+```
+
+## Flex as a choice
+
+Gridle allows you to choose between a standard grid generated with float, etc... and a flex one that use the flexbox model. All of this power with the same exact classes.
 
 ## Generate custom classes
 
@@ -118,7 +156,7 @@ This will produce the classes : center, center-mobile, center-tablet and center-
 
 ## Set multiple grid properties at one
 
-Gridle offer you multiple ways to set grid properties on your elements, the gridle_set is one of these ways
+Gridle offer you multiple ways to set grid properties on your elements, the gridle_set and gridle universal mixin are some of these ways
 
 ```scss
 #sidebar {
@@ -134,6 +172,9 @@ Gridle offer you multiple ways to set grid properties on your elements, the grid
 			push : 0
 		)
 	));
+
+	// same with universal mixin
+	@include gridle(8 push 4 tablet 10 push 2 mobile 12 push 0);
 }
 ```
 
@@ -148,3 +189,23 @@ Gridle.on('update', function(updatedStates, activeStates, unactiveStates) {
 });
 // see documentation for more informations...
 ```
+
+
+## And more...
+
+That's not finished. Gridle offer you a lot of features and advanced settings that you can discover on the full website. When I say that Gridle is powerful and fully customizable, I really mean it!
+
+## [Visit Website](http://gridle.org/) for full documentation
+
+
+## Tested with
+
+|    | Generator |  Version  |
+| ------------- | ------------- | ------------- |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png" height="20" />  |  Grunt Sass  |  1.0.0  |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png" height="20" />  |  Gulp Sass  |  2.2.0  |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png" height="20" />  |  Node Sass  |  3.4.2  |
+| <img src="http://www.codingpedia.org/wp-content/uploads/2014/04/gulp-2x.png" height="30" />  |  Gulp  | 3.9.0  |
+| <img src="https://www.npmjs.com/static/images/npm-logo.svg" height="20" />  |  NPM  | 2.5.1  |
+| <img src="https://cms-assets.tutsplus.com/uploads/users/30/posts/23114/preview_image/libsass.png" height="20" />  |  Libsass  | 3.3.3  |
+|  <img src="http://rhumaric.com/wp-content/uploads/2013/05/bower-logo.png" height="20" />  |  Grunt  |  0.4.4  |

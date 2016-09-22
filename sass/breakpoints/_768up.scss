@@ -2,6 +2,8 @@
 section.header {
 
 	nav {
+		display: inline-block;
+
 		.mobile-menu {
 			display: none;
 		}
@@ -10,38 +12,66 @@ section.header {
 		}
 		ul {
 			display: block;
-
+			max-height: none;
+			overflow: hidden;
+			position: relative;
+			// width: 100%;
+		 //    left: 0;
+			li {
+				display: inline-block;
+				>a {
+					padding: 10px 15px;
+				}
+			}
 			// list-style: none;
 		}
 
 	}
 }
 
-section.home {
-	width: calc(100% - 150px);
-	min-width: 680px;
-
+.wrapper {
+	min-width: 700px;
 }
 
+section {
+	&.footer {
 
-section.page {
-	width: calc(100% - 150px);
-	min-width: 680px;
-
-}
-
-section.main {
-
-	.wpb_wrapper {
-		h2 {
-			margin-top: 0;
+		.table {
+		    
+		}
+		.row {
+			
+		}
+		.cell {
+			display: table-cell;
+		    &.half {
+		    	width: 50%;
+		    }
+		    &.padding {
+		    }
+	    	&.info-area {
+	    		display: table-cell;
+	    	}
 		}
 
-	}
-}
+		.trackinfo-container {
 
-footer {
-	h2 {
-		margin-top: 0;
+		}
+		&.mini {
+
+		}
+		.trackinfo {
+
+		}
+
+		.curtrack-description {
+
+		}
+		.trackinfo-wrap {
+
+		}
+		.controller {
+
+		}
 	}
 }

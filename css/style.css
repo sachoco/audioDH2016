@@ -54,128 +54,55 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/**
- * Str replace
- *
- * @param {string}  $string    String that you want to replace
- * @param {string}  $substr    String that is to be replaced by `$newsubstr`
- * @param {string}  $newsubstr String that replaces `$substr`
- * @param {number*} $all       Flag for replaceing all (1+) or not (0)
- * @return {string}
- */
-/**
- * Map set
- *
- * @param 	Map 	$map 		The map to use
- * @param 	String 	$key 		The key to update
- * @param 	Mixed 	$value 		The new value
- * @return 	Map 			The new map
- */
-/**
- * Get the column width in percent for the global or a specific context
- *
- * @param 	int 		$columns 					The number of columns to calculate
- * @param 	int 		$context : $gridle-columns-count 	 	The context to use
- * @return 	percentage 							The width in percent
- */
-/**
- *  Get a state map
- *
- * @param 	string 		$name 		The name of the state to get
- * @return 	map 				A state map object
- */
-/**
- * Check if a state exist :
- *
- * @param 	string 		$name 		The name of the state to check
- * @return 	Boolean 			true is exist
- */
-/**
- * Get the media queries variables :
- *
- * @param 	int 		$index 	 	The media query indes
- * @param 	String 		$var 		The media query variable name
- * @return 	String|int 			The variable value
- */
-/**
- * Get a variable
- *
- * @param 	String 		$varName 				The variable name
- * @param  	String 		$stateMap-or-stateName 	 	The state name or a map state value
- * @return 	Mixed 							The finded value
- */
-/**
- * Set a variable in a state
- * @param 	Mixed $stateName-or-stateIndex 	The state name of state index
- * @param  	String $var                    		Variable name to assign
- * @param  	Mixed $newValue          		The new value to assign
- * @return 	List                         			The states list (full)
- */
-/**
- * Generate a column
- *
- * @param 	String 		$name 			The column name (often count)
- * @param 	int 		$columns 		The column count that the column will take
- * @param 	int 		$context 		The context on witch the with will be calculed
- * @param 	Boolean 	$generateClasses 	Set if the column has to be generated in css
- */
-/**
- * Generate classname
- *
- * @param 	List 		$parrern 	The pattern to use to generate classname
- * @param 	String 		$state 		The state
- * @param 	int 		$count 		The column count
- */
-/**
- * Get the media query for a particular state, or with, etc...
- *
- * @param 	Mixed 		$state-or-min-width 		The state name of the min with
- * @param 	Mixed 		$max-width 			The max width if first param is a min width
- * @return 	String 						The media query string without the @media
- */
-/**
- * Get states count
- * 
- * @return 	int 	The number of states defined
- */
-/**
- * Setup
- */
-/**
- *  Register a clear each class
- */
-/**
- * Register a special class
- */
-/**
- * Register default states
- */
-/**
- * Register default mobile first states :
- */
-/**
- * Set the debug device (not used for now)
- * 
- * @param 	String 		$state 		The state to update
- * @para m 	String 		$device 	The device to use (iphone, etc...)
- */
-/**
- * Parent clear each
- */
-/**
- * Vertical align :
- */
-/**
- * Show inline
- *
- * @param 	String 		$state 		The state name
- */
-/**
- * Generate a custom class for all the states
- *
- * @param 	list 	$pattern 		The name pattern of the class
- * @param 	list 	$statesNames 		The states names to generate
- */
+@font-face {
+  font-family: 'audioDH';
+  src: url("fonts/audioDH.eot?d61pgo");
+  src: url("fonts/audioDH.eot?d61pgo#iefix") format("embedded-opentype"), url("fonts/audioDH.ttf?d61pgo") format("truetype"), url("fonts/audioDH.woff?d61pgo") format("woff"), url("fonts/audioDH.svg?d61pgo#audioDH") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'audioDH' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.audiodh-pause:before {
+  content: "\e906";
+}
+
+.audiodh-download:before {
+  content: "\e900";
+}
+
+.audiodh-next:before {
+  content: "\e901";
+}
+
+.audiodh-play:before {
+  content: "\e902";
+}
+
+.audiodh-prev:before {
+  content: "\e903";
+}
+
+.audiodh-shuffle:before {
+  content: "\e904";
+}
+
+.audiodh-volume:before {
+  content: "\e905";
+}
+
 /*********************
 BASE (MOBILE) SIZE
 This are the mobile styles. It's what people see on their phones. If
@@ -184,39 +111,74 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 *********************/
 * {
   box-sizing: border-box;
-  transition: -webkit-filter 2s, filter 2s;
 }
 
 html {
-  background-color: #ffffff;
+  height: 100%;
 }
 
 html, body {
   position: relative;
   font-size: 16px;
   font-family: "Maven Pro", sans-serif;
-  color: #555;
+  color: #050D9E;
   line-height: 1.2;
   font-weight: normal;
+  height: 100%;
 }
 
 body {
-  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+  background-color: #FAF5BD;
 }
-body.home {
-  background: none;
+body.invert {
+  background-color: #050a42;
+}
+body.invert section.header {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
+  -webkit-filter: invert(100%) !important;
+          filter: invert(100%) !important;
+}
+body.invert section.body {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
+  -webkit-filter: invert(100%) !important;
+          filter: invert(100%) !important;
+}
+body.invert section.footer {
+  background-color: #00b7a4;
+}
+body.invert section.footer > .table {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
+  -webkit-filter: invert(100%) !important;
+          filter: invert(100%) !important;
+}
+body.invert img, body.invert iframe {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
+  -webkit-filter: invert(100%) !important;
+          filter: invert(100%) !important;
+}
+body.mobile #progress-bar {
+  display: none;
+}
+body.mobile .controller br {
+  display: none;
+}
+body.mobile .controller .download {
+  display: none;
+}
+body.mobile .controller #volume-bar {
+  display: none;
+}
+body.mobile small .cur {
+  display: none;
+}
+body.mobile small .dur {
+  float: left !important;
+  display: none;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: "Gafata", sans-serif;
+  font-family: "Maven Pro", sans-serif;
   font-weight: normal;
-}
-h1 a, h2 a, h3 a, h4 a, h5 a {
-  background: none;
-}
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
-  background: url(images/overlay-pattern.png) black;
-  color: white !important;
 }
 
 .h3 {
@@ -228,7 +190,7 @@ p {
 }
 
 a {
-  color: #555;
+  color: #050D9E;
   text-decoration: none;
 }
 a:hover {
@@ -239,21 +201,12 @@ a:hover {
   display: none;
 }
 
-.page__body .text a, .page__body .wpb_wrapper p a, .page__body .press-content a {
-  color: black;
-  text-decoration: none;
-  transition: all 0.1s;
-  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+.page__body {
+  margin: 10px 0;
 }
-.page__body .text a:hover, .page__body .wpb_wrapper p a:hover, .page__body .press-content a:hover {
-  background-color: black;
-  color: white;
-}
-.page__body .text a:hover time, .page__body .wpb_wrapper p a:hover time, .page__body .press-content a:hover time {
-  color: #555;
-}
-.page__body .text a time, .page__body .wpb_wrapper p a time, .page__body .press-content a time {
-  transition: none;
+
+.page__header {
+  font-size: 1.5em;
 }
 
 strong {
@@ -282,18 +235,272 @@ button {
   padding: 2em;
 }
 
-section.header h1 {
-  background: #F6F6F6;
-  padding: 10px;
+section.header {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+}
+section.header header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  background: url(images/header-bg-overlay.png) left top #FAF5BD no-repeat;
+  background-position: 393px 0px;
+}
+section.header .logo {
+  margin-left: 1em;
+  background: url(images/logo-high.png) no-repeat center center;
+  background-size: contain;
+  width: 290px;
+  height: 80px;
+}
+section.header .logo h1 {
+  margin: 0;
+  font-size: 40px;
+  text-indent: -99999em;
+}
+section.header .logo h4 {
+  text-indent: -99999em;
 }
 section.header nav {
+  background: #050D9E;
   text-align: center;
 }
-section.header nav li {
-  display: inline-block;
-  padding: 15px;
+section.header nav ul {
+  max-height: 0;
+  overflow: hidden;
+  width: 100%;
+  left: 0;
+  transition: max-height 0.5s;
+}
+section.header nav ul.active {
+  max-height: 800px;
+}
+section.header nav ul li {
+  display: block;
+  vertical-align: top;
+}
+section.header nav ul li > a {
+  padding: 10px 7px;
+  color: #FAF5BD;
+  background-color: #050D9E;
+  text-transform: uppercase;
+}
+section.header nav ul li > a:focus {
+  background-color: #050D9E;
+}
+section.header nav ul li > a:hover {
+  color: #050D9E;
+  text-decoration: none;
+  background-color: #FAF5BD;
+}
+section.header nav ul li > a.fa {
+  line-height: inherit;
+}
+section.header nav .mobile-menu {
+  text-align: center;
+  padding: 5px;
+  font-size: 0.7em;
+}
+section.header nav .mobile-menu a.fa {
+  color: #FAF5BD;
+}
+section.header nav .mobile-menu a.fa:hover {
+  text-decoration: none;
 }
 
+.wrapper {
+  max-width: 1400px;
+  margin: auto;
+}
+
+section.body {
+  padding-top: 2em;
+  position: relative;
+}
+section.background {
+  position: fixed;
+  width: 1400px;
+  height: 100vh;
+  z-index: -1;
+  top: 0px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+section.background .bg-overlay {
+  width: 100%;
+  height: 100%;
+  min-height: 880px;
+  overflow: hidden;
+}
+section.background .bg-overlay img {
+  height: 100%;
+  width: 1400px;
+}
+section.background .bg-overlay.flip {
+  -webkit-transform: scaleY(-1);
+      -ms-transform: scaleY(-1);
+          transform: scaleY(-1);
+}
+section.content-wrapper {
+  margin: auto;
+  margin-bottom: 150px;
+  display: none;
+}
+section.content-wrapper a {
+  color: #FF485B;
+}
+section ul.tracks {
+  margin-bottom: 50px;
+  float: left;
+  width: 100%;
+}
+section ul.tracks li {
+  float: left;
+  font-family: "Maven Pro", sans-serif;
+  cursor: pointer;
+  padding: 0px !important;
+  width: 50%;
+}
+section ul.tracks li span {
+  padding: 2px 2px 2px 2px !important;
+  margin-right: 1em;
+  display: block;
+}
+section ul.tracks li:hover span {
+  background-color: #F1F1F1 !important;
+}
+section ul.tracks li.nowplaying span {
+  background-color: #FF485B !important;
+}
+section ul.tracks li, section ul.news li {
+  display: inline-block;
+  min-height: 1px;
+  float: left;
+  box-sizing: border-box;
+  vertical-align: top;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media screen and (min-width: 600px) {
+  section ul.news li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+@media screen and (min-width: 992px) {
+  section ul.news li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+@media screen and (min-width: 660px) {
+  section ul.tracks li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+@media screen and (min-width: 880px) {
+  section ul.tracks li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+@media screen and (min-width: 1390px) {
+  section ul.tracks li {
+    display: inline-block;
+    min-height: 1px;
+    float: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  section ul.tracks li {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+@media screen and (min-width: 660px) {
+  section ul.tracks li {
+    width: 33.33333%;
+  }
+}
+@media screen and (min-width: 880px) {
+  section ul.tracks li {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 1170px) {
+  section ul.tracks li {
+    width: 20%;
+  }
+}
+@media screen and (min-width: 1390px) {
+  section ul.tracks li {
+    width: 16.66667%;
+  }
+}
+@media screen and (min-width: 1610px) {
+  section ul.tracks li {
+    width: 14, 28571428571429%;
+  }
+}
+section ul.tracks li .duration {
+  float: right;
+}
+section .download-link {
+  margin-bottom: 200px;
+  text-align: center;
+}
+section .download-link a {
+  color: #FF485B;
+  border: 1px solid #FF485B;
+  padding: 0.8em;
+}
+section .download-link a:hover {
+  text-decoration: none;
+  background-color: #FF485B;
+  color: #FAF5BD;
+}
+section.footer {
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  background-color: #FF485B;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #FAF5BD;
+  max-width: 1400px;
+}
 section.footer h1 {
   background: #F6F6F6;
   padding: 10px;
@@ -305,79 +512,282 @@ section.footer nav li {
   display: inline-block;
   padding: 15px;
 }
-
-.wrapper {
-  width: 1200px;
+section.footer .table {
+  display: table;
+  height: 100%;
+  margin-bottom: 0;
 }
-
-section tr {
-  cursor: pointer;
+section.footer .row {
+  display: table-row;
 }
-section tr:hover, section tr.nowplaying {
-  background-color: #5094F7 !important;
+section.footer .row.align-bottom {
+  vertical-align: bottom;
 }
-section tr .duration {
-  float: right;
+section.footer .cell {
+  position: relative;
+  vertical-align: top;
+  display: block;
+  height: 100%;
 }
-section img {
+section.footer .cell.half {
   width: 100%;
-  height: auto;
 }
-section.track {
-  height: 80vh;
-  overflow: scroll;
+section.footer .cell.half.grey:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #EDEDED;
 }
-section ul.track li {
-  padding: 5px;
-  margin: 2px;
-  background-color: #5094F7;
+section.footer .cell.info-area {
+  display: none;
 }
-section .trackinfo {
-  margin-top: 30px;
+section.footer .cell.padding {
+  padding: 1em;
 }
-section .controller {
+section.footer .trackinfo-container {
+  box-sizing: border-box;
+}
+section.footer.mini .trackinfo section, section.footer.mini .trackinfo-cur section {
+  display: none;
+}
+section.footer .trackinfo {
+  color: #FF485B;
+  display: table;
+  background-color: #EDEDED;
+  width: 100%;
+  padding: 10px;
+  height: 100%;
+  display: none;
+}
+section.footer .trackinfo h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+section.footer .trackinfo footer {
+  font-size: 0.8em;
+  margin: 10px 0 0;
+}
+section.footer .trackinfo section {
+  margin-top: 10px;
+}
+section.footer .trackinfo-cur {
+  font-family: "Maven Pro", sans-serif;
+}
+section.footer .curtrack-description {
+  padding: 10px;
+  display: table;
+  height: 100%;
+}
+section.footer .curtrack-description h3 {
+  font-size: 1.5em;
+}
+section.footer .curtrack-description .link {
+  font-size: 0.8em;
+  margin: 10px 0;
+}
+section.footer .curtrack-description section {
+  margin-top: 10px;
+}
+section.footer .curtrack-description footer {
+  font-size: 0.8em;
+  margin: 10px 0 0;
+}
+section.footer .controller {
   position: relative;
 }
-section .controller progress {
+section.footer .controller .controller-wrapper {
+  position: relative;
+  margin: auto;
+}
+section.footer .controller progress {
   width: 100%;
 }
-section .controller button {
+section.footer .controller .devider {
+  width: 0px;
+  border-left: 1px solid;
+  height: 23px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #3c3c3c;
+}
+section.footer .controller button {
   border: none;
   background: none;
   vertical-align: middle;
   outline: none;
+  margin: 0;
+  padding-bottom: 0;
+  background-repeat: no-repeat;
+  font-size: 22px;
+  padding: 0 10px;
 }
-section .controller button.playpause {
-  width: 50px;
+section.footer .controller button:active {
+  color: #3c3c3c;
 }
-section .controller .cur {
+section.footer .controller button.shuffle.active {
+  color: #3c3c3c;
+}
+section.footer .controller button.download {
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+section.footer .controller button.download.active {
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+section.footer .controller button.download:active {
+  color: #FAF5BD;
+}
+section.footer .controller a.download {
   float: left;
+  min-width: 25px;
+  text-align: left;
+  text-indent: -100000px;
+  position: relative;
 }
-section .controller .dur {
-  float: right;
-}
-section .controller #volume-bar {
+section.footer .controller a.download:before {
+  content: "";
+  display: block;
   position: absolute;
-  top: 16px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  background-size: 16px 16px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+UmVjdGFuZ2xlIDMxPC90aXRsZT48cGF0aCBkPSJNMyAxMXYyaDEwdi0ySDN6bTAtN2gxMGwtNSA2LTUtNnptMy0ydjJoNFYySDZ6IiBmaWxsPSIjMjIyIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);
+}
+section.footer .controller .cur {
+  float: left;
+  font-size: 0.8em;
+}
+section.footer .controller .dur {
+  float: right;
+  font-size: 0.8em;
+}
+section.footer .controller #volume-bar {
+  position: absolute;
+  top: 10px;
   right: 0px;
 }
-section .controller #volume-bar * {
+section.footer .controller #volume-bar * {
   cursor: pointer;
 }
-section .controller #volume-bar #volume-scrubber {
+section.footer .controller #volume-bar #volume-scrubber {
   float: left;
   position: relative;
   top: 3px;
   right: 10px;
+  height: 6px;
+  width: 80px;
+  background: #e3e3e3;
 }
-section .controller #volume-bar #volume-indicator {
+section.footer .controller #volume-bar #volume-indicator {
   width: 100%;
   height: 100%;
   position: absolute;
   left: 0;
+  background: #3c3c3c;
 }
-section .controller #volume-bar #volume-sign {
+section.footer .controller #volume-bar #volume-sign {
   float: right;
+  margin-top: -2px;
+}
+section.footer .controller #progress-bar {
+  margin-top: 1em;
+}
+section.footer .controller #progress-bar * {
+  cursor: pointer;
+}
+section.footer .controller #progress-bar #progress-scrubber {
+  float: left;
+  position: relative;
+  height: 6px;
+  width: 100%;
+  background: #e3e3e3;
+}
+section.footer .controller #progress-bar #progress-indicator {
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: #3c3c3c;
+}
+section ul.news {
+  float: left;
+  margin-bottom: 300px;
+  width: 100%;
+}
+section ul.news li {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  section ul.news li {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+@media screen and (min-width: 600px) {
+  section ul.news li {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 992px) {
+  section ul.news li {
+    width: 33.33333%;
+  }
+}
+section ul.news li > div {
+  background-color: white;
+  padding-bottom: 30px;
+}
+section ul.news li > div div.text {
+  height: 240px;
+}
+@media screen and (min-width: 600px) {
+  section ul.news li > div div.text {
+    height: 250px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  section ul.news li > div div.text {
+    height: 240px;
+  }
+}
+section ul.news li > div h3 {
+  font-size: 2em;
+  font-weight: 900;
+  width: 260px;
+  margin: 0.5em auto;
+}
+section ul.news li > div date {
+  text-transform: uppercase;
+}
+section ul.news li > div .category {
+  text-transform: uppercase;
+}
+section ul.news li > div .excerpt p {
+  margin: 0 30px;
+  text-align: justify;
+}
+section ul.news li > div .readmore {
+  text-transform: uppercase;
+  background-color: #050D9E;
+  color: #FAF5BD;
+  padding: 0.7em 1.2em;
+}
+section ul.news li > div .devider {
+  font-size: 2em;
+}
+section ul.news li img {
+  width: 100%;
+  height: auto;
 }
 
 /*********************
@@ -391,35 +801,23 @@ tweeners.
     display: block;
   }
 
-  section.home {
-    width: calc(100% - 75px);
+  section.header nav {
+    display: inline-block;
   }
-
-  section.page {
-    width: calc(100% - 75px);
+  section.header nav .mobile-menu {
+    display: none;
   }
-
-  .event-content, .press-content {
-    width: calc(100% - 400px);
+  section.header nav.mobile-nav {
+    display: none !important;
   }
-
-  .event-list, .press-list {
-    width: 200px;
-    float: left;
-  }
-  .event-list.right, .press-list.right {
-    float: right;
-  }
-  .event-list li, .press-list li {
-    padding: 0.5em 0;
-    font-size: 0.8em;
-  }
-  .event-list li a, .press-list li a {
-    color: black;
-  }
-  .event-list li time, .press-list li time {
+  section.header nav ul {
     display: block;
-    font-size: 0.8em;
+    max-height: none;
+    overflow: hidden;
+    position: relative;
+  }
+  section.header nav ul li {
+    display: inline-block;
   }
 }
 /*********************
@@ -429,6 +827,9 @@ in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
 *********************/
 @media only screen and (min-width: 768px) {
+  section.header nav {
+    display: inline-block;
+  }
   section.header nav .mobile-menu {
     display: none;
   }
@@ -437,24 +838,29 @@ you can add resource intensive styles.
   }
   section.header nav ul {
     display: block;
+    max-height: none;
+    overflow: hidden;
+    position: relative;
+  }
+  section.header nav ul li {
+    display: inline-block;
+  }
+  section.header nav ul li > a {
+    padding: 10px 15px;
   }
 
-  section.home {
-    width: calc(100% - 150px);
-    min-width: 680px;
+  .wrapper {
+    min-width: 700px;
   }
 
-  section.page {
-    width: calc(100% - 150px);
-    min-width: 680px;
+  section.footer .cell {
+    display: table-cell;
   }
-
-  section.main .wpb_wrapper h2 {
-    margin-top: 0;
+  section.footer .cell.half {
+    width: 50%;
   }
-
-  footer h2 {
-    margin-top: 0;
+  section.footer .cell.info-area {
+    display: table-cell;
   }
 }
 /*********************
@@ -464,19 +870,14 @@ in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
 *********************/
 @media only screen and (min-width: 1030px) {
-  section.home {
-    width: calc(100% - 300px);
-    min-width: 900px;
+  section.footer {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
-
-  section.page--single {
-    width: calc(100% - 300px);
-    min-width: 1030px;
-  }
-
-  section.page {
-    width: calc(100% - 300px);
-    min-width: 900px;
+  section.footer .cell.padding {
+    padding: 2em 4em;
   }
 }
 /*********************

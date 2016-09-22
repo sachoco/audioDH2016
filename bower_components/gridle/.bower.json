@@ -1,10 +1,13 @@
 {
   "name": "gridle",
-  "version": "1.3.38",
+  "version": "2.0.46",
   "authors": [
     "Olivier Bossel <olivier.bossel@gmail.com>"
   ],
-  "description": "Gridle Gridle grid system",
+  "main": [
+    "sass/gridle/_gridle.scss"
+  ],
+  "description": "Gridle grid system",
   "keywords": [
     "gridle",
     "grid",
@@ -22,14 +25,20 @@
     "test",
     "tests"
   ],
-  "_release": "1.3.38",
+  "dependencies": {},
+  "devDependencies": {
+    "css-element-queries": "https://github.com/marcj/css-element-queries.git#~0.3.0",
+    "jquery": "~2.1.4",
+    "matchMedia": "https://github.com/paulirish/matchMedia.js.git#~0.2.0"
+  },
+  "_release": "2.0.46",
   "_resolution": {
     "type": "version",
-    "tag": "1.3.38",
-    "commit": "ded4066ba51a45e55bf9d01879ffd6396a6b294c"
+    "tag": "2.0.46",
+    "commit": "aa33e4330259231506e56c3440e62c9320ebb6d4"
   },
-  "_source": "git://github.com/olivierbossel/gridle.git",
-  "_target": "~1.3.38",
+  "_source": "https://github.com/olivierbossel/gridle.git",
+  "_target": "^2.0.46",
   "_originalSource": "gridle",
   "_direct": true
 }
